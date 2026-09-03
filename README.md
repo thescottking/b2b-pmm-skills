@@ -148,11 +148,15 @@ reorder freely. Do not rename or delete a heading: a skill looking for
 `What We Do Not Do` and finding nothing will make claims you did not authorize.
 
 `voice.md` is the exception to the blank-template rule: it ships filled in. Those
-defaults and the 25 weighted patterns in the humanizer rubric are hand-built from
+defaults and the 23 weighted patterns in the humanizer rubric are hand-built from
 one working editor's judgment about what damages credibility with a technical B2B
 reader, not scraped from generic writing advice. They are one writer's voice, and
-they are meant to be replaced with yours. `docs/voice-calibration.md` explains how
-they were built and how to rebuild them from your own published work.
+they are meant to be replaced with yours. The rubric is a house-style conformance
+score, not an AI detector: it is deliberately opinionated, it catches most machine
+output as a side effect because machine output is unstyled by default, and it does
+not identify machine authorship. `docs/voice-calibration.md` explains how it was
+built, how a blind calibration study on nine articles tested it, and how to
+rebuild it from your own published work.
 
 Read `brand-kit/README.md` for how to fill them in, and `examples/ampfield/` for
 a worked example. Ampfield is a fictional field operations platform for solar
@@ -172,8 +176,9 @@ Five references in `docs/`. Skills read them; so can you.
   one you have could be adopted by a competitor unchanged.
 - **`voice-calibration.md`** The voice-side companion to the file above. Where
   the humanizer rubric and the shipped voice defaults came from, what the
-  penalty weights encode, and how to derive your own rules from your own
-  published writing instead of inheriting somebody else's.
+  penalty weights encode, what a blind calibration study on nine articles showed
+  about what the rubric actually measures, and how to derive your own rules from
+  your own published writing instead of inheriting somebody else's.
 - **`messaging-patterns.md`** Eight structural patterns for deploying that
   framework in copy, each with when it works, when it backfires, and a worked
   example.

@@ -8,11 +8,18 @@ voice either.
 
 The difference is that this repo ships a voice anyway. `brand-kit/voice.md`
 arrives with real rules under `Tone`, `Grammar Constraints`, `Pacing`,
-`Clarity`, `Banned Words and Phrases`, and `AI Tells to Avoid`, while every
-other kit file arrives mostly blank. The scoring version of those rules, the 25
-weighted patterns in `The Humanizer Rubric` inside `skills/house-style/SKILL.md`,
-ships filled in too. That is a deliberate choice and it comes with an
-obligation: to say whose voice it is, how it was built, and how to replace it.
+`Clarity`, `Formatting Preferences`, `Banned Words and Phrases`, and `AI Tells
+to Avoid`, while every other kit file arrives mostly blank. The scoring version
+of those rules, the 23 weighted patterns in `The Humanizer Rubric` inside
+`skills/house-style/SKILL.md`, ships filled in too. That is a deliberate choice
+and it comes with an obligation: to say whose voice it is, how it was built, and
+how to replace it.
+
+One thing the rubric is not: an AI detector. It is a house-style conformance
+score, hand-built and deliberately opinionated, and it catches most machine
+output as a side effect, because machine output is unstyled by default. It does
+not identify machine authorship. The calibration study below is the evidence for
+that, and it is also why the vocabulary penalty is now capped.
 
 The worked example throughout is Ampfield, the fictional field operations
 platform for solar and HVAC contractors documented in `examples/ampfield/`.
@@ -21,14 +28,14 @@ platform for solar and HVAC contractors documented in `examples/ampfield/`.
 
 ## Where the rubric came from
 
-Scott King wrote the 25 patterns by hand, one at a time, over roughly a year of
+Scott King wrote the 23 patterns by hand, one at a time, over roughly a year of
 editing machine-drafted B2B marketing copy against his own published articles.
 There was no source list. The method was repetition: draft, edit, notice that
 the same repair was being made for the fourth time that week, stop and name it.
 
 Naming was the actual work. "This sounds like AI" is not usable by a scoring
 panel. "A final paragraph that restates what was just said" is, because a reader
-can find it, a writer can cut it, and a model can flag it. Most of the 25
+can find it, a writer can cut it, and a model can flag it. Most of the 23
 started as a note in the margin of a draft and became a rubric entry only after
 it recurred often enough to be a pattern rather than a bad day.
 
@@ -45,15 +52,15 @@ tells and the style rules supply the replacement.
 
 ## What the weights encode
 
-The weights are not frequency counts. If they were, filler phrases and title
-case would dominate, because those are the most common things in any machine
-draft. The weights measure damage: how much credibility a single instance costs
+The weights are not frequency counts. If they were, filler phrases and copula
+avoidance would dominate, because those are the most common things in any
+machine draft. The weights measure damage: how much credibility a single instance costs
 with a technical B2B reader who is deciding whether the writer knows the
 subject.
 
 Two contrasts make the scale legible.
 
-**Scaffolding exposure costs 10.** Pattern 25 fires when internal structure
+**Scaffolding exposure costs 10.** Pattern 23 fires when internal structure
 surfaces in customer-facing copy: naming your own qualities as a set, "our
 pillars," "our framework," a section header that is really a slide title. It is
 a maximum penalty and an automatic revision trigger because it tells the reader
@@ -68,15 +75,19 @@ available information." Nothing marks a document as generated more precisely
 than an author hedging about the boundaries of its own training. A human writer
 with a gap in their knowledge either finds the number or cuts the sentence.
 
-**Title case in headings costs 3.** It is a house convention, it appears
-constantly, and a reader who notices it thinks the writer used a different style
-sheet, not that the writer is a machine. Cheap to fix, low damage, low weight.
+**Copula avoidance costs 5.** "Serves as," "stands as," "represents," "marks,"
+wherever "is" or "has" would do the same job. It appears constantly, and a
+reader who notices it thinks the writer was padding, not that the writer is a
+machine. Cheap to fix, low damage, low weight.
 
 The pattern holds across the table. Entries that make a reader doubt the author
 is a person at all sit at 8 to 10: the contrast formula, generic positive
 conclusions, "in today's" openers, collaborative artifacts left in the asset.
-Entries that are stylistic irritants sit at 3 to 5: copula avoidance, elegant
-variation, false ranges, question-as-opening.
+Entries that are stylistic irritants sit at 5: copula avoidance, elegant
+variation, false ranges, question-as-opening. Nothing scores below 5 any more.
+Two entries that did, title case in headings and inline-header bullets, were
+retired after the study below and moved to `Formatting Preferences` in
+`brand-kit/voice.md`, where they carry no score.
 
 **Why the Humanizer carries 1.5x.** In `The Quality Panel` every expert scores
 1.0x except the AI Humanizer, which scores 1.5x, and a Humanizer score below 70
@@ -88,6 +99,86 @@ believing the author, and once that happens the positioning and the specificity
 do not get read at all. It is the only failure that invalidates the rest of the
 work, so it is the only one weighted above the others, and it is the only one
 with a floor.
+
+---
+
+## The calibration study
+
+The weights above were argued from experience. This section is the first time
+they were tested.
+
+### Design
+
+Nine B2B articles were scored blind against the rubric. Provenance was stripped
+before scoring, so the scorer saw text and nothing else. The sample: two recent
+pieces written through the panel, four articles by the same author from 2024,
+before the rubric existed, a research report from a large consultancy, and two
+unstyled AI drafts written to the prompt with no house style applied. The last
+two are the controls. If the rubric measures machine authorship, they should
+finish last.
+
+### Results
+
+Scores are raw, computed in full before clamping. The published rubric floors
+anything below zero at zero, which is why three of the bottom four report as 0
+in normal use.
+
+| Piece | Provenance | Raw score |
+|---|---|---|
+| A | Recent piece, written through the panel | 77 |
+| B | Recent piece, written through the panel | 72 |
+| C | Research report, large consultancy | 36 |
+| D | Unstyled AI draft, control | 33 |
+| E | Unstyled AI draft, control | 25 |
+| F | Same author, 2024, before the rubric | 8 |
+| G | Same author, 2024, before the rubric | minus 13 |
+| H | Same author, 2024, before the rubric | minus 21 |
+| I | Same author, 2024, before the rubric | minus 31 |
+
+### Finding one: it is not an AI detector
+
+Both AI controls outscored four human-written articles. Not narrowly. D and E
+finished ahead of every 2024 piece in the sample, and E beat the lowest by 56
+points.
+
+That result is not a defect, but it does settle what the instrument is. The
+rubric scores conformance to a house style. Machine output fails it because
+machine output is unstyled by default, which is a side effect and not the
+mechanism. A human writing outside the house style fails it the same way, and
+the 2024 articles did. Every claim in this repo about the rubric was rewritten
+to say that.
+
+### Finding two: the vocabulary penalty swamped the weights
+
+The 2024 pieces carried 6 to 12 banned terms each. At minus 5 apiece with no
+ceiling, that is minus 30 to minus 60 before a single weighted pattern was
+applied. The weighted patterns are tuned relative to each other, 10 for
+scaffolding exposure down to 5 for copula avoidance, and a raw word count that
+large overrides all of them. The structural signal was there. It could not be
+seen underneath the vocabulary arithmetic.
+
+Three changes came out of it:
+
+- The vocabulary deduction is capped at minus 25 in total, and it counts
+  distinct terms rather than repetitions.
+- Title case in headings and inline-header bullets were deleted from the scoring
+  table. They fired on six and five of the nine pieces respectively. A pattern
+  that fires on two thirds of a professional sample carries almost no
+  information, and both are house formatting preferences rather than signals
+  that a draft was assembled by a machine. They now live under `Formatting
+  Preferences` in `brand-kit/voice.md`, where they carry no score.
+- The score is reported clamped and raw, so a piece at a raw minus 31 is
+  distinguishable from one at a raw minus 5.
+
+### What the study does not show
+
+Nine pieces is enough to see a 108-point spread and nowhere near enough for a
+confidence interval. There was exactly one external human control, so the
+consultancy result at 36 is an anecdote rather than a benchmark for professional
+B2B writing. And the study has not been re-run since these fixes landed.
+Re-running it with the capped vocabulary penalty is the obvious next test,
+because it would show whether the structural patterns discriminate on their own
+or were only ever riding on the word count.
 
 ---
 
@@ -108,7 +199,7 @@ Your additions are worth more than the defaults, because only you know which
 phrases your own team overuses.
 
 **Keep, unless you have a real reason: the structural tells.** Most of patterns
-16 through 25, and most of `AI Tells to Avoid`, are close to universal. The contrast
+14 through 23, and most of `AI Tells to Avoid`, are close to universal. The contrast
 formula is hollow in every market. A concluding paragraph that restates the
 article wastes the last position on the page whoever you sell to. Assistant
 chatter surviving into a published asset is never acceptable. These are not
@@ -209,20 +300,31 @@ credibility.
 ### Validate it
 
 Take a piece you wrote yourself, that has never been through the panel, and
-score it. This is the honest test and it is the only one that matters.
+score it. This is the honest test and it is the only one that matters. Score
+four or five, not one, and sort them by date before you read the numbers,
+because the date is what makes the result interpretable.
 
-It should score well. If your own best writing fails your own rubric, the rubric
-is wrong, not the writing. Find the entries that fired and ask, one at a time,
-whether that pattern actually damages you or whether you copied it in from
-someone else's list. Delete or reweight the ones that do not survive the
-question.
+**If your current writing fails, investigate.** Something is wrong, and it is
+one of two things. Either the rubric is miscalibrated, carrying entries you
+copied in from someone else's list that do not describe damage in your market,
+or your own writing has drifted away from the standard you set. Find the entries
+that fired and ask, one at a time, which of the two it is. Delete or reweight
+the ones that do not survive the question, and fix the drift where the rubric
+turns out to be right.
 
-If it scores well, run three more pieces before you trust it. A single pass can
-be luck.
+**If your older writing fails, that is the instrument working.** An earlier
+draft of this document said that if your own best writing fails your own rubric,
+the rubric is wrong. The calibration study above falsifies it. Four articles by
+the author the rubric was derived from, written in 2024 before it existed,
+scored between 8 and minus 31. The rubric is not wrong. His writing changed, and
+the rubric is a record of the change. A style that your own past work fails is
+evidence the style is real rather than decorative. A style that everything you
+have ever written passes is a description of your habits, which is a different
+thing and a less useful one.
 
-The failure mode to guard against is the opposite one: tuning until the rubric
-flatters you. Every deletion should be justified by a reason you could say out
-loud to an editor. "This penalty fired on my best paragraph and my best
+The failure mode to guard against is still the opposite one: tuning until the
+rubric flatters you. Every deletion should be justified by a reason you could
+say out loud to an editor. "This penalty fired on my best paragraph and my best
 paragraph is fine" is a reason. "This penalty keeps firing" is not, and a rubric
 that scores all of your drafts at 95 has stopped being a tool and become a
 mirror.

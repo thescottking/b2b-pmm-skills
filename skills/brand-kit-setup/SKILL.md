@@ -735,7 +735,8 @@ nobody authorized.
 - `brand.md`: `Company`, `Hallway Pitch`, `Personification`, `Palette`,
   `Typography`, `Document Footer`, `Calls to Action`
 - `voice.md`: `Tone`, `Grammar Constraints`, `Pacing`, `Clarity`,
-  `Banned Words and Phrases`, `AI Tells to Avoid`, `Superseded Names`
+  `Formatting Preferences`, `Banned Words and Phrases`, `AI Tells to Avoid`,
+  `Superseded Names`
 - `positioning.md`: `The Frame`, `The Manifesto`, `Naming and Usage Rules`,
   `The Pillars`, `Named Traps`, `Categories We Are Not`,
   `External Validation Quotes`, `Internal Quotes`, `Headline Stats`,

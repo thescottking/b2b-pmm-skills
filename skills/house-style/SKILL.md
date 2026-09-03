@@ -423,7 +423,7 @@ draft 0-100. Target is 90 or above aggregate. Maximum three rounds.
 | 1 | **Voice Match** | 1.0x | Does this read like the house wrote it? Direct, action-led, short sentences, no hedging, no em-dashes, no appositives. Checks against every section of `brand-kit/voice.md`. |
 | 2 | **Positioning Enforcer** | 1.0x | Checks the draft against `brand-kit/positioning.md`. Does it sit inside `The Frame`? Does every claim trace to a section of that file? Are the qualities in `The Pillars` conflated with each other, or worse, exposed by name in the copy? Are taglines used verbatim? Is any stat used that is not in `Headline Stats` with a source? |
 | 3 | **Target Buyer** | 1.0x | Reads as the tier-one buyer defined in `brand-kit/icp.md`: the ICP column of `The Fit Matrix`, at the seniority and company size it names. Would that person find this credible, specific, and worth their time, or does it read like vendor marketing aimed at no one? |
-| 4 | **AI Humanizer** | **1.5x** | Scores how machine-generated the draft sounds. Mandatory. Uses the rubric in `The Humanizer Rubric`. Below 70 forces a revision regardless of aggregate. |
+| 4 | **AI Humanizer** | **1.5x** | Scores conformance to the house style, which is what most machine output fails. Mandatory. Uses the rubric in `The Humanizer Rubric`. Below 70 forces a revision regardless of aggregate. |
 | 5 | **Pattern Checker** | 1.0x | Is at least one pattern from `Messaging Patterns` present, a named trap, a reframe, a correction, a naming? Or does the piece fall back on generic explanation? |
 | 6 | **Specificity Auditor** | 1.0x | Are adjectives replaced with numbers, role titles, and named systems? Are the numbers sourced? Anything left as "fast," "many," "expensive," or "modern" costs points. |
 
@@ -487,22 +487,35 @@ each one:
 
 ## 6. The Humanizer Rubric
 
-Scott King wrote the 25 patterns below by hand while editing AI-drafted B2B
+Scott King wrote the 23 patterns below by hand while editing AI-drafted B2B
 marketing copy against his own published articles, naming each failure as it
 recurred. The weights measure damage to credibility with a technical reader
 rather than how often a pattern appears, which is why scaffolding exposure costs
-10 and title case costs 3. `docs/voice-calibration.md` carries the reasoning and
-the method for recalibrating these weights against your own audience.
+10 and copula avoidance costs 5. `docs/voice-calibration.md` carries the
+reasoning and the method for recalibrating these weights against your own
+audience.
 
-Scores how machine-generated the draft sounds. Start at 100 and deduct per
-pattern detected. Multiple occurrences of the same pattern stack up to 2x the
-base penalty, and no further.
+**This is a house-style conformance score, not an AI detector.** It is
+hand-built and deliberately opinionated, and it catches most machine output as a
+side effect, because machine output is unstyled by default. It does not identify
+machine authorship. A human draft written outside this house style scores low,
+and a machine draft edited into the house style scores high. Say "off style,"
+never "written by AI."
 
-### 6.1 Banned vocabulary, minus 5 each occurrence
+Start at 100 and deduct per pattern detected. Multiple occurrences of the same
+pattern stack up to 2x the base penalty, and no further.
 
-Deduct for every term in the `Banned Words and Phrases` section of
-`brand-kit/voice.md`, plus every term below. The two lists overlap on purpose;
-count each occurrence once.
+### 6.1 Banned vocabulary, minus 5 per distinct term, capped at minus 25
+
+Deduct 5 for every distinct offending term, drawn from the `Banned Words and
+Phrases` section of `brand-kit/voice.md` plus every term below. Count a term
+once no matter how many times it repeats: three uses of "leverage" cost 5, not
+15. The two lists overlap on purpose, so a term sitting on both lists still
+counts once.
+
+**Cap the total vocabulary deduction at minus 25**, however many distinct terms
+appear. The cap exists because the weighted patterns in `Patterns to flag` are
+tuned relative to each other, and an uncapped word count overrides them.
 
 delve, tapestry, landscape (abstract use), leverage, multifaceted, nuanced,
 pivotal, realm, robust, seamless, testament, transformative, underscore (verb),
@@ -528,27 +541,35 @@ breathtaking, nestled, stunning, dive into, game-changer, unlock
 | 9 | Elegant variation | -5 | Synonym cycling for the same noun: "the CEO... the executive... the business leader..." |
 | 10 | False ranges | -5 | "From X to Y" where X and Y are not on the same scale: "from content to compliance, from ROI to ethics" |
 | 11 | Em-dash overuse | -5 | More than one em-dash per 200 words. Em-dashes are banned outright in `brand-kit/voice.md`; penalize on sight here |
-| 12 | Title Case in headings | -3 | Capitalizing All Main Words In Every Heading |
-| 13 | Inline-header bullets | -5 | Every bullet starting with a **Bold Header:** followed by a description |
-| 14 | Excessive hedging | -8 | "could potentially," "might possibly," "may perhaps," "it could be argued," "can help" |
-| 15 | Filler phrases | -5 each | "in order to" (use "to"), "due to the fact that" (use "because"), "at this point in time" (use "now"), "it is important to note that" (just state it) |
-| 16 | Generic positive conclusions | -10 | "The future looks bright," "exciting times ahead," "stay tuned," "the possibilities are endless" |
-| 17 | Sycophantic openers | -8 | "Great question!" "You're absolutely right!" "That's an excellent point!" |
-| 18 | Knowledge-cutoff disclaimers | -10 | "As of [date]," "while specific details are limited," "based on available information" |
-| 19 | Collaborative artifacts | -10 | "I hope this helps," "Of course!" "Certainly!" "Let me know if you'd like...", assistant chatter that survived into the asset |
-| 20 | "In today's..." openers | -10 | "In today's fast-paced world," "in the current landscape," "in an era of..." |
-| 21 | The contrast formula | -10 | "Most companies do X. Winners do Y." and "It's not about X, it's about Y." Structurally hollow. Never write one, never prescribe one |
-| 22 | Dive/unpack/imagine openers | -8 | "Let's dive in," "let's unpack," "picture this," "imagine if" |
-| 23 | Concluding summaries | -8 | A final paragraph that restates what was just said. End on the CTA, a question, or the sharpest line, never on a recap |
-| 24 | Question-as-opening | -5 | Repeating the user's question back as the first line, or a rhetorical "Ever wonder why...?" hook |
-| 25 | Scaffolding exposure | -10 | Internal structure surfacing in customer-facing copy: naming your own qualities as a set, "our pillars," "our framework," "our messaging framework," or using them as section headers. Automatic revision trigger |
+| 12 | Excessive hedging | -8 | "could potentially," "might possibly," "may perhaps," "it could be argued," "can help" |
+| 13 | Filler phrases | -5 each | "in order to" (use "to"), "due to the fact that" (use "because"), "at this point in time" (use "now"), "it is important to note that" (just state it) |
+| 14 | Generic positive conclusions | -10 | "The future looks bright," "exciting times ahead," "stay tuned," "the possibilities are endless" |
+| 15 | Sycophantic openers | -8 | "Great question!" "You're absolutely right!" "That's an excellent point!" |
+| 16 | Knowledge-cutoff disclaimers | -10 | "As of [date]," "while specific details are limited," "based on available information" |
+| 17 | Collaborative artifacts | -10 | "I hope this helps," "Of course!" "Certainly!" "Let me know if you'd like...", assistant chatter that survived into the asset |
+| 18 | "In today's..." openers | -10 | "In today's fast-paced world," "in the current landscape," "in an era of..." |
+| 19 | The contrast formula | -10 | "Most companies do X. Winners do Y." and "It's not about X, it's about Y." Structurally hollow. Never write one, never prescribe one |
+| 20 | Dive/unpack/imagine openers | -8 | "Let's dive in," "let's unpack," "picture this," "imagine if" |
+| 21 | Concluding summaries | -8 | A final paragraph that restates what was just said. End on the CTA, a question, or the sharpest line, never on a recap |
+| 22 | Question-as-opening | -5 | Repeating the user's question back as the first line, or a rhetorical "Ever wonder why...?" hook |
+| 23 | Scaffolding exposure | -10 | Internal structure surfacing in customer-facing copy: naming your own qualities as a set, "our pillars," "our framework," "our messaging framework," or using them as section headers. Automatic revision trigger |
 
 ### 6.3 Scoring bands
 
-- **90-100:** Sounds human. Reads like the house. Ship it.
+- **90-100:** Reads like the house wrote it. Ship it.
 - **70-89:** Minor tells. Fixable in one revision pass.
-- **50-69:** Obvious machine patterns. Significant rewrite needed.
-- **0-49:** Reads as generated. Rewrite from the source idea, not from the draft.
+- **50-69:** Obvious pattern damage. Significant rewrite needed.
+- **0-49:** Off style entirely. Rewrite from the source idea, not from the draft.
+
+**Compute the arithmetic in full, then clamp.** Total every deduction first, the
+capped vocabulary penalty plus every weighted pattern, subtract it from 100, and
+only then clamp the result into the 0 to 100 range. Never clamp an intermediate
+step. A draft carrying 92 points of deductions scores 8, not 0.
+
+**Report both numbers.** Give the clamped score and the raw total beside it:
+"Humanizer: 0/100, raw minus 31, total deduction minus 131." A draft at a raw minus 31
+and a draft at a raw minus 5 both clamp to 0, and the clamped number on its own
+hides the 26 points between them.
 
 ---
 
@@ -577,7 +598,7 @@ AI Humanizer (1.5x), Pattern Checker, Specificity Auditor
 | Voice Match | 87 | Two em-dashes in paragraph 3, hedging in the opener |
 | Positioning Enforcer | 92 | Canonical definition present and verbatim |
 | Target Buyer | 78 | No role named. Reads as marketing, not analysis |
-| AI Humanizer (1.5x) | 81 | "leverage" once, "robust" once, one significance-inflation tell |
+| AI Humanizer (1.5x) | 81, raw minus 19 | "leverage" once, "robust" once, one significance-inflation tell |
 | Pattern Checker | 65 | No named trap. Generic explanation throughout |
 | Specificity Auditor | 88 | Good numbers mid-piece, vague closer |
 
@@ -597,7 +618,8 @@ After producing the rewrite, append one line:
 ```
 ---
 **Quality check:** [SCORE]/100, Voice [X], Positioning [X], Buyer [X],
-Humanizer [X], Pattern [X], Specificity [X]. [Pass | Want the full panel?]
+Humanizer [X] (raw [Y]), Pattern [X], Specificity [X]. [Pass | Want the full
+panel?]
 ```
 
 Below 90, offer the panel. At 90 or above, ship the rewrite as-is.

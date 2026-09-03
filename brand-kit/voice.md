@@ -14,6 +14,11 @@ deliberate, so treat this file as a starting point rather than a standard. To
 replace these rules with ones extracted from your own writing, read
 `docs/voice-calibration.md`.
 
+The scoring version of these rules, the humanizer rubric in the `house-style`
+skill, is a house-style conformance score rather than an AI detector. It catches
+most machine output because machine output is unstyled by default, not because
+it can tell who wrote a draft.
+
 ---
 
 ## Tone
@@ -63,6 +68,25 @@ competitors are worth more than ten generic ones.*
 
 ---
 
+## Formatting Preferences
+
+House defaults for how a page looks on the screen. These are preferences, not
+tells, and they carry no score. A draft that breaks them is off house format,
+which is a find-and-replace, not evidence that anything was machine-assembled.
+Set either one the other way if your house has always done it the other way.
+
+- **Sentence case in headings.** "What the weights encode," not "What The
+  Weights Encode." Title case reads as a different style sheet, not as a
+  different author.
+- **No run-in bold headers on bullets.** Prefer a bullet that starts with the
+  claim over one that starts with a **Bold Header:** and then explains it. Use
+  the run-in form where a list is genuinely a set of defined terms.
+
+*Add your own. Capitalization of product names, list punctuation, and link text
+all belong here.*
+
+---
+
 ## Banned Words and Phrases
 
 Each of these costs points in the quality panel. They are banned because they
@@ -90,7 +114,8 @@ phrasing you have retired.*
 ## AI Tells to Avoid
 
 Structural patterns, not individual words. These are the ones that make a
-competent draft read as generated.
+competent draft read as generated. They cost points as house-style failures,
+not as proof of who wrote the draft.
 
 1. **The rule-of-three list** where the third item adds nothing. "Faster,
    cheaper, and more reliable", check whether item three is load-bearing.

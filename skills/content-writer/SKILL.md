@@ -67,7 +67,7 @@ Absolute. Violations are revision triggers, not style notes.
 - **Never name the framework.** The qualities in `The Pillars` are internal
   scaffolding. "Our pillars," "our framework," and the qualities recited as a
   named set do not appear in customer-facing copy. The reader absorbs the
-  qualities through the writing. This is also penalty 25 in the `house-style`
+  qualities through the writing. This is also penalty 23 in the `house-style`
   humanizer rubric, so exposing it costs points twice.
 - **Follow `Naming and Usage Rules`** in `brand-kit/positioning.md` for
   capitalization, always-say and never-say lists, and product-name formatting.
