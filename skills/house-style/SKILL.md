@@ -487,6 +487,13 @@ each one:
 
 ## 6. The Humanizer Rubric
 
+Scott King wrote the 25 patterns below by hand while editing AI-drafted B2B
+marketing copy against his own published articles, naming each failure as it
+recurred. The weights measure damage to credibility with a technical reader
+rather than how often a pattern appears, which is why scaffolding exposure costs
+10 and title case costs 3. `docs/voice-calibration.md` carries the reasoning and
+the method for recalibrating these weights against your own audience.
+
 Scores how machine-generated the draft sounds. Start at 100 and deduct per
 pattern detected. Multiple occurrences of the same pattern stack up to 2x the
 base penalty, and no further.

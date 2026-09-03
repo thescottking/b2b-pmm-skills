@@ -283,21 +283,36 @@ for directly.
 1. Read them the shipped defaults in `Tone`, `Grammar Constraints`, `Pacing`,
    and `Clarity` in summary. Ask what they disagree with. Most companies change
    nothing, and that is a valid answer.
-2. Ask for two or three tone lines that are true of their company and not of
-   their competitors. Generic tone lines are worse than none.
-3. Ask for the phrases their own team overuses, the category noise everybody in
+2. **Offer the better path.** Ask whether they have published writing: articles,
+   newsletters, conference talks, anything with their name on it. If they do,
+   offer to read three to five pieces they name or paste and derive their actual
+   rules from them instead of accepting the shipped defaults wholesale. Measure
+   sentence and paragraph length, how pieces open and close, punctuation habits,
+   the words they reach for and the ones that never appear, and how they handle
+   numbers and transitions. Then write those findings into `Tone`,
+   `Grammar Constraints`, `Pacing`, `Clarity`, and `Banned Words and Phrases`.
+   Skip ghostwritten pieces and anything an AI has already touched; both poison
+   the sample. `docs/voice-calibration.md` has the full method, and it is worth
+   pointing them at if they would rather do this properly on their own time. If
+   they have nothing published, say so plainly and move on. The defaults are a
+   reasonable starting point, not a standard.
+3. Ask for two or three tone lines that are true of their company and not of
+   their competitors. Generic tone lines are worse than none. If step 2 ran, the
+   corpus usually answers this on its own.
+4. Ask for the phrases their own team overuses, the category noise everybody in
    their market writes, and any wording they have retired. This is where
    `voice.md` earns its keep. The shipped ban list catches machine writing; only
    they can catch their own tics.
-4. Ask for product names they have renamed, with the old name, the new name, and
+5. Ask for product names they have renamed, with the old name, the new name, and
    the month. Fill `Superseded Names`. A rename recorded here propagates through
    every skill.
-5. Add any capitalization rules: which product names take title case, which
+6. Add any capitalization rules: which product names take title case, which
    terms stay lowercase in running text, and how they write numbers.
 
 Keep the shipped defaults intact and put company-specific entries under them,
 the way `examples/ampfield/voice.md` does. Do not rewrite the defaults to match
-the additions.
+the additions. The one exception is a rule the user's own writing contradicts
+outright: replace it, and say which default you replaced and why.
 
 **Write `voice.md` now.** The kit is complete. Go to the validation pass.
 

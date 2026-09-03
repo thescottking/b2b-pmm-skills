@@ -8,6 +8,12 @@ blanks. They are opinionated B2B house rules that work for most companies. Edit
 what you disagree with, but edit deliberately, because every rule here exists
 to prevent a specific failure.
 
+Where they came from: Scott King derived them from his own published B2B writing
+and from about a year of editing AI-drafted marketing copy. The opinions are
+deliberate, so treat this file as a starting point rather than a standard. To
+replace these rules with ones extracted from your own writing, read
+`docs/voice-calibration.md`.
+
 ---
 
 ## Tone
@@ -74,7 +80,7 @@ state-of-the-art, unparalleled, myriad, bespoke, holistic, transformative
 
 **Phrases:** "in today's fast-paced world," "it's not just X, it's Y," "the
 future of," "at the end of the day," "when it comes to," "that's where X comes
-in," "closes that gap," "look no further," "let's dive in," "the bottom line is"
+in," "closes that gap," "look no further," "let's dive in," "the bottom line is," "it's worth noting that," "align with," "in essence," "in summary," "in conclusion," "to wrap up"
 
 *Add your own. The most useful entries are phrases your team overuses, and any
 phrasing you have retired.*
@@ -103,6 +109,11 @@ competent draft read as generated.
 8. **Rhetorical questions as transitions.** "So what does this mean for you?"
 9. **The em-dash aside** used to add a thought the sentence did not need.
 10. **Uniform enthusiasm.** Every paragraph equally excited flattens emphasis.
+
+11. **Bullet lists where prose belongs.** Fragmenting a connected argument into
+    bullets removes the connective tissue that made it an argument.
+12. **Parenthetical asides used to fake voice.** A thought worth having is worth
+    a sentence. Asides in brackets read as a writer performing spontaneity.
 
 ---
 
