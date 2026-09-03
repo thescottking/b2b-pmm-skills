@@ -305,11 +305,11 @@ the additions.
 
 ## 4. The hard sections, and how to help
 
-`The Frame`, `The Pillars`, and `Named Traps` are where onboarding sessions die.
-Nobody can answer them cold, and a user who is asked to will either produce
-marketing copy or stall.
+`The Manifesto`, `The Frame`, `The Pillars`, and `Named Traps` are where
+onboarding sessions die. Nobody can answer them cold, and a user who is asked to
+will either produce marketing copy or stall.
 
-The move is the same in all three: **draft two or three options from what they
+The move is the same in all four: **draft two or three options from what they
 have already told you, show the options side by side, and let them pick and
 edit.** They have already given you the hallway pitch, the exclusions, the
 capabilities, and the buyer. That is enough raw material. Choosing between three
@@ -319,12 +319,66 @@ produces better answers in a fifth of the time.
 Say so when you do it. "Here are three, built from what you already told me.
 Pick one and tell me what is wrong with it" is an honest and effective prompt.
 
-### 4.1 The Frame
+**Work them in this order: manifesto, frame, pillars, traps.** They are one
+argument seen four ways. The manifesto is the argument, the frame is the noun
+the argument needs, the pillars are the qualities it implies, and the traps are
+the failures it predicts. Starting with the pillars is the common instinct and
+it is why these sessions stall: a pillar is a quality of something, and until
+the argument exists there is nothing for it to be a quality of, so the user
+produces adjectives.
+
+**If the user would rather work this out properly than answer questions live**,
+point them at `docs/positioning-framework.md` and offer to pick the interview up
+when they come back. It walks the same four sections at length, with the
+Ampfield example carried through and one trap derived from scratch. Some people do better
+composing on their own time, and a user who arrives with a manifesto already
+drafted turns the rest of this section into an edit rather than an invention.
+
+### 4.1 The Manifesto
+
+The argument underneath everything else: what they believe about how this work
+should be done, and why the way it is done today is wrong. Do it first. Every
+section after this one gets easier once it exists, and a user who cannot answer
+`The Frame` can almost always answer "what is everyone in your market doing that
+you think is wrong."
+
+`The Manifesto` asks five things. Ask them in this order, conversationally, and
+write their answers down in their words before you shape anything:
+
+1. **The status quo we reject.** What most companies in their category do today.
+   Push for the behavior, not the vendors.
+2. **Why it persists.** The beat that separates a manifesto from a complaint,
+   and the one they will skip. If their answer is that the market is behind or
+   buyers do not understand yet, ask again for the incentive, the constraint, or
+   the historical accident. Then check the answer is fair enough that someone
+   currently doing it would agree with the description. An argument that treats
+   the status quo as stupid persuades nobody living inside it.
+3. **What we believe instead.** One proposition.
+4. **What has to change.** A specific behavior someone could act on Monday, not
+   a vague outcome. "Better visibility" is not a change.
+5. **What we would still argue if we sold nothing.** Apply the test out loud:
+   delete the product from every sentence and read back what survives. If
+   nothing survives, say so plainly and go back to the second question, because
+   what you have is a brochure rather than an argument.
+
+Then draft the prose block yourself, three to six sentences, in the voice they
+used when they answered rather than the voice they use on their website. Read it
+back and ask what is wrong with it. Expect to redraft after the traps exist:
+that is normal, and it is worth telling them so up front.
+
+Two rules to state while you write it. It is never published under a heading
+that says Manifesto: it is the argument they make repeatedly in different
+clothes. And the content skills read it whenever a piece needs a point of view
+rather than a feature list, which is most of the time, so a thin manifesto shows
+up later as thin thought leadership.
+
+### 4.2 The Frame
 
 The canonical noun is the single word or short phrase they want to own, plus one
-sentence defining it that never varies.
+sentence defining it that never varies. Read the manifesto back first: the frame
+is usually already in it, unnamed or named three different ways.
 
-Ask two warm-up questions first:
+Ask two warm-up questions:
 
 1. What does the office or the team do today, by hand, that would be
    unnecessary if you worked.
@@ -350,7 +404,7 @@ Write `What it replaces` as the thing buyers do today, not as a competitor.
 Write `Why now` as events, not as a trend. "The market is shifting" is not a
 why now. Three specific changes with dates attached is.
 
-### 4.2 The Pillars
+### 4.3 The Pillars
 
 Two to four qualities that everything they say ladders up to. Internal names
 only. They never appear in customer-facing copy, and `house-style` penalizes any
@@ -378,7 +432,7 @@ For each pillar the user accepts, fill four fields and check each one:
 Three pillars is the common answer. Two is fine. Four is the limit, and a fourth
 that overlaps the third should be merged rather than kept.
 
-### 4.3 Named Traps
+### 4.4 Named Traps
 
 The most portable technique in the kit, and the one people most need taught.
 
@@ -429,7 +483,7 @@ Test each candidate against four checks:
 Aim for four to eight. More than a dozen and none of them stick, and the content
 skills start stacking them, which reads like a glossary of things you invented.
 
-### 4.4 The rest of `positioning.md`
+### 4.5 The rest of `positioning.md`
 
 The remaining sections are recall, not invention, and go quickly once the frame
 exists.
@@ -496,10 +550,10 @@ Ampfield version as the prompt rather than as a template to imitate:
 3. `icp.md`. Replace `The Fit Matrix` with their taxonomy values, then the
    committee, then the search terms, then the whole `Competitors` table. Every
    competitor and URL in the example is invented and uses a reserved domain.
-4. `positioning.md`. `The Frame` first. Then use section 4 of this skill for
-   the pillars and traps, with one difference: they have six worked traps in
-   front of them, so ask which of the six has an equivalent in their business.
-   That question works far better than a blank table.
+4. `positioning.md`. `The Manifesto` first, then `The Frame`. Then use section 4
+   of this skill for the pillars and traps, with one difference: they have six
+   worked traps in front of them, so ask which of the six has an equivalent in
+   their business. That question works far better than a blank table.
 5. `voice.md`. Keep the shipped defaults, replace the Ampfield additions, empty
    the `Superseded Names` table and refill it with their renames.
 
@@ -667,11 +721,11 @@ nobody authorized.
   `Typography`, `Document Footer`, `Calls to Action`
 - `voice.md`: `Tone`, `Grammar Constraints`, `Pacing`, `Clarity`,
   `Banned Words and Phrases`, `AI Tells to Avoid`, `Superseded Names`
-- `positioning.md`: `The Frame`, `Naming and Usage Rules`, `The Pillars`,
-  `Named Traps`, `Categories We Are Not`, `External Validation Quotes`,
-  `Internal Quotes`, `Headline Stats`, `Where to Start`,
-  `Canonical Vocabulary`, `Anti-Patterns`, `Maintenance`, and `Changelog`
-  beneath it
+- `positioning.md`: `The Frame`, `The Manifesto`, `Naming and Usage Rules`,
+  `The Pillars`, `Named Traps`, `Categories We Are Not`,
+  `External Validation Quotes`, `Internal Quotes`, `Headline Stats`,
+  `Where to Start`, `Canonical Vocabulary`, `Anti-Patterns`, `Maintenance`,
+  and `Changelog` beneath it
 - `icp.md`: `The Fit Matrix`, `Buying Committee`, `Search Terms`,
   `Competitors`, `Channel Economics`
 - `capabilities.md`: `What We Do`, `What We Do Not Do`, `Link Map`,

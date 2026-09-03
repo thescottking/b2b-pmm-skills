@@ -29,6 +29,13 @@ consistent, and changing your frame is a single edit that propagates everywhere.
 When a skill needs a fact it does not have, it stops and says so rather than
 inventing one. That is the design.
 
+One consequence worth stating plainly: this repo does not hand you a
+differentiation framework. It cannot. A set of pillars derived from one
+company's tradeoffs is a set of adjectives applied to any other, and borrowed
+frameworks produce copy that reads fine and argues for nothing. What the repo
+gives you is the method for building your own, plus the skills that run on it
+once it exists. `docs/positioning-framework.md` is that method.
+
 ---
 
 ## Quick start
@@ -145,6 +152,24 @@ a worked example. Ampfield is a fictional field operations platform for solar
 and HVAC contractors, filled in to the depth a real kit needs. The templates
 tell you what a section is. The example shows you how specific it has to be
 before a skill can do anything useful with it.
+
+---
+
+## Docs
+
+Four references in `docs/`. Skills read them; so can you.
+
+- **`positioning-framework.md`** How to build the competitive argument the rest
+  of the toolkit runs on: the manifesto, the frame, the pillars, and the named
+  traps. Start here if you do not yet have a positioning framework, or if the
+  one you have could be adopted by a competitor unchanged.
+- **`messaging-patterns.md`** Eight structural patterns for deploying that
+  framework in copy, each with when it works, when it backfires, and a worked
+  example.
+- **`aeo-style-guide.md`** How to structure content so answer engines can
+  extract, quote, and cite it. Structure only; voice lives in `brand-kit/`.
+- **`writing-templates.md`** Nine skeletons for the assets B2B teams produce
+  most, carrying structure and length targets and nothing else.
 
 ---
 

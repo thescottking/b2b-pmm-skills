@@ -34,6 +34,45 @@ story start circulating.
 
 ---
 
+## The Manifesto
+
+**The status quo we reject:** the office reconstructs the working day after it
+is over. Technicians finish jobs, then paperwork, memory, and a dispatcher's
+phone calls assemble an approximate account of what happened, hours late and
+already wrong in ways nobody can see.
+
+**Why it persists:** capture at the point of work has always cost the technician
+time, and every system that asked for that time got routed around. Field
+software earned its reputation honestly. Technicians did not refuse to use it
+because they are stubborn. They refused because it made a hard job harder, and
+because the office asking for the data was never the party paying the cost of
+entering it.
+
+**What we believe instead:** the record should be created where the work
+happens, by the person doing it, in less time than reconstructing it later would
+take. Anything else is a tax the field pays so the office can run a report.
+
+**What has to change:** stop evaluating field software by what the office can
+see and start evaluating it by what a technician will actually do on a roof in
+August, one-handed, on a cracked phone, with a customer standing there. That is
+the only bar that matters. Everything downstream, scheduling, warranty, parts,
+customer promises, is built on whether that one interaction is worth the
+technician's time.
+
+**What we would still argue if we sold nothing:** that the gap between when work
+happens and when the business learns about it is the root cost in field service,
+and that closing it is a capture problem, not a reporting problem. Most of this
+industry is still buying reporting.
+
+> Field service runs on a record that gets written after the fact, by people who
+> were not there, from what they can remember and what fits on a form. Every
+> downstream problem, the second truck roll, the denied warranty claim, the
+> promise nobody can source, traces back to that one gap. The work is not the
+> problem. The delay between the work and the knowing is the problem. Close it
+> at the point of work or do not bother closing it at all.
+
+---
+
 ## Naming and Usage Rules
 
 Absolute rules. Skills treat these as non-negotiable.

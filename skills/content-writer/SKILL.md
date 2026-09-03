@@ -181,8 +181,10 @@ what was deployed.
 
 ### 4.5 Executive brief / whitepaper
 
-**Pull from:** `The Frame`, `Named Traps`, `Headline Stats`, and the relevant
-blocks of `The Pillars`.
+**Pull from:** `The Manifesto`, `The Frame`, `Named Traps`, `Headline Stats`,
+and the relevant blocks of `The Pillars`. The manifesto is what the executive
+summary and the recommendation argue from. A brief that only inventories
+capabilities gives the reader nothing to decide.
 
 **Structure:**
 
@@ -198,8 +200,11 @@ blocks of `The Pillars`.
 
 ### 4.6 Pillar article / long-form thought leadership
 
-**Pull from:** `brand-kit/positioning.md` broadly. The pillar piece is
-definitional. It uses `The Frame` as its spine.
+**Pull from:** `brand-kit/positioning.md` broadly, and `The Manifesto` first.
+The pillar piece is definitional: `The Manifesto` supplies the argument and
+`The Frame` is its spine. Thought leadership that does not carry the manifesto's
+point of view is a summary of the category, which every competitor has already
+published.
 
 **Structure:**
 

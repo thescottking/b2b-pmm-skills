@@ -21,6 +21,41 @@ The single noun you want to own, and the sentence that defines it.
 
 ---
 
+## The Manifesto
+
+The argument underneath your positioning. Not what your product does. What you
+believe about how this work should be done, and why the way it is done today is
+wrong.
+
+Every durable B2B position has one, whether or not anyone wrote it down. It is
+what your thought leadership argues, what your named traps prove, and the thing
+your pillars are qualities *of*. Skills read this when a piece needs a point of
+view rather than a feature list, which is most of the time.
+
+Answer five things:
+
+- **The status quo we reject:** what most companies in this category do today.
+- **Why it persists:** not stupidity. Name the incentive, constraint, or
+  historical accident that keeps it alive. A manifesto that treats the status
+  quo as dumb will not persuade anyone currently living in it.
+- **What we believe instead:**
+- **What has to change:** the specific behavior, not the vague outcome.
+- **What we would still argue if we sold nothing:**
+
+That last one is the test. If every sentence of your manifesto needs your
+product in it, you do not have a manifesto, you have a brochure. Cut until what
+remains is an argument a smart person could disagree with.
+
+Then write it as prose, three to six sentences, in the voice you would use on
+stage:
+
+> 
+
+**Rule:** never label it. The manifesto is the argument you make repeatedly in
+different clothes, not a page titled "Our Manifesto."
+
+---
+
 ## Naming and Usage Rules
 
 Absolute rules. Skills treat these as non-negotiable.
@@ -56,6 +91,26 @@ own internal use.
 by name in customer-facing copy. The reader should absorb them through the
 writing without seeing the scaffolding. A skill that writes "our three pillars"
 into an article has failed.
+
+
+**How to derive them.** Do not start from your feature list. Start from
+`What We Do Not Do` in `capabilities.md` and from the failures in `Named Traps`.
+A pillar is a quality your product has *because* of a deliberate choice that
+cost you something.
+
+Test every candidate three ways:
+
+1. **Inversion.** Would a competent competitor claim the opposite? If nobody in
+   your category would ever say "we are careless" or "we are incomplete," the
+   quality is table stakes, not a pillar. Cut it.
+2. **Proof.** Can you demonstrate it rather than assert it? Name the demo, the
+   metric, or the customer behavior that shows it. No proof, no pillar.
+3. **Sacrifice.** What did you give up to have it? A quality that costs nothing
+   is not a differentiator, it is a description.
+
+Most companies fail the first test on every candidate they generate in the first
+pass. That is normal. The second pass, derived from exclusions rather than
+features, is usually the real one.
 
 ### [Pillar one]
 
