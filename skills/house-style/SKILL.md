@@ -502,8 +502,9 @@ machine authorship. A human draft written outside this house style scores low,
 and a machine draft edited into the house style scores high. Say "off style,"
 never "written by AI."
 
-Start at 100 and deduct per pattern detected. Multiple occurrences of the same
-pattern stack up to 2x the base penalty, and no further.
+Start at 100 and deduct per pattern detected. The full arithmetic, including
+how repeated patterns stack, is in `6.3 Scoring and reporting`. Read it before
+you score anything.
 
 ### 6.1 Banned vocabulary, minus 5 per distinct term, capped at minus 25
 
@@ -554,12 +555,18 @@ breathtaking, nestled, stunning, dive into, game-changer, unlock
 | 22 | Question-as-opening | -5 | Repeating the user's question back as the first line, or a rhetorical "Ever wonder why...?" hook |
 | 23 | Scaffolding exposure | -10 | Internal structure surfacing in customer-facing copy: naming your own qualities as a set, "our pillars," "our framework," "our messaging framework," or using them as section headers. Automatic revision trigger |
 
-### 6.3 Scoring bands
+### 6.3 Scoring and reporting
 
 - **90-100:** Reads like the house wrote it. Ship it.
 - **70-89:** Minor tells. Fixable in one revision pass.
 - **50-69:** Obvious pattern damage. Significant rewrite needed.
 - **0-49:** Off style entirely. Rewrite from the source idea, not from the draft.
+
+**Stacking.** A pattern that fires more than once deducts up to twice its base
+penalty, and no further. A pattern firing eight times costs the same as one
+firing twice. Apply stacking first, then the vocabulary cap, then clamp. This
+rule is easy to skip and it materially changes a score: in the calibration
+study, a scorer who missed it ranked the same nine pieces in a different order.
 
 **Compute the arithmetic in full, then clamp.** Total every deduction first, the
 capped vocabulary penalty plus every weighted pattern, subtract it from 100, and
