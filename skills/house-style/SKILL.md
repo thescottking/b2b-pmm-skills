@@ -553,7 +553,26 @@ breathtaking, nestled, stunning, dive into, game-changer, unlock
 | 20 | Dive/unpack/imagine openers | -8 | "Let's dive in," "let's unpack," "picture this," "imagine if" |
 | 21 | Concluding summaries | -8 | A final paragraph that restates what was just said. End on the CTA, a question, or the sharpest line, never on a recap |
 | 22 | Question-as-opening | -5 | Repeating the user's question back as the first line, or a rhetorical "Ever wonder why...?" hook |
-| 23 | Scaffolding exposure | -10 | Internal structure surfacing in customer-facing copy: naming your own qualities as a set, "our pillars," "our framework," "our messaging framework," or using them as section headers. Automatic revision trigger |
+| 23 | Scaffolding exposure | -10 | **Your own** internal structure surfacing in customer-facing copy: your qualities named as a set, "our pillars," "our framework," or your framework used as section headers. See the scope note below before firing this. Automatic revision trigger |
+
+
+**Scope note on pattern 23.** This pattern fires only on the writer's own
+scaffolding: the qualities in `The Pillars`, the frame in `The Frame`, or any
+internal messaging structure from `brand-kit/positioning.md` appearing by name in
+copy meant for a reader. It does not fire on a framework the piece is *about*.
+
+- Fires: "Our three pillars are speed, trust, and scale." The reader is being
+  shown the scaffolding behind the writing.
+- Does not fire: "The four pillars of agentic governance are identity, audit,
+  approval, and spend control." That is the subject matter. A piece is allowed
+  to organize an argument.
+
+The test is ownership, not the word "pillar." If the structure belongs to the
+argument, it is content. If it belongs to how you decided what to say, it is
+scaffolding. At minus 10 with an automatic revision trigger attached, firing
+this one wrongly is expensive: in the calibration study a scorer who applied it
+to subject-matter frameworks scored one piece 74 points below a scorer who did
+not.
 
 ### 6.3 Scoring and reporting
 
@@ -573,10 +592,36 @@ capped vocabulary penalty plus every weighted pattern, subtract it from 100, and
 only then clamp the result into the 0 to 100 range. Never clamp an intermediate
 step. A draft carrying 92 points of deductions scores 8, not 0.
 
+**Report deduction density.** Alongside the score, give the total deduction per
+thousand words. Distinct patterns accumulate with length even though each one
+stacks no higher than twice its base, so a long piece trips more of them than a
+short one on the same prose habits. The density figure is diagnostic only and
+does not change the score. Never compare the raw scores of two pieces of very
+different length without it.
+
 **Report both numbers.** Give the clamped score and the raw total beside it:
 "Humanizer: 0/100, raw minus 31, total deduction minus 131." A draft at a raw minus 31
 and a draft at a raw minus 5 both clamp to 0, and the clamped number on its own
 hides the 26 points between them.
+
+**Use the band, not the number.** The band and the ranking are what this
+instrument produces reliably. The raw score is a diagnostic that travels with
+them, and it moves from reader to reader more than the band does.
+
+- The band and the relative ranking are the reliable outputs. The raw score is
+  diagnostic: it says how much damage the patterns did, not what the piece is
+  worth to the point.
+- Never report a score to a third party as a precise measurement. Report the
+  band, and report the specific patterns that fired, which is the actionable
+  part anyway. "Scored 72" claims a precision this rubric does not have.
+- Two scorers reading this rubric on the same draft can differ by twenty points
+  or more. That is a property of the instrument, not a failure of either reader.
+- A score within ten points of a band boundary decides nothing until a second
+  independent pass agrees with it. Band edges are exactly where a difference in
+  scorer severity flips the verdict.
+- Patterns 1 and 5 carry the loosest tells on the table and are where severity
+  diverges most. Fire them only when the tell is unmistakable, never when it is
+  merely arguable.
 
 ---
 

@@ -20,8 +20,10 @@ score, hand-built and deliberately opinionated, and it catches most machine
 output as a side effect, because machine output is unstyled by default. It does
 not identify machine authorship. The calibration study below is the evidence for
 that, and it is also why the vocabulary penalty is now capped. That study has
-been run twice, and the second run reversed the first on which half of the
-rubric does the discriminating.
+been run three times. The second run reversed the first on which half of the
+rubric does the discriminating, and the third settled what kind of instrument
+this is: one that sorts drafts and places them in bands reliably, and does not
+produce a reproducible number.
 
 The worked example throughout is Ampfield, the fictional field operations
 platform for solar and HVAC contractors documented in `examples/ampfield/`.
@@ -106,8 +108,9 @@ with a floor.
 
 ## The calibration study
 
-The weights above were argued from experience. They have now been tested twice,
-and the second run overturned the main conclusion of the first.
+The weights above were argued from experience. They have now been tested three
+times. The second run overturned the main conclusion of the first, and the third
+found the limit of what any of the numbers can be used for.
 
 ### Design
 
@@ -124,7 +127,9 @@ deduction and 25 rows in the pattern table. Run two used the revised rubric,
 with the vocabulary deduction capped at minus 25 and counted per distinct term,
 two formatting patterns retired, and the table renumbered to 23. It also used
 two scorers, working independently and blind, on the same nine pieces. Every
-number below is from run two unless it says otherwise.
+number below is from run two unless it says otherwise. Run three is described
+under `Run three: a third scorer`, because its design follows from run two's
+result rather than being fixed in advance.
 
 ### Results
 
@@ -241,21 +246,101 @@ scorers differed by 0 and by 8. That 8-point gap is the expensive one: 72 and 64
 sit on either side of a band boundary, so one scorer called the piece fixable in
 a single revision pass and the other called for a significant rewrite. The
 instrument is steady where the answer is obvious and least steady near the
-threshold where people actually consult it. Treat a score within a few points of
-a band edge as a band edge, not as a verdict.
+threshold where people actually consult it. Treat a score within ten points of a
+band edge as a band edge, not as a verdict.
 
 The two scorers also converged on a diagnosis without conferring. Asked for the
 most expensive habit in the author's current best writing, both named the
 two-beat negation: "This is not X. It's Y." They put it at four occurrences and
 at six. They disagreed on the count and not on the finding.
 
+One caution on the 6.0 figure. It is an average over a sample most of which was
+easy, and it understates what happens on the pieces where two readers genuinely
+see the draft differently. Run three went looking for those pieces on purpose.
+
+### Run three: a third scorer
+
+Run two answered the agreement question on the whole sample. It did not answer
+the harder version: when two readers disagree, is one of them making a mistake
+the rubric can fix, or is the rubric simply not that precise? Run three tested
+that by adding a third scorer, working independently and blind, under the
+revised rubric.
+
+**Design.** Run two closed by naming more pieces as the cheapest fix available,
+and that was done. The sample was expanded to twenty three pieces, all scored
+blind by two independent scorers, with the added pieces drawn from the pools
+already represented: panel written recent work, older work by the same author,
+and unstyled machine drafts. Eight of the twenty three carried a gap of more
+than fifteen points between the first two scorers. The third scorer took those
+eight and nothing else.
+
+That subset is adverse by construction. It is the eight hardest pieces in the
+sample, chosen after the fact for being hard, and every spread below has to be
+read against the other fifteen, which agreed to within roughly 6 to 8 points
+across two scorers. Quoting run three's spread as the instrument's error bar,
+without that second figure, would overstate it by a factor of five.
+
+**The pattern 23 fix worked.** Scaffolding exposure was the single largest
+source of variance in run two: one scorer fired it on subject matter frameworks,
+the other did not, and on one piece that alone was worth 74 points. The scope
+note now attached to pattern 23 closed it. The third scorer declined to fire
+scaffolding exposure on all eight pieces and gave explicit reasoning each time,
+distinguishing a framework the piece is about from the writer's own scaffolding
+surfacing in the copy. That was the intended effect of the note, and it is the
+one thing in this study where a rubric edit demonstrably removed disagreement.
+
+**A larger source took its place: scorer severity.** The third scorer fired
+pattern 1, significance inflation, and pattern 5, formulaic challenges and
+future, far more readily than either earlier scorer, and scored systematically
+harsher across the board. Raw scores for the same eight pieces, one column per
+scorer. Pieces are numbered for this table only and do not map to the letters
+above.
+
+| Piece | Scorer 1 | Scorer 2 | Scorer 3 | Median |
+|---|---|---|---|---|
+| 1 | minus 108 | minus 69 | minus 163 | minus 108 |
+| 2 | minus 18 | minus 33 | minus 53 | minus 33 |
+| 3 | minus 46 | 28 | minus 50 | minus 46 |
+| 4 | 45 | 29 | 29 | 29 |
+| 5 | minus 6 | minus 37 | minus 82 | minus 37 |
+| 6 | 2 | minus 19 | minus 54 | minus 19 |
+| 7 | minus 27 | minus 45 | minus 95 | minus 45 |
+| 8 | 54 | 38 | 54 | 54 |
+
+Mean pairwise disagreement across the three scorers on these eight pieces is
+roughly 36 points. Again: eight disputed pieces, not the sample. The instrument
+as a whole sits nearer the run two figure of 6 to 8 points, and this is what it
+does at its worst. The difference is not carelessness. It is that patterns 1 and
+5 have the loosest tells on the table, "underscores its importance" and "despite
+these challenges" being judgment calls in a way that a surviving "I hope this
+helps" is not, and a reader with a lower threshold for firing them accumulates
+deductions the others never take.
+
+**Rank and band held.** Two things did not move across three scorers. The rank
+ordering barely shifted: the same two pieces sat at the top and the same one at
+the bottom every time. And band assignment agreed on seven of the eight, because
+most of the disputed pieces were already deep in the bottom band, where a
+50 point difference in the raw total changes nothing about the verdict. The
+scorers disagreed about how bad a bad piece is. They did not disagree about
+which pieces were bad, or about which was worse than which.
+
+**What this makes the instrument.** A triage instrument, not a measuring
+instrument. It answers "which band is this in" and "is this draft better than
+that one" reliably enough to act on. It does not answer "what is this draft's
+score." A published number like "scored 72" implies a precision that three
+scorers on the same eight drafts could not reproduce. Ranking and banding are
+what it can defend, and `Scoring and reporting` in `skills/house-style/SKILL.md`
+now says so at the point of use.
+
 ### What the study does not show
 
-Eighteen scores across nine pieces is more than run one had and still a small
-sample. It supports a group ordering and a spread. It does not support a
-confidence interval, and one more piece or one more scorer could move any of the
-band-edge cases. More pieces is the cheapest fix available and the next thing to
-do.
+Fifty four scores across twenty three pieces is more than the earlier runs had
+and still a small sample. It supports a group ordering and a spread. It does not
+support a confidence interval, and after run three it plainly does not support
+an absolute number either. The next fix is a third scorer on the fifteen
+undisputed pieces rather than only on the eight disputed ones, because severity
+has so far been measured only where the instrument was already known to be
+shaky.
 
 There is still exactly one external human control, and it is a firm's house
 style rather than an individual writer, which makes it a weaker control than it
@@ -405,19 +490,32 @@ credibility.
 
 ### Validate it
 
-Take a piece you wrote yourself, that has never been through the panel, and
-score it. This is the honest test and it is the only one that matters. Score
-four or five, not one, and sort them by date before you read the numbers,
-because the date is what makes the result interpretable.
+Take four or five pieces you wrote yourself, that have never been through the
+panel, and score them. This is the honest test and it is the only one that
+matters. Four or five, not one, and sort them by date before you read the
+numbers, because the date is what makes the result interpretable.
 
-Have a second person score at least one of them independently. The first
+Then read the output as a ranking and a set of bands, not as four or five
+measurements. The questions the rubric answers are whether your recent work
+sits above your older work and which band each piece lands in. It does not
+answer what any single piece scores. Run three above is the evidence: three
+scorers moved the same eight raw totals by a mean of 36 points while leaving the
+ranking intact and the band unchanged on seven of eight. If your validation
+rests on a specific number, you are reading the noisiest thing the instrument
+produces.
+
+One person scoring one draft is not evidence of anything on its own. Have a
+second person score independently, and treat any piece the two of them put in
+different bands as unresolved until a third reading breaks the tie. The first
 calibration run here was single-scored and got its main conclusion backwards,
 because one scorer silently skipped one arithmetic rule and nothing in a single
 column of numbers can show you that. A second column is the cheapest error check
-available.
+available, and near a band edge it is not optional.
 
-**If your current writing fails, investigate.** Something is wrong, and it is
-one of two things. Either the rubric is miscalibrated, carrying entries you
+**If your current writing fails, investigate.** Failing means landing in a low
+band on more than one independent reading, not scoring low once. Something is
+wrong, and it is one of two things. Either the rubric is miscalibrated,
+carrying entries you
 copied in from someone else's list that do not describe damage in your market,
 or your own writing has drifted away from the standard you set. Find the entries
 that fired and ask, one at a time, which of the two it is. Delete or reweight
