@@ -84,8 +84,8 @@ Everything is read and analyze.
 **1. Install the plugin.**
 
 ```
-/plugin marketplace add thescottking/b2b-cmo-skills
-/plugin install b2b-cmo-skills
+/plugin marketplace add thescottking/b2b-pmm-skills
+/plugin install b2b-pmm-skills
 ```
 
 Or clone the repo and point Claude Code at it as a local plugin directory. The

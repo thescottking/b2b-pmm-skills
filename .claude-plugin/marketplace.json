@@ -1,11 +1,11 @@
 {
-  "name": "b2b-cmo-skills",
+  "name": "b2b-pmm-skills",
   "owner": {
     "name": "Scott King"
   },
   "plugins": [
     {
-      "name": "b2b-cmo-skills",
+      "name": "b2b-pmm-skills",
       "source": "./",
       "description": "Nine marketing skills for Claude that all read one shared brand kit: voice and quality scoring, long-form content, transcript-to-article, social, company recon, competitive white space, and Google and LinkedIn ads audits."
     }

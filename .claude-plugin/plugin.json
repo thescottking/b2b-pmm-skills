@@ -1,13 +1,13 @@
 {
-  "name": "b2b-cmo-skills",
+  "name": "b2b-pmm-skills",
   "version": "1.0.0",
   "description": "Nine Claude skills for B2B marketing teams: brand voice with a weighted quality panel, long-form content, transcript-to-article, social, company recon, competitive white space, and Google and LinkedIn ads audits. Every skill reads one shared brand kit, so you define your positioning once and the whole toolkit uses it.",
   "author": {
     "name": "Scott King"
   },
   "license": "MIT",
-  "homepage": "https://github.com/thescottking/b2b-cmo-skills",
-  "repository": "https://github.com/thescottking/b2b-cmo-skills",
+  "homepage": "https://github.com/thescottking/b2b-pmm-skills",
+  "repository": "https://github.com/thescottking/b2b-pmm-skills",
   "keywords": [
     "marketing",
     "brand-voice",
