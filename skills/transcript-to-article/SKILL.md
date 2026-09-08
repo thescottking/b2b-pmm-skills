@@ -106,8 +106,11 @@ It is a published asset, not scratch work.
 
 ### Stage 2: Write the article
 
-Default target is 1,200 words. For a pillar guide built from a long or
-multi-episode recording, target the longer range in `docs/aeo-style-guide.md`.
+Default target is the article length in `Length targets` in
+`docs/writing-templates.md`, which is the only place asset lengths are set. For
+a pillar guide built from a long or multi-episode recording, take the pillar
+figure from the same table and follow the `Pillar guide template` in
+`docs/aeo-style-guide.md`.
 
 Structure, in order:
 
@@ -181,14 +184,17 @@ text overlay, and the image prompts. Do not duplicate its rules here.
 If it is not installed, produce the minimum set:
 
 - **LinkedIn post.** Lead with a real number or a real claim from the article.
-  3 to 5 sentences. Article link at the end. Hashtags come from the brand kit,
-  never invented here.
+  Beats and length come from `LinkedIn post` in `docs/writing-templates.md`.
+  Article link at the end. Hashtags come from `Hashtags` in
+  `brand-kit/brand.md`, three to four of them, never invented here. If that
+  section is empty, ship the post without hashtags and say so.
 - **Short-form post.** Under 280 characters. One sharp idea. Link.
 - **Thread.** Five posts: the problem, the cost, the mechanism, the proof, the CTA.
   Each under 280 characters.
-- **Image prompt.** Built on the illustration style described in the brand kit,
-  visualizing the article's central tension. Colors come from `Palette` in
-  `brand-kit/brand.md`.
+- **Image prompt.** Built on `Illustration Style` in `brand-kit/brand.md`,
+  visualizing the article's central tension. Colors come from `Palette` in the
+  same file. If `Illustration Style` is missing, say so and skip the prompt
+  rather than inventing a look.
 
 ### Stage 5: Pre-delivery scan
 

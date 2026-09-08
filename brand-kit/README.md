@@ -8,7 +8,7 @@ you and writes these files for you.
 
 | File | Owns | Skills that read it |
 |---|---|---|
-| `brand.md` | Name, pitch, palette, fonts, CTAs | All of them |
+| `brand.md` | Name, pitch, palette, fonts, illustration style, hashtags, CTAs | All of them |
 | `voice.md` | House style, banned words, AI tells | `house-style` and everything that calls it |
 | `positioning.md` | Frame, pillars, traps, stats, vocabulary | Content and competitive skills |
 | `icp.md` | Who you sell to, in three tiers | Demand-gen and paid-channel skills |

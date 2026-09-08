@@ -4,9 +4,13 @@ Eight patterns that do most of the work in B2B positioning copy. They are
 structural, not stylistic, so they survive translation into any category. Pick
 one per asset. Two stacked in the same post is one too many.
 
-`content-writer`, `social-generator`, and `house-style` all draw on this file.
-The content it operates on comes from `brand-kit/positioning.md`: the frame, the
-pillars, the named traps, and the vocabulary.
+`content-writer`, `social-generator`, and `house-style` all read this file.
+`content-writer` picks a pattern per asset, `social-generator` picks one per
+caption, and `house-style` checks that at least one is present and scores the
+draft on it. None of the three restates a pattern, so this file is the only
+place to change one. The content each pattern operates on comes from
+`brand-kit/positioning.md`: the frame, the pillars, the named traps, and the
+vocabulary.
 
 Examples below use Ampfield, the fictional field operations platform documented
 in `examples/ampfield/`. Substitute your own.
@@ -49,7 +53,8 @@ word or one short phrase each.
 which is most technical and operational audiences. It also works as a spine for
 a demo, a landing page section, or the middle of a long post. A sequence makes a
 product feel like a mechanism rather than a promise, and mechanism is what
-earns trust from people who have been sold to before.
+earns trust from people who have been sold to before. A reader who can repeat
+your sequence can explain you to their boss.
 
 **When it backfires.** When the steps are generic. "Connect, analyze, optimize,
 scale" describes every software product ever built and signals that you either
@@ -109,7 +114,8 @@ organization rather than their vendor.
 **When it works.** As a hook for cold audiences on social, or as the first line
 of an email to someone who does not know you. It works because it is about them,
 not you, and because it is uncomfortable enough to be read twice. Pair it with a
-pattern that resolves the discomfort. Provoke opens; it does not close.
+pattern that resolves the discomfort. Provoke opens; it does not close. One per
+asset, near the top.
 
 **When it backfires.** When it insults the reader's competence rather than
 naming a systemic problem. "Your operations team is disorganized" gets you
@@ -185,7 +191,8 @@ it.
 **When it works.** In sales enablement, objection-handling content, and any
 piece written for a reader who has already said no once. It works because it
 demonstrates that you have heard the objection enough times to know what it
-covers for, which is a credential no amount of product copy buys.
+covers for, which is a credential no amount of product copy buys. Agree with the
+diagnosis, push back on the prescription.
 
 **When it backfires.** When the reframe is condescending, or when it is wrong.
 Telling a buyer that their stated concern is not their real concern is a strong
@@ -214,10 +221,13 @@ without you in the room.
 expensive. All four conditions matter. A named problem that is not expensive
 becomes a joke rather than a budget line.
 
-Good names are concrete and slightly physical. The Clipboard Gap works because
-there is a clipboard in it. The Rebuild Tax works because "tax" implies a
-recurring cost nobody chose. Abstract names built from category jargon do not
-travel.
+Good names are concrete and slightly physical. Two-word noun phrases travel
+furthest. The Clipboard Gap works because there is a clipboard in it. The
+Rebuild Tax works because "tax" implies a recurring cost nobody chose. Abstract
+names built from category jargon do not travel.
+
+Every name you keep belongs in `Named Traps` in `brand-kit/positioning.md` so it
+stays consistent across every asset.
 
 **When it backfires.** When the name describes your product instead of their
 problem. A name with your company in it is a feature, not a frame, and buyers
@@ -246,6 +256,8 @@ why it gets worse. That is the whole shape.
 - Not "many systems." Say "six systems to close one job."
 - Not "slow to close." Say "the record arrives at 6:15pm for a job that
   finished at 2:40."
+- Not "long." Give the cycle length in days.
+- Not "a lot of duplicated work." Give the percentage.
 
 **When it works.** Always, in body copy. It is less a pattern than a discipline,
 and it is the single fastest upgrade available to a weak draft. `Clarity` in
@@ -293,7 +305,8 @@ their own, that a competent competitor could attempt, and that you simply answer
 better.
 
 It also backfires as a general-purpose closer. Used on every asset, it becomes a
-tic. Save it for the pieces where the reader is genuinely comparing.
+tic. One per asset, at the close, and only on the pieces where the reader is
+genuinely comparing.
 
 **Worked example.**
 

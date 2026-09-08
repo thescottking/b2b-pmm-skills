@@ -111,7 +111,9 @@ until someone identifies them.*
 
 ### LinkedIn Post
 
-[Lead with a real number or claim. 3 to 5 sentences. Link. Hashtags from the brand kit.]
+[Lead with a real number or claim. Beats and length per `LinkedIn post` in
+`docs/writing-templates.md`. Link. 3 to 4 hashtags from
+`Hashtags` in `brand-kit/brand.md`.]
 
 ### Short-Form Post
 
@@ -127,8 +129,8 @@ until someone identifies them.*
 
 ### Image Prompt
 
-[Prompt built on the illustration style in the brand kit, colors from `Palette`
-in `brand-kit/brand.md`.]
+[Prompt built on `Illustration Style` in `brand-kit/brand.md`, colors from
+`Palette` in the same file.]
 
 ---
 

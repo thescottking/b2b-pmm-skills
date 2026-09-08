@@ -79,6 +79,35 @@ to prevent a specific failure.
 
 ---
 
+## Formatting Preferences
+
+House defaults for how a page looks on the screen. These are preferences, not
+tells, and they carry no score. A draft that breaks them is off house format,
+which is a find-and-replace, not evidence that anything was machine-assembled.
+
+- **Sentence case in headings.** "What the second truck roll costs," not "What
+  The Second Truck Roll Costs." The exceptions are capability names and named
+  traps, which keep the title case set in `Naming and Usage Rules` wherever they
+  appear, including inside a sentence-case heading.
+- **No run-in bold headers on bullets.** Prefer a bullet that starts with the
+  claim over one that starts with a **Bold Header:** and then explains it. Use
+  the run-in form where a list is genuinely a set of defined terms, which for us
+  is usually a capability list or a glossary.
+- **Numerals for anything an operations reader would compare.** Technician
+  counts, truck counts, job counts, minutes, percentages, and dollar figures are
+  numerals at every value: 3 techs, 90 seconds, 4 percent. Spell out numbers
+  only in idiom, as in "the second truck roll."
+- **Link text is the destination, not the invitation.** "See what a field record
+  looks like," never "click here" and never a bare URL in running text.
+- **Tables for anything with more than three parallel facts.** An operations
+  leader reads a table and skims a paragraph. If a passage compares branches,
+  crews, or line items, it is a table.
+- **Screenshots and diagrams get a caption that states the finding**, not one
+  that names the object. "Dispatch board at 2:40pm, before the field record
+  arrives" beats "Dispatch board."
+
+---
+
 ## Banned Words and Phrases
 
 Each of these costs points in the quality panel. They are banned because they

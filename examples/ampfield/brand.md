@@ -131,6 +131,48 @@ baked into the image.
 
 ---
 
+## Hashtags
+
+The tags social posts are allowed to use. Nothing outside this table ships.
+
+**Branded:** two, spelled exactly this way. `#Ampfield` is the company.
+`#TheFieldRecord` is the frame, and it is the one worth building, because a tag
+that carries the canonical noun does work that a company name cannot.
+
+**Topical:** the terms contractors and field operations leaders already follow.
+Pulled from `Search Terms` in `icp.md`. Deliberately absent: `#AI`,
+`#DigitalTransformation`, `#Innovation`, and `#SaaS`. They reach everyone and
+therefore nobody, and none of them describe what Ampfield does.
+
+Counts per platform:
+
+| Platform | Count | Mix |
+|---|---|---|
+| LinkedIn | 3 to 4 | `#Ampfield` or `#TheFieldRecord`, then two or three topical |
+| X | 1 to 2 | Topical, branded only when the post is company news |
+| Instagram | 6 to 8 | Both branded, then four to six topical |
+
+| Kind | Tag | Use when |
+|---|---|---|
+| Branded | `#Ampfield` | Company news, product releases, hiring, event presence |
+| Branded | `#TheFieldRecord` | Anything arguing the frame. The default branded tag on thought leadership |
+| Topical | `#FieldService` | Broadest topical tag we allow. Use when the post is not solar or HVAC specific |
+| Topical | `#FieldServiceManagement` | Category posts and anything aimed at a buyer comparing platforms |
+| Topical | `#SolarOandM` | Solar operations and maintenance audiences |
+| Topical | `#HVACContractors` | HVAC service and mechanical contractor audiences |
+| Topical | `#Dispatch` | Scheduling, capacity, and Dispatch Board posts |
+| Topical | `#TruckStock` | Parts, inventory, and Truck Stock Ledger posts |
+| Topical | `#WarrantyClaims` | Claim Packet posts and manufacturer partner co-marketing |
+| Topical | `#FirstTimeFix` | Second Truck Roll posts and anything with a callback rate in it |
+| Topical | `#FieldOperations` | COO and multi-branch operations audiences |
+
+**Never use:** `#FSM` (it reads as an acronym nobody outside the category
+follows), `#SingleSourceOfTruth` (banned in copy under
+`Naming and Usage Rules`, so it is banned here), `#RealTime` (we state the
+actual latency instead), and any tag naming a competitor.
+
+---
+
 ## Document Footer
 
 The string that appears at the bottom of generated reports and decks.

@@ -28,6 +28,12 @@ around them.
 3. `brand-kit/positioning.md`: the frame, pillars, traps, stats, vocabulary
 4. `brand-kit/capabilities.md`: read before making any product claim
 
+Two shared references carry the structure this skill applies. Read the one the
+task needs:
+
+5. `docs/writing-templates.md`: the ten asset skeletons and every length target
+6. `docs/messaging-patterns.md`: the eight structural patterns
+
 If `brand-kit/` is missing or still has its template placeholders, stop and tell
 the user to run `brand-kit-setup`. Do not proceed with invented positioning.
 
@@ -151,219 +157,78 @@ Two rules to internalize because they get violated most often:
 
 ## 2. Writing Templates
 
-Generic skeletons. They tell you the shape; the kit tells you the substance.
-Every reference below to a frame, trap, stat, quote, separating line, or CTA
-means: go get it from the brand kit.
+The ten skeletons live in `docs/writing-templates.md`, together with the length
+target for every asset type. Read that file for the shape. This section covers
+what this skill does with it: pick the right template, then hold the draft to
+it.
 
-### 2.1 Article
+**Picking one.** Match the draft to a template before you touch a sentence. A
+draft that fits no template is usually two assets fused together, and saying so
+is the most useful note you can give.
 
-1. Hook
-2. Stakes
-3. Misconception
-4. Reality
-5. The mechanism
-6. Example
-7. What changes
-8. CTA
+| What the user brought you | Template in `docs/writing-templates.md` |
+|---|---|
+| A blog post, an article, a topic essay | Article |
+| A caption for LinkedIn | LinkedIn post |
+| Website copy for a product, a solution, or a campaign | Landing page or feature page |
+| A nurture email or an announcement | Email |
+| A prospecting message to one named person | Cold outreach |
+| A one-screen argument for a decision maker | Executive brief |
+| A long argument a buyer will forward internally | Whitepaper |
+| A customer story | Case study |
+| Event copy | Webinar registration |
+| A subject line, alone or in a set | Subject line patterns |
 
-Pull the hook from a named trap in `Named Traps` in `brand-kit/positioning.md`.
-Pull the CTA from `Calls to Action` in `brand-kit/brand.md`.
+For a pillar article, a cluster page, or anything written to be quoted by an
+answer engine, the structure comes from `docs/aeo-style-guide.md` instead. Say
+so and switch guides rather than forcing the Article shape onto it.
 
-### 2.2 Social Post
+**Holding the draft to it.** In audit and rewrite mode, run the template's beats
+in order against the draft and report three things: which beats are missing,
+which sit out of order, and which are padded. Length comes from the
+`Length targets` table in the same file. A draft outside its range is a note
+rather than an automatic rewrite: say by how much, and say what comes out.
 
-1. Hook
-2. Problem
-3. Consequence
-4. Why the common approach fails
-5. Your frame, applied
-6. Steps or examples
-7. CTA
-
-**Hook patterns.** Blunt insight. Broken reality, one sentence naming something
-the reader uses every day that does not do the job they think it does. Industry
-myth, the received wisdom, stated plainly, before you dismantle it. Risk
-warning. Numbers-first, open on the number, then say what it means. Reframe,
-take a common objection and expose the concern underneath it. Real-situation,
-one sentence describing a meeting, a ticket, or an invoice the reader has
-actually lived through, with no abstractions.
-
-**The "here's how it works" sub-formula.** After the framing, add three to five
-numbered steps. Each step is a verb-led sentence under twelve words. Example
-shape:
-
-1. The system reads the request.
-2. The classifier routes it by intent.
-3. The agent pulls the account history.
-4. The update lands in the system of record.
-5. A person approves only the exceptions.
-
-**Closing patterns.** A directive ("Here's the play"). A comment prompt. A
-pointer to the full teardown. An invitation to disagree. Whatever you choose,
-use the exact wording from `Calls to Action` in `brand-kit/brand.md` when a
-destination is involved.
-
-### 2.3 Landing Page
-
-- Direct value statement
-- Pain
-- Solution
-- Use cases
-- Proof
-- CTA
-
-Headline is eight words or fewer. The differentiator section pulls from
-`Categories We Are Not` in `brand-kit/positioning.md`. Proof pulls from
-`Headline Stats` and from `Proof` in the relevant `What We Do` block in
-`brand-kit/capabilities.md`.
-
-### 2.4 Email
-
-- Subject under six words
-- State the point
-- State why it matters
-- Give one example
-- Invite the next step
-
-No throat-clearing. No "I hope this finds you well." One idea, three to five
-short paragraphs, one CTA.
-
-### 2.5 Cold Outreach
-
-1. Open with the buyer's current state. One sentence, specific to their role,
-   using a title from `Buying Committee` in `brand-kit/icp.md`.
-2. Name the failure pattern they are already living. Use a named trap.
-3. State your difference in one line. Use the separating line from
-   `Categories We Are Not`.
-4. Propose a fifteen-minute conversation with a specific outcome.
-5. Cut everything else.
-
-### 2.6 Executive Brief
-
-- One-line thesis
-- Three bullets of evidence
-- One bullet of risk
-- One bullet of recommendation
-
-Fits on a single screen. Every number carries its source.
-
-### 2.7 Case Study
-
-- Buyer role and company shape (not the name unless cleared)
-- The trigger event, what forced the change
-- The workflow before
-- The workflow after
-- One quantified outcome
-- One quote from the buyer
-
-Only name a customer if `brand-kit/capabilities.md` says that name is cleared
-for external use. Otherwise describe them by industry and size.
-
-### 2.8 Webinar Registration
-
-- Specific promise, what attendees leave knowing
-- Three named takeaways
-- Who should attend
-- Who should not attend
-- Time, date, CTA
-
-The "who should not attend" line is doing real work. Keep it honest.
-
-### 2.9 Subject Line Patterns
-
-- **Numeric:** "3 traps in [category]"
-- **Correction:** the received wisdom, contradicted in five words
-- **Provocation:** name a tool the reader relies on and say what it is not
-- **Mirror:** repeat back the question the prospect is already asking
-
-Under fifty characters. No colons stacking two clauses.
+**The kit still owns the substance.** Every reference in a template to a hook, a
+trap, a stat, a quote, a separating line, or a CTA means go get it from
+`brand-kit/`. A beat filled from memory is the most common way an unsupported
+claim reaches a reader.
 
 ---
 
 ## 3. Messaging Patterns
 
-Eight patterns. At least one should be visible in any customer-facing asset. The
-examples here are deliberately generic, swap in the real names, numbers, and
-traps from `brand-kit/positioning.md`.
+The eight patterns live in `docs/messaging-patterns.md`, each with what it is,
+when it works, when it backfires, and a worked example. Read that file for the
+pattern. This section covers what this skill does with them.
 
-### 3.1 Sequence
+**The bar.** At least one pattern is visible in any customer-facing asset. Two
+stacked in the same short asset is one too many. The Pattern Checker expert in
+`The Quality Panel` scores exactly this, and a draft carrying no pattern falls
+back on generic explanation, which is what a low Pattern score measures.
 
-Break the mechanism into four verbs. Ingest. Extract. Validate. Act. A reader
-who can repeat your sequence can explain you to their boss.
+**Picking one.** Choose by what the draft is trying to do, not by what sounds
+strongest.
 
-### 3.2 Correction
+| What the draft is trying to do | Pattern |
+|---|---|
+| Explain the mechanism to a technical reader | Sequence |
+| Interrupt a reader who thinks they know the category | Correction |
+| Open cold, on social or in a first email | Provoke |
+| Carry a positioning argument end to end | Trap |
+| Answer a reader who has already said no once | Reframe |
+| Give an unnamed problem a label that travels | Naming |
+| Replace an adjective the reader cannot argue with | Specificity |
+| Close a piece aimed at a buyer in an active evaluation | Sales Question |
 
-State the belief the market holds, then contradict it flatly.
+**Everything the patterns operate on comes from the kit.** Traps come from
+`Named Traps` in `brand-kit/positioning.md`, numbers from `Headline Stats` with
+their sources, and separating lines from `Categories We Are Not`. If you coin a
+new trap while rewriting, say so in the delivery note and tell the user to add
+it to `Named Traps`, so the name stays consistent across every asset. Do not
+leave a coined name in the copy without flagging it.
 
-> "You DO want the model trained on your own data."
-
-Works when the objection is common enough that the reader recognizes themselves
-in it. Follow immediately with the reason.
-
-### 3.3 Provoke
-
-One sentence that indicts the reader's current state without insulting them.
-
-> "Your company doesn't think. It reacts."
-
-Use once per asset, near the top. Two provocations read as posturing.
-
-### 3.4 Trap
-
-The spine. Name the problem your category has, then run the three-beat.
-
-1. **Name the trap.** Use one from `Named Traps` in
-   `brand-kit/positioning.md`, or propose a new one and tell the user to add it
-   to the kit.
-2. **Limitation:** what the alternative approach does.
-3. **Failure:** what breaks because of it.
-4. **Your difference:** how your approach resolves it.
-
-A trap you have named is a trap your competitor has to answer.
-
-### 3.5 Reframe
-
-Take a stated objection and expose the real concern underneath.
-
-> "'I don't want it touching our data.' What they actually mean: 'I don't want
-> to lose control.'"
-
-Agree with the diagnosis, push back on the prescription. The reframe is how you
-win an argument without telling the reader they were wrong.
-
-### 3.6 Naming
-
-Give the problem a memorable label. Once it has a name, the reader recognizes it
-in their own organization and repeats it to colleagues. Two-word noun phrases
-travel furthest.
-
-Names belong in `Named Traps` in `brand-kit/positioning.md` so they stay
-consistent across every asset. If you coin one while writing, say so in your
-delivery note so the user can add it.
-
-### 3.7 Specificity
-
-Replace adjectives with numbers.
-
-- Not "expensive." Give the multiple or the dollar figure.
-- Not "fast." Give the elapsed time.
-- Not "many." Give the count.
-- Not "long." Give the cycle length in days.
-- Not "a lot of duplicated work." Give the percentage.
-
-Every number you use must exist in `Headline Stats` in
-`brand-kit/positioning.md` with a source. If it does not, either find the source
-or write around the number.
-
-### 3.8 Sales Question
-
-End with a question the reader can take into a vendor call.
-
-> "Ask any vendor: what do my users log into, and where do I see their activity?"
-
-The question makes the prospect the tester instead of the seller. One per asset,
-at the close.
-
-### 3.9 A note on external validation
+### 3.1 A note on external validation
 
 Sourced third-party voices carry weight your own claims cannot. Use them
 verbatim, with attribution and a link, and only from

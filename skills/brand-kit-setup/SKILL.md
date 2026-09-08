@@ -93,9 +93,9 @@ Offer all three in one short message, with the tradeoff visible. Do not
 editorialize past two sentences each. Default to the interview if they do not
 choose.
 
-**1. Interview.** You ask, they answer, you write. About 30 to 45 minutes for a
-kit that is good enough to publish from. Best when they know their positioning
-and just need it captured.
+**1. Interview.** You ask, they answer, you write. Best when they know their
+positioning and just need it captured, which is also the case that finishes in
+one sitting.
 
 **2. Start from the example.** Copy the Ampfield files in and swap them for
 their company, section by section. Faster for people who would rather edit a
@@ -109,6 +109,47 @@ than a homepage.
 
 Paths mix. A website import that leaves `Channel Economics` empty is finished by
 interview. Someone who starts from the example can still hand you a URL.
+
+### 2.1 What to tell them about time
+
+Give an honest range, not a single number, and say which case they are in as
+soon as you can tell. Getting this wrong at the start is how a session ends with
+a half-filled kit that nobody goes back to.
+
+**Positioning already settled: 45 to 90 minutes.** They can say what they
+believe, name the failures their buyers live with, and get someone to pull their
+cost per acquisition and their platform targeting values. The session is
+transcription. One sitting is realistic.
+
+**Positioning not actually decided: several sittings across a week or two**, and
+most of the work happens outside the interview. Say this plainly rather than
+letting them discover it at question forty. `docs/positioning-framework.md`
+carries the reason: most first-pass frameworks fail the test of whether a
+competitor could adopt them unchanged, including ones that took a quarter and an
+agency to produce, and the method it prescribes is to write the manifesto at
+length and badly, derive the frame, the pillars, and the traps from it, then
+rewrite the manifesto once they know what they believe. Two passes is normal.
+Nothing you do in this session compresses that honestly.
+
+Name the time sinks out loud so they can staff them:
+
+- `The Manifesto`, `The Frame`, `The Pillars`, and `Named Traps` in
+  `positioning.md`. One argument seen four ways, and the reason this is a week
+  rather than an hour when the argument does not exist yet.
+- `The Fit Matrix` in `icp.md`, in their ad platform's own taxonomy values,
+  spelled the way the platform spells them.
+- `Channel Economics` in `icp.md`, with real figures rather than estimates.
+
+The last two need someone with ad platform access and someone with finance
+numbers. Ask early whether that person is in the room. If not, mark both
+sections for a follow-up rather than filling them with plausible guesses.
+
+**Say what a half-filled kit produces.** Not errors. A missing heading stops a
+skill and says so. A thin one does not: three exclusions under
+`What We Do Not Do` instead of ten shows up as a draft claiming their category's
+whole feature list, because a model asked to write about a category assumes the
+category. That is why section 7.3 exists and why it is worth their attention at
+the end.
 
 ---
 
@@ -175,6 +216,10 @@ A generic personification is worse than an empty heading.
 3. The exact CTA wording for a blog close, a landing page, social, email, and a
    report close, with destinations.
 4. The footer string for generated documents.
+5. How images made for the brand look: line weight, fill, what the subject is,
+   and whether the art bleeds off the frame. Ask what they would never want to
+   see in an image with their logo near it.
+6. The hashtags social posts are allowed to use, split into branded and topical.
 
 Fill the `Palette` table by role, not by name, because the skills use roles.
 If they give you three colors, derive the tints and neutrals, show your work in
@@ -187,6 +232,31 @@ For `Calls to Action`, push for the exact words. "Learn more" tells the reader
 nothing about what happens next. "Get started" on a product that needs a rollout
 is a lie about the effort. If the CTA promises a meeting, ask how long it is and
 who it is with, and write that down.
+
+`Illustration Style` and `Hashtags` are the two headings people skip here, and
+both of them stop a skill later. Do not skip them.
+
+For `Illustration Style`, the four questions in the template are the whole
+interview: line weight, fill, subject treatment, and edge behavior. Draft two or
+three sentences from their answers and read it back as instructions a stranger
+could follow, not as adjectives. Then push hardest on the exclusion list, which
+is the half that actually controls the output, because image models default to
+stock-photo realism and gradient soup unless told otherwise. If they have no
+house style yet, write one line saying so under the heading rather than leaving
+it blank, and offer to derive one on the first `social-generator` run.
+`social-generator` stops outright when this heading is missing, so an empty
+section with an honest line in it is strictly better than no section.
+
+For `Hashtags`, ask for branded tags first, since those are just their own names
+and take ten seconds, then harvest topical candidates from what they already
+told you and offer them back for editing. `Search Terms` in `icp.md` is the
+better source once that file exists, so it is fine to leave three or four
+topical rows open and finish them after `icp.md`. Say out loud that
+`social-generator` and `transcript-to-article` are forbidden from inventing a
+tag: an empty table here means every social post ships without hashtags or stops
+to ask. If the company genuinely does not use hashtags, record that in one line
+under the heading, which is a different thing from an empty table and the skills
+read it differently.
 
 **Write `brand.md` now.** Show the user the `Company` and `Hallway Pitch`
 sections as you wrote them and ask for one round of correction.
@@ -557,8 +627,10 @@ warning to be polite about.
 Walk the swap in the same order as the interview, one file at a time, using the
 Ampfield version as the prompt rather than as a template to imitate:
 
-1. `brand.md`. Name, pitch, palette, fonts, CTAs. Fastest to change and it
-   changes how every deliverable looks.
+1. `brand.md`. Name, pitch, palette, fonts, CTAs, `Illustration Style`, and
+   `Hashtags`. Fastest to change and it changes how every deliverable looks.
+   The two easiest to leave as Ampfield's are the last two, and both of them
+   are read verbatim into image prompts and social posts.
 2. `capabilities.md`. Replace `What We Do Not Do` first. Ampfield's eleven
    exclusions are the best demonstration in the repository of how specific this
    list should be, so read two of them out loud before asking for theirs.
@@ -733,7 +805,8 @@ templates. A skill looking for a heading and not finding it will make claims
 nobody authorized.
 
 - `brand.md`: `Company`, `Hallway Pitch`, `Personification`, `Palette`,
-  `Typography`, `Document Footer`, `Calls to Action`
+  `Typography`, `Illustration Style`, `Hashtags`, `Document Footer`,
+  `Calls to Action`
 - `voice.md`: `Tone`, `Grammar Constraints`, `Pacing`, `Clarity`,
   `Formatting Preferences`, `Banned Words and Phrases`, `AI Tells to Avoid`,
   `Superseded Names`
@@ -807,6 +880,11 @@ do. For example:
 - "`What We Do Not Do` lists three exclusions. Three is thin for a category this
   crowded, and the gap shows up as invented features in drafts rather than as
   an error."
+- "`Hashtags` has branded tags and no topical ones, so `social-generator` will
+  ship LinkedIn posts carrying only your own name. It will not invent the rest."
+- "`Illustration Style` is one line saying you do not have one, so
+  `social-generator` will stop before writing an image prompt and ask you to
+  write it with it."
 
 Rank them by consequence, keep it to the five that matter, and offer to fix the
 top one right now.
@@ -841,7 +919,8 @@ what makes someone go back and finish `Headline Stats`.
 Close by telling them what to run next and what each skill needs:
 
 - `house-style` on anything they paste, working from `voice.md`.
-- `social-generator` for short posts, working from the traps and the taglines.
+- `social-generator` for short posts, working from the traps, the taglines,
+  `Illustration Style`, and `Hashtags`.
 - `transcript-to-article` for a recorded call or podcast.
 - `competitive-white-space` once `Competitors` in `icp.md` is filled.
 - `google-ads-audit` and `linkedin-ads-audit` once `The Fit Matrix` and
@@ -903,7 +982,8 @@ All optional. This skill works alone.
 - `content-writer` writes the first long-form asset from the finished kit.
 - `company-recon` reads a competitor URL through the kit.
 - `competitive-white-space` needs `Competitors` in `icp.md`.
-- `social-generator` needs `Named Traps` and `Calls to Action`.
+- `social-generator` needs `Named Traps`, `Calls to Action`,
+  `Illustration Style`, and `Hashtags`.
 - `transcript-to-article` needs `voice.md` and the frame.
 - `google-ads-audit` needs `Search Terms` and `Channel Economics`.
 - `linkedin-ads-audit` needs `The Fit Matrix` and `Channel Economics`.

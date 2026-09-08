@@ -1,9 +1,11 @@
 ---
 name: google-ads-audit
 description: >
-  Audit a Google Ads account against your own buyer definition. Classifies every search term
-  by buyer intent (KEEP / WATCH / CUT), quantifies wasted spend, and flags high-intent terms
-  that are budget-constrained. Use when someone asks to "audit our Google Ads," "review our
+  Audit a Google Ads account against your own buyer definition. Classifies every reported
+  search term by buyer intent (KEEP / WATCH / CUT), reconciles term-level spend against
+  campaign spend so withheld terms are reported rather than dropped, handles Performance Max
+  and Demand Gen campaigns that carry no search term report, quantifies wasted spend, and
+  flags high-intent terms that are budget-constrained. Use when someone asks to "audit our Google Ads," "review our
   search campaigns," "run a PPC audit," "do a search term waste analysis," "run an SQR
   audit," "do a keyword audit," "figure out why our search CPA is climbing," or "tell me
   which search terms to add as negatives." Also triggers when someone uploads Google Ads CSV
@@ -121,6 +123,33 @@ date_range: last 3 months
 filter: spend > 5
 ```
 
+**Pull 4: campaigns that have no search term report**
+
+Read `advertising_channel_type` on every campaign in Pull 1 first. Performance Max, Demand
+Gen, Display, Video, and Shopping campaigns do not produce a search term report in the sense
+Pull 2 assumes. Performance Max and Demand Gen in particular serve against queries and
+audiences the term report never shows you, so their spend must be separated out before any
+waste percentage is computed rather than quietly folded into the denominator.
+
+For those campaigns, pull what does exist:
+
+```
+fields: ["campaign_name", "advertising_channel_type", "asset_group_name", "spend", "clicks",
+         "impressions", "conversions", "cost_per_conversion"]
+date_range: last 3 months
+```
+
+And ask the connector for the search terms insight report, which returns grouped search
+categories rather than individual terms for these campaign types:
+
+```
+fields: ["campaign_name", "search_category_label", "impressions", "clicks", "conversions"]
+date_range: last 3 months
+```
+
+If that report is unavailable through the connector, say so and treat the spend as
+uninspected rather than clean.
+
 Also pull monthly totals across the trailing six months for the trend section.
 
 ### Option 2: CSV export
@@ -170,7 +199,17 @@ For each campaign, assess four things:
 
 ### Step 3: Search term waste analysis
 
-The highest-value section. Categorize every search term with meaningful spend.
+The highest-value section. Categorize every search term with meaningful spend, after two
+scope checks that decide what "every" covers.
+
+**Scope check one: which campaigns are in.** Only campaigns that produce a search term
+report. Everything from Pull 4 sits outside this analysis and is handled in Section 7 under
+`Campaigns with no search term report`.
+
+**Scope check two: how much of the in-scope spend has a term.** Run the reconciliation in
+Section 4 before classifying anything. If a third of search spend has no term attached, every
+conclusion in this step describes two thirds of the account, and the document has to say so
+in that many words.
 
 **Terms taking money that should not be:**
 
@@ -204,6 +243,11 @@ negative keyword theme rather than a list of one-off exclusions.
   non-brand, competitor terms buried inside generic campaigns.
 - **Match type hygiene.** Whether exact, phrase, and broad are being used for the jobs they
   are good at.
+- **Campaign types that are not search.** Whether Performance Max or Demand Gen is running
+  alongside search, what share of budget sits there, and whether it is cannibalizing brand
+  search or covering genuinely different demand. Check whether brand terms are excluded from
+  Performance Max, since without an exclusion it will absorb the cheapest brand clicks in the
+  account and report them as its own conversions.
 - **Budget allocation.** Money should flow in this order: protect brand, fund
   solution-intent, then competitor, then category exploration. Check it against
   `Monthly paid budget` in `Channel Economics`.
@@ -260,10 +304,13 @@ tiles as a table with colored cell backgrounds. Each tile carries one large metr
 | 2 | Conversions | Neutral |
 | 3 | Blended CPA | Compare to `Acceptable CPA band` and `CPA red line` in `Channel Economics`. Inside the band is positive, above the band is caution, above the red line is problem. |
 | 4 | Brand impression share | Compare to `Brand impression share floor`. At or above is positive, within ten points below is caution, further below is problem. |
-| 5 | Recoverable waste | Problem, as a dollar amount |
+| 5 | Recoverable waste | Problem, as a dollar amount, with a subtitle naming the share of account spend the term analysis could see. Where a third or more of search spend had no term attached, the subtitle says the figure is a floor |
 | 6 | Account health | One word: Healthy, Needs Work, or Critical |
 
-Below the tiles, three to four sentences summarizing the finding, not the method.
+Below the tiles, three to four sentences summarizing the finding, not the method. One of
+those sentences states the coverage of the audit: what share of account spend sits in
+campaigns with a search term report, and what share of that spend had a term attached to it.
+A reader who does not know the denominator cannot judge the numerator.
 
 ### Section 2: Performance trends, six months
 
@@ -278,32 +325,98 @@ change to a cause when the data supports one, and say the cause is unclear when 
 
 ### Section 3: Account overview
 
-| Campaign | Status | Spend | Clicks | Conv | CPA | CTR | Imp Share |
+| Campaign | Type | Status | Spend | Clicks | Conv | CPA | CTR | Imp Share |
 
-Two or three sentences of interpretation below it.
+Type carries the channel type from Pull 1. Impression share is blank for campaign types that
+do not report it, and blank is the honest cell there. Two or three sentences of
+interpretation below it, including what share of account spend sits in campaign types this
+audit cannot inspect at the term level.
 
-**Benchmark comparison sub-table:**
+**The benchmark column is conditional, and it is never yours to fill.**
 
-| Metric | This account | B2B SaaS benchmark | Verdict |
+Before building this table, ask the user one question: do you have a benchmark source you
+want this account measured against, and can you give me the source name and its publication
+date?
+
+- **They supply one.** Include their column, use their figures unchanged, and put the source
+  name and date in a footnote line under the table so a reader can check it. Add the Verdict
+  column beside it, a short bold call: "On track," "Above benchmark," "Critical gap." If they
+  offer figures without a source or without a date, ask for both. If both do not arrive,
+  treat it as no benchmark.
+- **They do not.** Omit the benchmark column and the Verdict column entirely, and write under
+  the table: no external benchmark source was available, so these figures are reported
+  against this account's own trailing distribution rather than an outside reference. Say it
+  plainly. An account measured against its own six months is more defensible than an account
+  measured against a number nobody can source.
+
+**You may not supply a benchmark figure or a citation from your own knowledge.** Not a CTR,
+not a CPC, not a CPM, not a conversion rate, not a "typical B2B software account runs around,"
+and not a source name with a year attached to it. This document tells the reader on its own
+writing-rules page that it never invents a number. A remembered benchmark with a remembered
+citation breaks that promise in the one place an executive is most likely to check, and it is
+the single most likely way this audit embarrasses the person presenting it.
+
+**Metric table, always:**
+
+| Metric | This account | Trailing six-month median | Direction |
 
 Rows: brand CTR, non-brand CTR, brand CPC, non-brand CPC, brand impression share, conversion
-rate. The benchmark column holds published paid search benchmarks for B2B software, which are
-external reference points and not company-specific choices. Cite the benchmark source and its
-date in a footnote line under the table so a reader can check it. The Verdict column is a
-short bold call: "On track," "Above benchmark," "Critical gap."
+rate. Brand impression share is the one row with a real target regardless: compare it to
+`Brand impression share floor` in `Channel Economics`, which is the company's own number and
+not a benchmark.
 
 ### Section 4: Spend waste analysis
 
-The money section. Lead with a **waste waterfall** that starts at total spend and strips each
-waste category away layer by layer, ending at effective working spend.
+The money section. Before any waste layer, **reconcile the search term report against
+campaign spend**, because the term report is not complete and treating it as complete
+overstates how much of the account you have actually inspected.
 
-| Layer | Amount | % of total | Running total |
+Google withholds search terms that too few people searched, so a share of spend in every
+search campaign arrives with no term attached to it. Your own `spend > 5` filter on Pull 2
+removes more rows on top of that. Both gaps have to be measured and shown, and they are
+different things: one is a privacy floor you cannot cross, the other is a choice you made.
+
+Run the reconciliation in this order and show it as the opening rows of the waterfall:
+
+```
+total account spend                      from Pull 1, all campaigns
+  minus spend in campaigns with no
+        search term report               PMax, Demand Gen, Display, Video, Shopping
+= search campaign spend                  the only spend this section can judge
+  minus spend on reported terms          the sum of Pull 2 before filtering
+= unattributed search spend              withheld terms plus anything below the pull filter
+```
+
+Split that last line into two rows where you can: spend on terms your own filter dropped,
+which you can recover by rerunning Pull 2 without the filter, and spend Google never
+attributed to a term, which you cannot recover at all.
+
+**The unattributed share is a reported number, not a rounding difference.** It goes in the
+waterfall as its own row, tinted `Background soft` rather than `Problem`, because it is
+unexamined rather than wasted. It goes in the callout under the waterfall. And it goes in the
+sentence that names the waste percentage.
+
+Then the **waste waterfall** itself, which starts at the spend you can actually see terms
+for and strips each waste category away layer by layer, ending at effective working spend.
+
+| Layer | Amount | % of search spend | % of total spend | Running total |
 
 Fill waste rows with the `Problem` tint, the final working-spend row with the `Positive`
-tint, and the opening total row with `Background soft`.
+tint, the opening total row and the unattributed row with `Background soft`.
 
-Below the waterfall, a problem-colored callout with the total waste percentage and the
-annualized figure. Annualizing is what makes a monthly number land with an executive.
+Two percentage columns, and both are required. A waste figure quoted against attributed
+spend and read as a share of the account is the mistake this table exists to prevent.
+
+Below the waterfall, a problem-colored callout with the waste percentage, the share of spend
+the analysis could not see, and the annualized figure. Annualizing is what makes a monthly
+number land with an executive.
+
+**Rules on projecting the waste rate.** Waste percentages are computed on attributed spend
+only. Do not scale the measured waste rate up onto unattributed or non-search spend to reach
+a bigger headline number: that assumes the invisible spend behaves like the visible spend,
+and low-volume queries are exactly where it is least safe to assume that. When unattributed
+spend exceeds 30% of search spend, say so directly and give the recoverable figure only as a
+floor, since a third of the search account was never in the sample.
 
 Then list each waste category as a short block: the category name, the dollar amount, three
 or four real search term examples from the data, and one line on why that intent does not
@@ -311,7 +424,9 @@ convert for this buyer.
 
 ### Section 5: Top 25 search terms
 
-Sort by spend descending, take the top 25.
+Sort by spend descending, take the top 25. State above the table which campaigns are in
+scope and what share of account spend that represents, so nobody reads the top 25 as the top
+25 of the whole account.
 
 | # | Search term | Spend | Clicks | Conv | CPA | Conv % | Verdict |
 
@@ -397,6 +512,32 @@ Terms that convert, or should, and cannot because of budget or absence:
 
 | From | To | Amount / mo | Rationale |
 
+**Campaigns with no search term report.** Give Performance Max, Demand Gen, Display, Video,
+and Shopping their own block here, sized by spend, and say up front that the term-level
+verdicts in Sections 4 through 6 do not cover them.
+
+| Campaign | Type | Spend | % of account | Conv | CPA | What the data does and does not show |
+
+For each one, work with what exists rather than pretending the search term analysis reached
+it:
+
+- **Performance Max.** Report spend, conversions, and CPA against `Acceptable CPA band`.
+  Where the search terms insight report is available, report the search categories by
+  impressions and conversions, and say clearly that these are grouped categories, not search
+  terms, so they support a direction and not a KEEP, WATCH, or CUT verdict on any one query.
+  Check that brand terms are excluded, and check whether conversions here overlap with what
+  the brand search campaign was already converting. Where asset group detail exists, name the
+  weakest asset group by CPA.
+- **Demand Gen.** Same treatment. It buys audiences, not queries, so judging it on search
+  intent is a category error. Judge it against its own role in the funnel, and against
+  `Sales cycle length` in `Channel Economics` before calling a high CPA a failure.
+- **Everything else.** Report spend and conversions, and name it as uninspected.
+
+Recommendations for these campaign types stay at the level the data supports: exclusions,
+budget, conversion action selection, and asset quality. Do not recommend a negative keyword
+list as if it worked the way it does in a search campaign, and confirm what the account
+actually supports before recommending term-level exclusions at all.
+
 ### Section 8: Quick wins with projected impact
 
 A table, not a numbered list. Seven to ten specific actions.
@@ -416,22 +557,87 @@ additional spend.
 Paid search captures demand that already exists. It cannot create it, and it cannot tell you
 who is behind the click. This section quantifies both limits and says what follows from them.
 
-Cover four things:
+It is also the section most likely to be built on numbers nobody can source. Sizing category
+demand requires search volume for terms the account does not bid on, and that volume is in
+none of the pulls above. Decide which version of this section you are writing before you
+write a line of it.
+
+#### The inputs, and where each one comes from
+
+| Input | Source | If it is missing |
+|---|---|---|
+| Available monthly search volume across the terms in `Category terms` | A Keyword Planner export the user pulls from the same account: search volume and forecasts for that term list. It is not in Pulls 1 through 4 and you cannot derive it from them | Version A cannot be written |
+| Click-through rate to apply to that volume | This account's own observed non-brand CTR, from Pull 2 or Pull 3 | Version A cannot be written |
+| Conversion rate | This account's own observed non-brand conversion rate | The chain stops at clicks. Say so and stop there |
+| The target to compare against | The user states the pipeline or new-customer target for the period and the lead to closed-won rate. `Average deal size` and `Acceptable CPA band` in `Channel Economics` supply the rest | There is no target to compare a ceiling against, so there is no gap to report |
+
+Ask for all of these in one message, by name. **Do not substitute a realistic, typical, or
+industry-standard rate for the account's observed rate.** A rate with no source is an
+invented benchmark, and in this section it drives the headline conclusion. The account's own
+non-brand CTR and conversion rate are the only rates allowed here, and each one is labeled in
+the document with the pull it came from.
+
+#### Version A, when the inputs arrive
+
+Write the chain out in the document, one line per step, each line labeled with its source:
+
+```
+monthly searches across Category terms      Keyword Planner export, date of pull
+x observed non-brand CTR                    this account, last 3 months
+= reachable clicks per month
+x observed non-brand conversion rate        this account, last 3 months
+= reachable conversions per month
+x stated lead to closed-won rate            supplied by the user
+x Average deal size                         Channel Economics
+= reachable revenue per month at full coverage
+```
+
+Three rules on this arithmetic:
+
+1. **Run it twice**, once at the observed conversion rate and once at half of it, and report
+   the result as a range. A single number here reads as a forecast and it is not one.
+2. **Full coverage is a ceiling, not a plan.** No account holds all available impressions on
+   a category. Present the top of the range as the most this channel could ever return, then
+   say what the account holds today from its own impression share figures.
+3. **Compare the ceiling to the stated target, not to ambition.** When the ceiling sits below
+   the target, the gap is not a bidding problem. No budget increase closes it, because the
+   searches do not exist yet. State that in one sentence with both figures next to each other.
+
+#### Version B, when the inputs do not arrive
+
+Say in the document that category-level demand could not be sized, and name the one export
+that would size it. Then report what account data alone supports, which is real and useful:
+
+- **Headroom inside the current keyword set.** For each campaign and each significant
+  keyword, eligible impressions are impressions divided by search impression share. The gap
+  between eligible and served is demand the account is already eligible for and not getting.
+- **Why that headroom is unserved**, split into budget-lost and rank-lost impression share.
+  One is a funding decision, the other is a relevance or bid problem.
+- **Coverage of `Category terms`**, as a count: how many of those terms have no keyword in
+  the account at all. A count, never a volume estimate.
+
+Then state the limits plainly, in the document, not in a footnote: this analysis covers only
+terms the account already bids on. It cannot say how many people search the category, whether
+category demand is large enough to hit the target, or whether the ceiling sits above or below
+it. Those questions need the Keyword Planner export, and until it arrives the honest answer
+is that the account has measurable headroom of a stated size and an unmeasured category
+around it.
+
+#### The three questions that follow, in either version
 
 1. **How much of the traffic is out of ICP.** Estimate from the search term mix, since the
    platform will not tell you the searcher's title or company size. Say plainly that this is
-   an estimate from intent signals rather than a measured figure.
-2. **Whether the category has enough search demand to hit the pipeline target.** Take total
-   available impressions on the terms in `Category terms`, apply realistic CTR and conversion
-   rates, and compare the result against what `Channel Economics` implies the company needs.
-   When the ceiling on search demand sits below the target, the gap is not a bidding problem.
-   No budget increase closes it, because the searches do not exist yet.
-3. **What that gap implies.** A demand gap is a demand-creation problem. The buyers exist,
-   they have the problem described in `Named Traps`, and they are not yet searching for the
-   category because they have not named their problem the way you name it. Reaching them
-   requires targeting by who they are rather than by what they typed.
-4. **Which awareness and consideration gaps search structurally cannot fill.** Name them
-   against the pillars and traps in `brand-kit/positioning.md`.
+   an estimate from intent signals rather than a measured figure, and that it covers only the
+   spend with a term attached to it.
+2. **What a demand gap implies**, where Version A found one. A demand gap is a
+   demand-creation problem. The buyers exist, they have the problem described in
+   `Named Traps`, and they are not yet searching for the category because they have not named
+   their problem the way you name it. Reaching them requires targeting by who they are rather
+   than by what they typed. Where Version B is what ran, this conclusion is available as a
+   hypothesis and must be written as one.
+3. **Which awareness and consideration gaps search structurally cannot fill.** Name them
+   against the pillars and traps in `brand-kit/positioning.md`. This one holds in both
+   versions, because it does not depend on volume data.
 
 Write this as analysis that follows from the data. It is a strategic conclusion, not a pitch
 for another channel, and it should read as one.
@@ -450,9 +656,11 @@ total projected additional conversions across both channels.
 
 ### Section 11: Key takeaways
 
-Five to seven executive bullets: account health, total recoverable waste, the KEEP/WATCH/CUT
-split across the top 25, the top structural change, the demand gap finding, and the next
-three moves in order.
+Five to seven executive bullets: account health, total recoverable waste with the share of
+spend the term analysis could not see, the KEEP/WATCH/CUT split across the top 25, the share
+of budget sitting in campaign types with no search term report, the top structural change,
+the demand gap finding and which version of Section 9 produced it, and the next three moves
+in order.
 
 ## Writing rules
 
@@ -465,7 +673,14 @@ Follow `brand-kit/voice.md` in full. It governs. These are the audit-specific ad
 - Tables for anything data-heavy.
 - **Never invent a number.** Every figure traces to the account data or to the brand kit. If
   a figure is an estimate, label it as one in the same sentence.
-- No source links in the document body. Benchmarks get a footnote line under their table.
+- **Never supply a benchmark from memory.** No CTR, CPC, CPM, CPA, conversion rate, or
+  impression share presented as an industry, category, or platform norm may come from your
+  own knowledge, and no citation may be attached to one. A benchmark enters this document
+  only when the user hands you the figure, the source, and the date. Where none is supplied,
+  the comparison is against this account's own history and the document says so in a
+  sentence. This rule outranks the wish to fill a column.
+- No source links in the document body. A user-supplied benchmark gets a footnote line under
+  its table.
 - Bold sparingly. Everything bold is nothing bold.
 
 ## Word document output

@@ -482,9 +482,13 @@ system font if they are not guaranteed on a recipient's machine, and note the
 substitution once. The footer string is the `Document Footer` value from
 `brand.md`, right-aligned in the muted text color.
 
-Name the file after the subject and the analysis, and save it to the session's
-output folder. In Claude environments that is `/mnt/user-data/outputs/`; on other
-hosts, use whatever directory the host writes deliverables to.
+Name the file after the subject and the analysis. Where it goes depends on the
+host, so do not assume a path. If the session has a designated output or
+deliverables folder, write it there. If it does not, which is the normal case in
+a plain command line session on a laptop, write it to the current working
+directory. Either way, say in one line where you put it. A file written to a
+folder that does not exist on this machine is a silent failure, and the user
+finds out by not finding it.
 
 ---
 

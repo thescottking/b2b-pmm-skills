@@ -29,6 +29,14 @@ around them.
 3. `brand-kit/positioning.md`: the frame, pillars, traps, stats, vocabulary
 4. `brand-kit/capabilities.md`: read before making any product claim
 
+Three shared references carry the structure this skill applies. Read the ones
+the deliverable needs:
+
+5. `docs/writing-templates.md`: the asset skeletons and every length target
+6. `docs/aeo-style-guide.md`: how to structure anything meant to be quoted by an
+   answer engine
+7. `docs/messaging-patterns.md`: the eight structural patterns, one per asset
+
 If `brand-kit/` is missing or still has its template placeholders, stop and tell
 the user to run `brand-kit-setup`. Do not proceed with invented positioning.
 
@@ -48,10 +56,14 @@ the user to run `brand-kit-setup`. Do not proceed with invented positioning.
 4. **Pick the lead quality.** Most assets anchor one of the qualities in
    `The Pillars`, even when all of them show up. This is an internal decision.
    It shapes what you emphasize; it never appears in the copy.
-5. **Apply the asset template** from `Asset Templates` below.
-6. **Apply voice.** Follow `Compact Voice Rules`. If `house-style` is installed,
+5. **Apply the asset template** named in `Asset Templates` below. The shape and
+   the length come from `docs/writing-templates.md`, and for anything written to
+   be retrieved and quoted, `docs/aeo-style-guide.md` governs on top of it.
+6. **Pick the pattern.** One structural pattern from `docs/messaging-patterns.md`
+   carries the argument. Choose it before drafting, not after.
+7. **Apply voice.** Follow `Compact Voice Rules`. If `house-style` is installed,
    run it as the final pass.
-7. **Deliver.** End with a short note naming the lead quality and the target
+8. **Deliver.** End with a short note naming the lead quality and the target
    audience, kept outside the asset itself so it never ships to a reader.
 
 If the user only asks a positioning question, "how do we differentiate against
@@ -109,124 +121,120 @@ In practice:
 
 ## 4. Asset Templates
 
-Each template says what to include, what to pull from the kit, and how long the
-asset should run.
+The skeletons and the length targets live in `docs/writing-templates.md`. The
+answer-engine rules live in `docs/aeo-style-guide.md`. This skill restates
+neither. What follows is which template each deliverable uses, which guide
+governs its structure, and what to pull from the kit for it.
 
-### 4.1 Blog post / article
+| Deliverable | Template in `docs/writing-templates.md` | Also governed by |
+|---|---|---|
+| Blog post or article | Article | `docs/aeo-style-guide.md` |
+| Cluster or supporting article | Article | `docs/aeo-style-guide.md` |
+| Pillar article | Pillar guide template in `docs/aeo-style-guide.md` | that file throughout |
+| Landing, feature, or solution page | Landing page or feature page | `docs/aeo-style-guide.md` |
+| Email | Email | |
+| Case study | Case study | |
+| Executive brief | Executive brief | |
+| Whitepaper | Whitepaper | |
+
+Every length comes from `Length targets` in `docs/writing-templates.md`. Never
+set a word count from memory.
+
+### 4.1 The answer-engine rules, applied
+
+Any row marked above as governed by `docs/aeo-style-guide.md` carries the
+elements below on top of its template beats. The rules themselves are in that
+file, under the headings named. Read them there and do not paraphrase them here.
+
+1. **Answer the title inside the opening.** `The 100-word rule`.
+2. **Question-based H2s.** `Question-based headings`. Phrase every major heading
+   as a question a buyer would actually type, using the terms in
+   `Canonical Vocabulary` in `brand-kit/positioning.md`.
+3. **An atomic answer under every question heading.** `The atomic answer rule`.
+   Write it first and the section around it second.
+4. **A Key Takeaways block after the intro, above the first H2.**
+   `The Key Takeaways block`.
+5. **An FAQ section at the end.** `The FAQ section`. Source the questions from
+   real sales objections and real search queries, never invent them.
+6. **The `Publication checklist`** before delivery, including its internal
+   linking rule, which matches the descriptive anchor rule in
+   `Compact Voice Rules` below.
+
+These do not apply to emails, case studies, executive briefs, or cold outreach.
+A person opens those. An engine does not retrieve them.
+
+### 4.2 Blog post or article
+
+**Template:** Article.
 
 **Pull from:** the sections of `brand-kit/positioning.md` relevant to the topic.
 Always include at least one entry from `Named Traps`, at least one tagline or
 signature line from `Naming and Usage Rules`, and one quote from
-`External Validation Quotes` when the audience warrants it.
+`External Validation Quotes` when the audience warrants it. Use
+`Categories We Are Not` for competitive contrast without naming competitors
+gratuitously. Proof comes from `Headline Stats`, and the close is the blog CTA
+from `Calls to Action` in `brand-kit/brand.md`.
 
-**Structure:**
+### 4.3 Landing, feature, or solution page
 
-1. Hook, a bold claim, a sourced stat, or the named trap itself.
-2. Problem, the pain the reader already knows. Use `Categories We Are Not` for
-   competitive contrast without naming competitors gratuitously.
-3. Bridge, why the current approach fails.
-4. Solution, the right approach. Sell the idea, then let the product be the
-   answer.
-5. Proof, concrete examples and numbers from `Headline Stats`.
-6. CTA, the blog close from `Calls to Action` in `brand-kit/brand.md`.
-
-**Length:** 800 to 1,400 words.
-
-### 4.2 Landing page / feature page
+**Template:** Landing page or feature page.
 
 **Pull from:** the relevant quality's block in `The Pillars`, `Named Traps`,
 `Categories We Are Not`, `Headline Stats`, and the matching `What We Do` block
-in `brand-kit/capabilities.md`.
+in `brand-kit/capabilities.md`. Social proof is a cleared quote or the
+placeholder `[Customer quote / case study reference]`. The CTA is the
+landing-page primary from `Calls to Action`.
 
-**Structure:**
+### 4.4 Email
 
-1. Headline, benefit-driven, eight words or fewer.
-2. Subhead, one sentence expanding the headline.
-3. Problem, two or three short paragraphs on the pain.
-4. Solution, what the product does, in bullets grounded in `What We Do`.
-5. Differentiator, the separating line from `Categories We Are Not`.
-6. Social proof, a cleared quote, or the placeholder
-   `[Customer quote / case study reference]`.
-7. CTA block, the landing-page primary from `Calls to Action`.
-
-### 4.3 Email
+**Template:** Email.
 
 **Pull from:** the topic-relevant sections of `brand-kit/positioning.md` and the
-email CTA from `Calls to Action`.
+email CTA from `Calls to Action`. Subject line patterns are in
+`docs/writing-templates.md` as well.
 
-**Structure:**
+### 4.5 Case study
 
-1. Subject line, under fifty characters, curiosity or urgency, no stacked
-   clauses.
-2. Opening line, personal and direct. No throat-clearing.
-3. Core message, one idea, three to five short paragraphs.
-4. CTA, a single action.
+**Template:** Case study.
 
-### 4.4 Case study
+**Pull from:** the customer data the user provides, plus the matching capability
+block in `brand-kit/capabilities.md` for an accurate description of what was
+deployed. Results are hard numbers: time saved, cost reduced, throughput
+increased, cycle time cut. The quote is verbatim or a clearly marked
+placeholder.
 
-**Pull from:** the customer data the user provides, plus the matching
-capability block in `brand-kit/capabilities.md` for an accurate description of
-what was deployed.
+### 4.6 Executive brief and whitepaper
 
-**Structure:**
-
-1. Customer context, industry, size, situation. Name the customer only if
-   `brand-kit/capabilities.md` says the name is cleared; otherwise describe them
-   by industry and headcount band.
-2. The problem, specific and quantified.
-3. The solution, what was deployed and how it works.
-4. Results, hard numbers. Time saved, cost reduced, throughput increased,
-   cycle time cut.
-5. Quote, from the buyer, verbatim, or a clearly marked placeholder.
-
-### 4.5 Executive brief / whitepaper
+**Templates:** Executive brief for the one-screen version, Whitepaper for the
+long argument.
 
 **Pull from:** `The Manifesto`, `The Frame`, `Named Traps`, `Headline Stats`,
 and the relevant blocks of `The Pillars`. The manifesto is what the executive
 summary and the recommendation argue from. A brief that only inventories
-capabilities gives the reader nothing to decide.
+capabilities gives the reader nothing to decide. Market context uses `Why now`
+from `The Frame`.
 
-**Structure:**
+### 4.7 Pillar article
 
-1. Executive summary, the argument in three sentences.
-2. Market context, what changed and why it matters now. Use `Why now` from
-   `The Frame`.
-3. The problem, detailed analysis, every number sourced.
-4. The approach, map to the qualities naturally, never as branded section
-   headers.
-5. Technical depth, architecture, integrations, deployment.
-6. ROI framing, tie to revenue, cost, or risk.
-7. Recommendation, one paragraph, one decision.
-
-### 4.6 Pillar article / long-form thought leadership
+**Template:** the `Pillar guide template` in `docs/aeo-style-guide.md`, applied
+in full, including the recording-to-pillar method when the source is a
+transcript.
 
 **Pull from:** `brand-kit/positioning.md` broadly, and `The Manifesto` first.
 The pillar piece is definitional: `The Manifesto` supplies the argument and
-`The Frame` is its spine. Thought leadership that does not carry the manifesto's
-point of view is a summary of the category, which every competitor has already
-published.
+`The Frame` is its spine. Use the canonical noun and its canonical definition
+from `The Frame` verbatim, treat the qualities as the standard any real solution
+must meet without naming them, and close on the sequence in `Where to Start`.
+Thought leadership that does not carry the manifesto's point of view is a
+summary of the category, which every competitor has already published.
 
-**Structure:**
+### 4.8 Supporting article (cluster page)
 
-1. Opening provocation or a concrete scene the reader has lived.
-2. The problem at scale, a sourced headline stat and a named trap.
-3. The category definition, the canonical noun and its canonical definition
-   from `The Frame`, used verbatim.
-4. The criteria, the qualities as the standard any real solution must meet,
-   described without their internal names.
-5. Demonstration, vignettes and proof points.
-6. The path forward, the sequence in `Where to Start`.
-7. CTA.
-
-**Length:** 1,200 to 1,800 words.
-
-### 4.7 Supporting article (cluster page)
+**Template:** Article, with the answer-engine rules in 4.1 applied.
 
 **Pull from:** the topic's coverage in `brand-kit/positioning.md`, plus explicit
-cross-links to the pillar article and sibling cluster pieces.
-
-**Structure:** the blog post template, with inline links to the pillar and to
-the pages listed in `Link Map` in `brand-kit/capabilities.md`.
+cross-links to the pillar article and to the pages listed in `Link Map` in
+`brand-kit/capabilities.md`.
 
 ---
 
@@ -249,6 +257,8 @@ even when it runs alone.
 - No concluding paragraph that summarizes what was just said. End on the CTA, a
   question, or the sharpest line in the piece.
 - Numbers, not adjectives. Every number sourced from `Headline Stats`.
+- One structural pattern from `docs/messaging-patterns.md` is visible in every
+  customer-facing asset. Two stacked in a short asset is one too many.
 - Vary section structure. If every section runs problem, solution, product,
   benefit, the piece reads as assembled. Open one section on a stat, one on a
   scene, one on a contradiction.
@@ -273,8 +283,9 @@ Ask for anything you cannot infer:
 4. **Target audience:** which role group from `Buying Committee` in
    `brand-kit/icp.md`, and which tier of `The Fit Matrix`.
 5. **CTA:** which context from `Calls to Action` in `brand-kit/brand.md`.
-6. **Length:** short (300 to 500 words), medium (500 to 1,000), long (1,000 to
-   2,000), or let the topic decide.
+6. **Length:** the default is the figure for this asset type in
+   `Length targets` in `docs/writing-templates.md`. Ask only if the user wants
+   to override it, and say what the default was.
 
 If the user gives a URL, read it first and extract the core argument, the usable
 numbers, and the intended audience before writing a word.
@@ -283,6 +294,8 @@ numbers, and the intended audience before writing a word.
 
 Confirm, before drafting:
 
+- Which pattern from `docs/messaging-patterns.md` carries the argument. One per
+  asset.
 - Which entries in `Named Traps` fit this topic.
 - Which quote from `External Validation Quotes` reinforces the angle, if any.
 - Which tagline from `Naming and Usage Rules` belongs in this asset.
@@ -295,8 +308,10 @@ Confirm, before drafting:
 
 ### Step 3, Apply the template
 
-Use the right template from `Asset Templates` and pull exactly what its
-**Pull from** line names. Do not substitute memory for the file.
+Use the row for this deliverable in `Asset Templates`, read the named template
+in `docs/writing-templates.md`, and pull exactly what the **Pull from** line
+names. Where the row names `docs/aeo-style-guide.md`, apply the elements in
+`The answer-engine rules, applied`. Do not substitute memory for either file.
 
 ### Step 4, Write
 
@@ -327,7 +342,11 @@ Before delivering, scan the entire output for:
 4. Any number that is not in `Headline Stats`.
 5. Any quality name, "pillars," or "framework" in the body copy.
 6. Any claim that contradicts `What We Do Not Do`.
-7. Any bare "learn more: URL" link.
+7. Any bare "learn more: URL" link, and any anchor that is a bare keyword
+   rather than a descriptive phrase inside a sentence.
+8. On an answer-engine asset: a heading that is not a question, a section whose
+   first paragraph does not stand alone, a missing Key Takeaways block, or a
+   missing FAQ.
 
 Replace every instance. There are no exceptions to the em-dash rule.
 

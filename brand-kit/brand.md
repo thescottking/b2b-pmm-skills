@@ -98,6 +98,54 @@ leaving it blank. The social skill will help you write one on first run.*
 
 ---
 
+## Hashtags
+
+The tags social posts are allowed to use. `social-generator` and
+`transcript-to-article` read this section and are forbidden from inventing a
+tag, so an empty heading here means every social deliverable arrives without
+hashtags or stops to ask you for them.
+
+Two kinds, doing two different jobs:
+
+- **Branded tags.** Your company name, your product names, and any campaign or
+  series tag you own. Almost nobody outside your orbit searches these, so they
+  buy consistency and attribution rather than reach. Keep it to one or two, and
+  spell them the same way every time. A branded tag written three ways is three
+  tags.
+- **Topical tags.** The subject terms your buyer already follows. These are the
+  ones that carry reach. Harvest them from `Search Terms` in `icp.md` and from
+  `Canonical Vocabulary` in `positioning.md` so the tags use the words your
+  market actually uses. Skip the firehose tags that describe a whole industry,
+  and skip the ones so specific that nobody follows them.
+
+How many per platform. These are the counts the social skills apply:
+
+| Platform | Count | Mix |
+|---|---|---|
+| LinkedIn | 3 to 4 | One branded, the rest topical |
+| X | 1 to 2 | Topical, branded only when the post is company news |
+| Instagram | 6 to 8 | One or two branded, the rest topical |
+
+| Kind | Tag | Use when |
+|---|---|---|
+| Branded | `#______` | |
+| Branded | `#______` | |
+| Topical | `#______` | |
+| Topical | `#______` | |
+| Topical | `#______` | |
+| Topical | `#______` | |
+| Topical | `#______` | |
+| Topical | `#______` | |
+
+**Never use:** tags you have retired, tags that belong to somebody else's
+campaign, and any tag that states a claim you could not defend in body copy.
+
+*If your company does not use hashtags at all, write that here in one line
+rather than leaving the table blank. The social skills will then ship posts
+without them instead of stopping.*
+
+---
+
 ## Document Footer
 
 The string that appears at the bottom of generated reports and decks.

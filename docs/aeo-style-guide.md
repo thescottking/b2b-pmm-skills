@@ -4,8 +4,10 @@ How to structure content so answer engines can extract it, quote it, and cite
 it. This file owns the structural rules. It does not own voice: that lives in
 `brand-kit/voice.md` and is enforced by `house-style`.
 
-`content-writer` and `transcript-to-article` both read this file. Neither one
-restates these rules, so this is the only place to change them.
+`content-writer` and `transcript-to-article` both read this file and apply these
+rules to the assets that get retrieved and quoted. `house-style` points here
+when a draft is written for extraction. None of the three restates a rule, so
+this is the only place to change one.
 
 ---
 
@@ -110,8 +112,19 @@ Source the questions from real inputs: sales call objections, search console
 queries, the questions listeners asked during a recording, support tickets. An
 invented FAQ reads like one.
 
-Mark the section up with FAQPage schema. The schema is what makes the section
-eligible for extraction as a discrete answer rather than as body text.
+Do not gate the section on schema markup. Answer engines retrieve rendered text
+passages, not JSON-LD, so what makes an answer extractable is that it stands on
+its own in the visible copy, under a question the reader would actually ask.
+
+Structured data is optional here and its measured effect on citation is close to
+nothing. The best controlled test to date treated 1,885 pages against roughly
+4,000 matched controls and found +2.2% on ChatGPT, +2.4% on Google AI Mode, and
+minus 4.6% on AI Overviews. Google states in writing that no special structured
+data is needed to appear in its AI experiences. FAQPage rich results themselves
+have been restricted to authoritative government and health sites since August
+2023, so a B2B software vendor earns no rich result from the markup either.
+
+Spend the effort on the passage, not the schema.
 
 ---
 
@@ -122,13 +135,17 @@ Before anything ships:
 - [ ] A visible "Last updated" date with the month, day, and year, at the top or
       bottom of the page. Freshness signals are read literally.
 - [ ] An author bio box at the end, with a real person and a real credential.
-- [ ] 3 to 5 internal links using exact-match anchor text. Choose the targets
-      from the `Link Map` in `brand-kit/capabilities.md`, which is the only
-      place link destinations are defined. Do not invent a URL pattern.
+- [ ] 3 to 5 internal links with descriptive inline anchor text, written the way
+      `content-writer` writes them: "the platform
+      [completes third-party risk assessments](URL) in minutes," never a bare
+      keyword and never "learn more: URL." Choose the targets from the
+      `Link Map` in `brand-kit/capabilities.md`, which is the only place link
+      destinations are defined. Do not invent a URL pattern.
 - [ ] The first 100 words answer the H1.
 - [ ] Every question H2 opens with a 40 to 60 word atomic answer.
 - [ ] Key Takeaways sits above the first H2.
-- [ ] The FAQ has at least 8 questions and carries FAQPage schema.
+- [ ] The FAQ has at least 8 questions, each answered in a self-contained
+      passage in the visible copy.
 - [ ] Every statistic appears in `Headline Stats` in `brand-kit/positioning.md`
       with a source, and none carry an unverified flag.
 
@@ -136,7 +153,8 @@ Before anything ships:
 
 ## Standard article template
 
-For a normal article, 900 to 1,400 words:
+For a normal article. Length is set by `Length targets` in
+`docs/writing-templates.md`, which is the only place asset lengths are defined.
 
 1. **H1 hook.** A blunt truth or a direct question.
 2. **Intro.** The answer to the H1, inside 100 words.
@@ -151,8 +169,9 @@ For a normal article, 900 to 1,400 words:
 
 ## Pillar guide template
 
-Target length 1,900 to 3,500 words. Use this for the anchor piece of a topic
-cluster, where cluster articles link up to it and it links back down.
+Use this for the anchor piece of a topic cluster, where cluster articles link up
+to it and it links back down. Length is set by `Length targets` in
+`docs/writing-templates.md`.
 
 1. **H1 hook.** A blunt truth or a direct question.
 2. **Intro.** The direct answer to the H1, inside the first 100 words.
@@ -162,13 +181,14 @@ cluster, where cluster articles link up to it and it links back down.
 6. **Main body.** Eight to fifteen H2s, each phrased as a real question. The
    first 40 to 60 words under each is the atomic answer. Then the explanation,
    the quotes, the steps, or the data.
-7. **FAQ.** Eight to twelve questions with FAQPage schema.
+7. **FAQ.** Eight to twelve questions, each answered in a self-contained
+   passage.
 8. **Conclusion and CTA.** One measurable next step.
 9. **Author bio box and last-updated date.**
 
 A pillar guide earns its length through the number of questions it answers, not
 through longer paragraphs. If you cannot find ten real questions, you have a
-1,200-word article, and that is fine.
+standard article, and that is fine.
 
 ---
 
@@ -220,7 +240,8 @@ engines:
 > Paragraphs run one to three sentences. Use tables for contrasts. Add a Key
 > Takeaways block of 3 to 5 bullets after the intro. End with an FAQ of 8 to 12
 > questions and one clear CTA. Do not introduce any statistic that is not
-> already in the draft. Target 1,900 to 3,500 words for pillar content.
+> already in the draft. Target 1,900 to 3,500 words for pillar content, the
+> figure set in `Length targets` in `docs/writing-templates.md`.
 
 Run `house-style` after this prompt, not instead of it. This one fixes
 structure. That one fixes voice.

@@ -28,6 +28,11 @@ around them.
 3. `brand-kit/positioning.md`: the frame, pillars, traps, stats, vocabulary
 4. `brand-kit/capabilities.md`: read before making any product claim
 
+Two shared references carry structure this skill does not own:
+
+5. `docs/writing-templates.md`: the LinkedIn post beats and its length target
+6. `docs/messaging-patterns.md`: the eight structural patterns, one per caption
+
 If `brand-kit/` is missing or still has its template placeholders, stop and tell
 the user to run `brand-kit-setup`. Do not proceed with invented positioning.
 
@@ -45,9 +50,14 @@ says "our three pillars", "our messaging framework", or any pillar name by
 title has failed. `AI Tells to Avoid` in `brand-kit/voice.md` calls this
 scaffolding exposure and the quality panel penalizes it.
 
-**Hashtags come from the brand kit.** Never invent one. Use the tags the brand
-kit defines. If the brand kit defines none, ask the user for the set once and
-tell them to add it, rather than guessing at a branded tag that may not exist.
+**Hashtags come from `Hashtags` in `brand-kit/brand.md`.** Never invent one.
+That section splits them into branded and topical and gives a count per
+platform; use those tags and those counts. If the section is missing or its
+table is empty, ask the user for the set once, tell them it belongs under
+`Hashtags` in `brand-kit/brand.md` so every skill finds it, and ship the posts
+without hashtags in the meantime. Do not guess at a branded tag that may not
+exist. If the section says in words that the company does not use hashtags,
+that is an answer: ship without them and do not ask again.
 
 ---
 
@@ -62,7 +72,9 @@ a time.
    concrete number.
 2. **Platforms.** LinkedIn, X, Instagram, or any combination.
 3. **Angle.** Which quality from `The Pillars` or which entry from `Named Traps`
-   in `brand-kit/positioning.md` this post leans on. Internal answer only.
+   in `brand-kit/positioning.md` this post leans on, and which pattern from
+   `docs/messaging-patterns.md` delivers it. One pattern per caption. Internal
+   answer only.
 4. **Tone.** Authoritative, pragmatic, contrarian, or plain. Stays inside
    `Tone` in `brand-kit/voice.md` either way.
 5. **Background.** Which palette role grounds the image. See the table in Step 3.
@@ -83,19 +95,22 @@ instead of asserting it.
 
 ### LinkedIn
 
-- Around 600 characters. 3 to 5 sentences.
+- Length and beats come from `LinkedIn post` in `docs/writing-templates.md`. Do
+  not restate them here and do not invent a character budget.
 - Lead with a real statistic from the source. Not a question, not a setup line.
 - One idea. A LinkedIn post that makes two arguments makes neither.
 - Name the company once, naturally, and never as the subject of the sentence.
-- Article link at the end.
-- 3 to 4 hashtags from the brand kit.
+- Article link at the end. The template allows an empty CTA beat; this skill
+  does not, because a social package ships a destination.
+- 3 to 4 hashtags from `Hashtags` in `brand-kit/brand.md`, one branded.
 - **Text overlay:** a bold 3 to 7 word phrase for the graphic.
 
 ### X
 
 - Under 280 characters, counted. State the count.
 - One sharp claim or one number. Nothing survives compression except the point.
-- 1 to 2 hashtags from the brand kit.
+- 1 to 2 hashtags from `Hashtags` in `brand-kit/brand.md`, topical unless the
+  post is company news.
 - Link optional and it costs characters, so earn it.
 - No text overlay needed.
 
@@ -104,7 +119,8 @@ instead of asserting it.
 - Hook on the first line. It is the only line most readers see before the fold.
 - Around 400 characters total.
 - 2 to 3 sentences of substance after the hook, then the CTA.
-- 6 to 8 hashtags from the brand kit, mixing branded and topical.
+- 6 to 8 hashtags from `Hashtags` in `brand-kit/brand.md`, mixing branded and
+  topical in the proportion that section sets.
 - **Text overlay:** a bold 3 to 7 word phrase for the graphic.
 
 ### Text overlay and graphic headline
@@ -261,17 +277,17 @@ Group by platform, then the image section.
 ```
 ## LinkedIn
 **Text overlay:** [3 to 7 words]
-**Caption:** [~600 chars, 3 to 5 sentences]
-**Hashtags:** [3 to 4 from the brand kit]
+**Caption:** [beats and length per `LinkedIn post` in `docs/writing-templates.md`]
+**Hashtags:** [3 to 4 from `Hashtags` in `brand-kit/brand.md`]
 
 ## X
 **Caption:** [under 280 chars] (count: __ / 280)
-**Hashtags:** [1 to 2 from the brand kit]
+**Hashtags:** [1 to 2 from `Hashtags` in `brand-kit/brand.md`]
 
 ## Instagram
 **Text overlay:** [3 to 7 words]
 **Caption:** [~400 chars, hook first]
-**Hashtags:** [6 to 8 from the brand kit]
+**Hashtags:** [6 to 8 from `Hashtags` in `brand-kit/brand.md`]
 
 ## Image
 **Graphic headline:** [4 to 8 words, accent words marked]
