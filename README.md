@@ -1,4 +1,4 @@
-# B2B CMO Skills
+# B2B PMM Skills
 
 Nine Claude skills for B2B marketing teams: voice and quality scoring, long-form
 content, transcript to article, social, company recon, competitive white space,
