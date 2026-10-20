@@ -22,6 +22,11 @@ other than the person who wrote it.
 4. Make cross-references to sibling skills optional. A skill may be installed
    on its own.
 5. Test against `examples/ampfield/` before opening a PR.
+6. If the skill ships code, keep it under `skills/<name>/scripts/`, declare its
+   dependencies in a `package.json` inside the skill folder, and write output
+   only under `output/` or a path the user passes. The architectural rule covers
+   templates too: an HTML or CSS template reads color, font, and size tokens
+   generated from `brand-kit/brand.md` and never contains a value of its own.
 
 ## Changing a skill
 
@@ -33,6 +38,8 @@ positioning, it is a brand-kit change on your end, not a repo change.
 - [ ] No company-specific nouns in any `SKILL.md`
 - [ ] No absolute paths, no personal directories
 - [ ] No credentials, no `.env` file, no token file
+- [ ] No color value in any `SKILL.md`, template, or stylesheet. Run
+      `node skills/brand-visuals/scripts/lint-colors.mjs` on templates you touch
 - [ ] Every brand-kit heading you cite actually exists in the template
 - [ ] Every sibling skill you reference exists in `skills/`
 - [ ] Ran the skill end-to-end against the Ampfield example

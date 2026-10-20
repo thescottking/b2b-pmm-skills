@@ -1,0 +1,100 @@
+{
+  "defaults": { "size": "og" },
+  "cards": [
+    {
+      "name": "og-article",
+      "variant": "article",
+      "eyebrow": "The Clipboard Gap",
+      "title": "The job ends at 2:40. The office finds out at *6:15.*",
+      "kicker": "Every decision made in between runs on a version of the day that is hours stale.",
+      "alt": "Ampfield article card. Headline: The job ends at 2:40. The office finds out at 6:15. Every decision made in between runs on a version of the day that is hours stale."
+    },
+    {
+      "name": "og-announcement",
+      "variant": "announcement",
+      "eyebrow": "New in the field record",
+      "title": "Claim Packet builds the warranty claim while the crew is still on the roof",
+      "kicker": "Required evidence is captured during the job, and close-out waits until it is complete.",
+      "cta": "Run the 30-day branch pilot",
+      "alt": "Ampfield announcement: Claim Packet builds the warranty claim while the crew is still on the roof. Call to action: Run the 30-day branch pilot."
+    },
+    {
+      "name": "square-stat",
+      "variant": "stat",
+      "size": "square",
+      "eyebrow": "The Second Truck Roll",
+      "stat": "31%",
+      "label": "of second visits happen because the first crew did not have the part on the truck",
+      "source": "EXAMPLE DATA. Fictional figure invented for this brand kit",
+      "alt": "Statistic card: 31 percent of second visits happen because the first crew did not have the part on the truck. Marked as fictional example data."
+    },
+    {
+      "name": "portrait-quote",
+      "variant": "quote",
+      "size": "portrait",
+      "eyebrow": "The Clipboard Gap",
+      "quote": "Nobody is trying to hide anything. The tech finished the job and the information had nowhere to go for *four hours.*",
+      "source": "Head of Field Operations, Ampfield",
+      "alt": "Quote from Ampfield's Head of Field Operations: Nobody is trying to hide anything. The tech finished the job and the information had nowhere to go for four hours."
+    },
+    {
+      "name": "banner",
+      "variant": "article",
+      "size": "banner",
+      "ground": "Primary",
+      "eyebrow": "Ampfield",
+      "title": "Close the job in the *field.*",
+      "kicker": "Field operations for solar, HVAC, and energy contractors",
+      "alt": "Ampfield banner: Close the job in the field. Field operations for solar, HVAC, and energy contractors."
+    },
+    {
+      "name": "slide-title",
+      "variant": "article",
+      "size": "slide",
+      "eyebrow": "Branch pilot readout",
+      "title": "What 30 days of field records showed one branch",
+      "kicker": "Second visits, warranty denials, and the first two hours of every morning.",
+      "alt": "Title slide: What 30 days of field records showed one branch. Second visits, warranty denials, and the first two hours of every morning."
+    },
+    {
+      "name": "avatar",
+      "variant": "mark",
+      "size": "avatar",
+      "ground": "Primary",
+      "alt": "Ampfield logo mark"
+    },
+    {
+      "name": "carousel-traps",
+      "size": "portrait",
+      "alt": "Four-page carousel on why field service companies fall behind themselves.",
+      "slides": [
+        {
+          "variant": "article",
+          "eyebrow": "Four pages",
+          "title": "Why a field service company is always *slightly behind itself*",
+          "kicker": "It is not the technicians. It is where the record of the job gets written."
+        },
+        {
+          "variant": "stat",
+          "ground": "Background soft",
+          "eyebrow": "The Clipboard Gap",
+          "stat": "6.5 hrs",
+          "label": "between a job finishing and the office having a usable record of it",
+          "source": "EXAMPLE DATA. Fictional figure invented for this brand kit"
+        },
+        {
+          "variant": "quote",
+          "ground": "Primary",
+          "quote": "The second visit is priced as a job and remembered as a *failure.*",
+          "source": "Chief Operating Officer, Ampfield"
+        },
+        {
+          "variant": "announcement",
+          "eyebrow": "What changes",
+          "title": "Write the record at the point of work, and every system reads the same day",
+          "cta": "See what a field record looks like"
+        }
+      ]
+    }
+  ]
+}

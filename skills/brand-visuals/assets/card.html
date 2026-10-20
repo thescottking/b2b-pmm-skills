@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>brand-visuals card</title>
+<!-- BRAND_HEAD -->
+<!--
+  Card template for brand-visuals. Do not put colors or fonts in here: every
+  value arrives from brand-kit/brand.md through scripts/render-card.mjs, which
+  sets the custom properties on .card and calls window.buildCard(spec).
+  All sizes are multiples of --u, which is the shorter side of the card
+  divided by 630, so one layout scales from a 400px avatar to a 1920px slide.
+-->
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:var(--W);height:var(--H);overflow:hidden;background:var(--g)}
+  body{-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+
+  .card{position:relative;width:var(--W);height:var(--H);background:var(--g);color:var(--fg);
+    display:flex;flex-direction:column;overflow:hidden;font-family:var(--font-body);
+    --pad:calc(72*var(--u))}
+  .card[data-variant="article"]{--pad:calc(96*var(--u))}
+
+  /* ---------- shared text roles ---------- */
+  .body{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;
+    padding:calc(56*var(--u)) var(--pad) calc(40*var(--u));position:relative;z-index:1;overflow:hidden}
+  .eyebrow{font-family:var(--font-mono);font-size:calc(19*var(--u));font-weight:var(--fw-eyebrow);color:var(--emph);
+    letter-spacing:.16em;text-transform:uppercase;margin-bottom:calc(26*var(--u));line-height:1.2}
+  .title{font-family:var(--font-display);font-weight:var(--fw-display);font-size:calc(60*var(--u));line-height:1.08;
+    letter-spacing:-.028em;color:var(--fg);max-width:calc(1000*var(--u));text-wrap:balance}
+  .kicker{font-family:var(--font-display);font-weight:var(--fw-h3);font-size:calc(25*var(--u));line-height:1.4;
+    color:var(--muted);max-width:calc(820*var(--u));margin-top:calc(26*var(--u));text-wrap:pretty}
+  .hl{color:var(--acc)}
+  .hl.bar{color:inherit;text-decoration:underline;text-decoration-color:var(--acc);
+    text-decoration-thickness:.13em;text-underline-offset:.12em;text-decoration-skip-ink:none}
+
+  /* ---------- footer ---------- */
+  .footer{flex:none;height:calc(116*var(--u));padding-bottom:calc(8*var(--u));margin:0 var(--pad);border-top:1px solid var(--rule);
+    display:flex;align-items:center;justify-content:space-between;gap:calc(24*var(--u));position:relative;z-index:1}
+  .logo{display:flex;align-items:center;height:calc(30*var(--u))}
+  .logo svg,.logo img{height:100%;width:auto;display:block}
+  .logo .name{font-family:var(--font-display);font-weight:var(--fw-display);font-size:calc(25*var(--u));letter-spacing:-.01em;color:var(--fg)}
+  .meta{font-family:var(--font-mono);font-size:calc(19*var(--u));color:var(--muted);letter-spacing:.02em;
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  /* ---------- tool: developer card ---------- */
+  .chrome{display:none}
+  [data-variant="tool"] .chrome{display:flex;height:calc(56*var(--u));flex:none;background:var(--raised);
+    border-bottom:1px solid var(--rule);align-items:center;padding:0 calc(24*var(--u));gap:calc(10*var(--u))}
+  .dot{width:calc(13*var(--u));height:calc(13*var(--u));border-radius:50%;
+    background:color-mix(in oklab,var(--muted) 45%,var(--raised))}
+  .chrome .path{margin-left:calc(18*var(--u));font-family:var(--font-mono);font-size:calc(15*var(--u));color:var(--muted)}
+  [data-variant="tool"] .title{font-family:var(--font-mono);font-size:calc(58*var(--u));letter-spacing:-.02em}
+  .cmd{display:none}
+  [data-variant="tool"] .cmd{position:relative;margin-top:calc(44*var(--u));font-family:var(--font-mono);
+    font-size:calc(31*var(--u));font-weight:var(--fw-data);color:var(--term);white-space:nowrap;display:flex;
+    align-items:baseline;gap:calc(16*var(--u));align-self:flex-start}
+  .cmd .glow{position:absolute;left:calc(-160*var(--u));top:50%;transform:translateY(-50%);
+    width:calc(1000*var(--u));height:calc(300*var(--u));z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse at 26% 50%,color-mix(in oklab,var(--term) 12%,transparent),transparent 66%)}
+  .cmd .prompt,.cmd .text,.cmd .caret{position:relative;z-index:1}
+  .cmd .prompt{color:var(--term-dim)}
+  .caret{display:inline-block;width:.48em;height:1.03em;background:var(--term);transform:translateY(.13em);margin-left:calc(4*var(--u))}
+  [data-variant="tool"] .card-scan{position:absolute;inset:0;pointer-events:none;z-index:2;
+    background:repeating-linear-gradient(to bottom,color-mix(in oklab,var(--fg) 1.6%,transparent) 0,
+    color-mix(in oklab,var(--fg) 1.6%,transparent) 1px,transparent 1px,transparent 3px)}
+
+  /* ---------- article: practice card ---------- */
+  .rail{display:none}
+  [data-variant="article"] .rail{display:block;position:absolute;left:0;top:0;bottom:0;width:calc(14*var(--u));background:var(--rail)}
+  [data-variant="article"] .footer{margin:0;padding:0 var(--pad) calc(8*var(--u));height:calc(120*var(--u));border-top:none;background:var(--band)}
+  [data-variant="article"] .footer .meta{color:var(--band-fg)}
+  [data-variant="article"] .footer .logo .name{color:var(--band-fg)}
+
+  /* ---------- announcement ---------- */
+  .cta{display:none}
+  [data-variant="announcement"] .cta{display:inline-flex;align-self:flex-start;margin-top:calc(40*var(--u));
+    background:var(--acc);color:var(--on-acc);font-family:var(--font-mono);font-weight:var(--fw-eyebrow);
+    font-size:calc(20*var(--u));letter-spacing:.06em;text-transform:uppercase;
+    padding:calc(16*var(--u)) calc(26*var(--u));border-radius:var(--radius-s)}
+
+  /* ---------- stat ---------- */
+  .stat-num,.stat-label,.source{display:none}
+  [data-variant="stat"] .stat-num{display:block;font-family:var(--font-display);font-weight:var(--fw-display);
+    font-size:calc(190*var(--u));line-height:.95;letter-spacing:-.04em;color:var(--emph);
+    font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
+  [data-variant="stat"] .stat-label{display:block;font-family:var(--font-display);font-weight:var(--fw-h3);
+    font-size:calc(36*var(--u));line-height:1.25;color:var(--fg);margin-top:calc(26*var(--u));
+    max-width:calc(960*var(--u));text-wrap:balance;letter-spacing:-.015em}
+  [data-variant="stat"] .source,[data-variant="quote"] .source{display:block;font-family:var(--font-mono);
+    font-size:calc(16*var(--u));color:var(--muted);margin-top:calc(30*var(--u));letter-spacing:.02em;
+    max-width:calc(960*var(--u))}
+
+  /* ---------- quote ---------- */
+  .qmark,.qtext{display:none}
+  [data-variant="quote"] .qmark{display:block;font-family:var(--font-display);font-weight:var(--fw-display);
+    font-size:calc(150*var(--u));line-height:.7;height:calc(70*var(--u));color:var(--emph)}
+  [data-variant="quote"] .qtext{display:block;font-family:var(--font-display);font-weight:var(--fw-h3);
+    font-size:calc(42*var(--u));line-height:1.28;letter-spacing:-.015em;color:var(--fg);
+    max-width:calc(1000*var(--u));text-wrap:pretty}
+  [data-variant="quote"] .source{text-transform:uppercase;letter-spacing:.12em}
+
+  /* ---------- mark: avatar ---------- */
+  [data-variant="mark"] .body{align-items:center;justify-content:center;padding:0}
+  [data-variant="mark"] .footer,[data-variant="mark"] .eyebrow,[data-variant="mark"] .title,[data-variant="mark"] .kicker{display:none}
+  .markbox{display:none}
+  [data-variant="mark"] .markbox{display:flex;align-items:center;justify-content:center;
+    width:calc(var(--short) * .5);height:calc(var(--short) * .5)}
+  .markbox svg,.markbox img{width:100%;height:100%;display:block}
+  .markbox .name{font-family:var(--font-display);font-weight:var(--fw-display);color:var(--fg);font-size:calc(var(--short) * .3);line-height:1}
+
+  /* ---------- sizes ---------- */
+  [data-size="portrait"] .body,[data-size="square"] .body{justify-content:center}
+  [data-size="portrait"] .title{font-size:calc(62*var(--u))}
+  [data-size="banner"] .footer,[data-size="banner"] .chrome{display:none}
+  [data-size="banner"] .body{align-items:flex-end;text-align:right;padding:0 6% 0 34%}
+  [data-size="banner"] .title,[data-size="banner"] .kicker{max-width:none}
+  [data-size="banner"] .rail{display:none}
+  [data-size="banner"] .cta,[data-size="banner"] .cmd{align-self:flex-end}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <span class="rail"></span>
+  <div class="chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="path"></span></div>
+  <div class="body">
+    <div class="markbox"></div>
+    <div class="qmark" aria-hidden="true">&ldquo;</div>
+    <div class="eyebrow"></div>
+    <div class="stat-num"></div>
+    <div class="title"></div>
+    <div class="qtext"></div>
+    <div class="stat-label"></div>
+    <div class="kicker"></div>
+    <div class="cmd"><span class="glow"></span><span class="prompt">$</span><span class="text"></span><span class="caret"></span></div>
+    <div class="cta"></div>
+    <div class="source"></div>
+  </div>
+  <div class="footer"><span class="logo"></span><span class="meta"></span></div>
+  <div class="card-scan"></div>
+</div>
+<script>
+// spec arrives from render-card.mjs with text already escaped and marked up.
+window.buildCard = function (spec) {
+  const card = document.getElementById('card');
+  const root = document.documentElement.style;
+  root.setProperty('--W', spec.w + 'px');
+  root.setProperty('--H', spec.h + 'px');
+  // banners are short and wide, so they scale from height with a larger unit
+  const unit = spec.size === 'banner' ? spec.h / 340 : Math.min(spec.w, spec.h) / 630;
+  root.setProperty('--u', unit + 'px');
+  root.setProperty('--short', Math.min(spec.w, spec.h) + 'px');
+  for (const [k, v] of Object.entries(spec.colors)) root.setProperty('--' + k, v);
+  card.dataset.variant = spec.variant;
+  card.dataset.size = spec.size;
+
+  const set = (sel, html) => {
+    const el = card.querySelector(sel);
+    if (html) { el.innerHTML = html; } else { el.innerHTML = ''; if (!el.classList.contains('cmd')) el.style.display = 'none'; }
+    return el;
+  };
+  set('.eyebrow', spec.eyebrow);
+  set('.title', spec.variant === 'quote' || spec.variant === 'stat' ? '' : spec.title);
+  set('.kicker', spec.variant === 'stat' || spec.variant === 'quote' ? '' : spec.kicker);
+  set('.stat-num', spec.variant === 'stat' ? spec.stat : '');
+  set('.stat-label', spec.variant === 'stat' ? spec.label : '');
+  set('.qtext', spec.variant === 'quote' ? spec.quote : '');
+  set('.source', spec.source);
+  set('.cta', spec.variant === 'announcement' ? spec.cta : '');
+  card.querySelector('.cmd .text').innerHTML = spec.command || '';
+  card.querySelector('.chrome .path').textContent = spec.path || '~';
+  if (spec.variant === 'tool' && !spec.command) card.querySelector('.cmd').style.display = 'none';
+
+  const logo = card.querySelector('.footer .logo');
+  logo.innerHTML = spec.logo.kind === 'text' ? `<span class="name">${spec.logo.text}</span>` : spec.logo.markup;
+  card.querySelector('.footer .meta').innerHTML = spec.meta || '';
+  const markbox = card.querySelector('.markbox');
+  markbox.innerHTML = spec.mark.kind === 'text' ? `<span class="name">${spec.mark.text}</span>` : spec.mark.markup;
+};
+
+// Shrink the biggest text until everything fits. Returns what it did and the
+// rectangles of every visible line of text, for the safe-zone check.
+window.fitCard = function () {
+  const card = document.getElementById('card');
+  const body = card.querySelector('.body');
+  const px = (el) => parseFloat(getComputedStyle(el).fontSize);
+  const shrinkers = ['.title', '.qtext', '.stat-label', '.stat-num', '.kicker']
+    .map((s) => card.querySelector(s)).filter((el) => el && el.innerHTML && getComputedStyle(el).display !== 'none');
+  const wides = ['.cmd', '.stat-num', '.cta'].map((s) => card.querySelector(s))
+    .filter((el) => el && getComputedStyle(el).display !== 'none' && el.textContent.trim());
+  const inner = () => body.clientWidth - parseFloat(getComputedStyle(body).paddingLeft) - parseFloat(getComputedStyle(body).paddingRight);
+  const steps = [];
+
+  // Decorative absolute children (the command glow) are left out of every measurement.
+  const flowRect = (el) => {
+    const kids = [...el.children].filter((k) => getComputedStyle(k).position !== 'absolute');
+    if (!kids.length) { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect(); }
+    const rs = kids.map((k) => k.getBoundingClientRect());
+    const l = Math.min(...rs.map((r) => r.left)), t = Math.min(...rs.map((r) => r.top));
+    return { left: l, top: t, width: Math.max(...rs.map((r) => r.right)) - l, height: Math.max(...rs.map((r) => r.bottom)) - t };
+  };
+  const widthOf = (el) => (el.querySelector('.glow') ? flowRect(el).width : el.scrollWidth);
+  for (const el of wides) {
+    const start = px(el); let s = start;
+    while (widthOf(el) > inner() + 1 && s > start * 0.45) { s *= 0.97; el.style.fontSize = s + 'px'; }
+    if (s !== start) steps.push(`${el.className.split(' ')[0]} ${Math.round(start)}px to ${Math.round(s)}px (width)`);
+  }
+  const over = () => {
+    const b = body.getBoundingClientRect(), cs = getComputedStyle(body);
+    const top = b.top + parseFloat(cs.paddingTop) - 1, bottom = b.bottom - parseFloat(cs.paddingBottom) + 1;
+    const kids = [...body.children].filter((k) => getComputedStyle(k).display !== 'none' && getComputedStyle(k).position !== 'absolute');
+    return kids.some((k) => { const r = k.getBoundingClientRect(); return r.height && (r.top < top || r.bottom > bottom); });
+  };
+  for (const el of shrinkers) {
+    if (!over()) break;
+    const start = px(el); let s = start;
+    const floor = el.classList.contains('kicker') ? 0.7 : el.classList.contains('stat-label') ? 0.75 : 0.55;
+    while (over() && s > start * floor) { s *= 0.97; el.style.fontSize = s + 'px'; }
+    if (s !== start) steps.push(`${el.className.split(' ')[0]} ${Math.round(start)}px to ${Math.round(s)}px (height)`);
+  }
+  const clipped = [];
+  if (over()) clipped.push('body content is taller than the card');
+  for (const el of wides) if (widthOf(el) > inner() + 1) clipped.push(el.className.split(' ')[0] + ' is wider than the card');
+
+  const rects = [];
+  const texty = card.querySelectorAll('.eyebrow,.title,.kicker,.cmd,.cta,.stat-num,.stat-label,.qtext,.source,.footer .meta,.footer .logo,.markbox');
+  for (const el of texty) {
+    if (getComputedStyle(el).display === 'none' || !el.innerHTML.trim()) continue;
+    let b;
+    if (el.querySelector('.glow')) b = flowRect(el);
+    else { const r = document.createRange(); r.selectNodeContents(el); b = r.getBoundingClientRect(); }
+    b = { left: b.left, top: b.top, width: b.width, height: b.height };
+    if (el.matches('.footer .logo,.markbox')) b = el.getBoundingClientRect();
+    if (b.width && b.height) rects.push({ cls: el.className.split(' ')[0], x: b.left, y: b.top, w: b.width, h: b.height });
+  }
+  const accents = card.querySelectorAll('.hl').length + (getComputedStyle(card.querySelector('.cta')).display !== 'none' && card.querySelector('.cta').textContent.trim() ? 1 : 0);
+  return { steps, clipped, rects, accents };
+};
+</script>
+</body>
+</html>

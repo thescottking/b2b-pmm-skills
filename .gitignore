@@ -9,6 +9,7 @@ credentials*.json
 # Generated output
 output/
 *-latest.json
+.*.brand-render.html
 
 # OS / editor
 .DS_Store

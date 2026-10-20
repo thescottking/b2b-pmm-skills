@@ -24,7 +24,7 @@ actually send to a colleague.
 
 Two failure modes to avoid, in order of severity. The first is inventing: a
 statistic, a customer, a quote, or a capability that the user never gave you,
-written into a file that nine other skills treat as fact. The second is
+written into a file that every other skill treats as fact. The second is
 exhaustion: a forty-question survey that the user abandons at question twelve
 with nothing on disk.
 
@@ -82,8 +82,8 @@ reason the output is trustworthy.
 - **Write early, write often.** Each file goes to disk the moment its answers
   are in. A user who quits after twenty minutes keeps everything they answered.
 - **Their words, not yours.** When the user says something well, put their
-  sentence in the file. This kit is going to be read back to them by nine
-  skills for the next year. It should sound like the company.
+  sentence in the file. This kit is going to be read back to them by every
+  skill in the repository for the next year. It should sound like the company.
 
 ---
 
@@ -220,6 +220,28 @@ A generic personification is worse than an empty heading.
    and whether the art bleeds off the frame. Ask what they would never want to
    see in an image with their logo near it.
 6. The hashtags social posts are allowed to use, split into branded and topical.
+7. Logo files: a wordmark and a mark, each in a version for light and for dark
+   grounds. SVG if they have it. Put them in `brand-kit/logo/`.
+
+Then propose the rest of the visual system instead of asking for it. Most
+companies have never written down `Dark Surfaces`, `Chart Colors`, `Type Scale`,
+or `Spacing and Shape`, and asking cold produces a long silence. Derive a draft
+of each from what they already gave you, show it as four short tables, and ask
+for one round of correction:
+
+- `Dark Surfaces`: their darkest palette color as the ground, their primary
+  lifted until it reads on that ground as `Emphasis`, and their accent checked
+  against it. If they never show a command line, `Terminal` is `not used`.
+- `Chart Colors`: the primary first, the accent darkened until it holds 3:1 on
+  white second, then the semantic positive and one or two new hues the palette
+  does not have. A neutral gray as `Context`.
+- `Type Scale`: their body size, usually 16px, stepped up by about 1.25 for each
+  heading level, with the fonts they named.
+- `Spacing and Shape`: a 4px base unit, and the corner radius and shadow they
+  can see on their own website.
+
+Say plainly that these are proposals, and that any they skip will be derived
+again by `brand-visuals` every time it renders.
 
 Fill the `Palette` table by role, not by name, because the skills use roles.
 If they give you three colors, derive the tints and neutrals, show your work in
@@ -260,6 +282,18 @@ read it differently.
 
 **Write `brand.md` now.** Show the user the `Company` and `Hallway Pitch`
 sections as you wrote them and ask for one round of correction.
+
+If `brand-visuals` is installed, run its contrast check now, while the colors
+are fresh, and fix any failing pair with the user before moving on:
+
+```
+node skills/brand-visuals/scripts/check-brand.mjs --fonts
+```
+
+A failing pair prints a passing value beside it. Propose that value, or let the
+user pick their own and run the check again. It also confirms the fonts load,
+which catches a misspelled family name before it silently becomes a system
+font in every render.
 
 #### `capabilities.md`, batch 1: the exclusions
 
@@ -618,6 +652,7 @@ Copy the five files by name, so the example README does not replace the real
 
 ```
 cp examples/ampfield/{brand,voice,positioning,icp,capabilities}.md brand-kit/
+cp -r examples/ampfield/logo brand-kit/
 ```
 
 Then say clearly, once: until these are replaced, every skill in the repository
@@ -629,6 +664,11 @@ Ampfield version as the prompt rather than as a template to imitate:
 
 1. `brand.md`. Name, pitch, palette, fonts, CTAs, `Illustration Style`, and
    `Hashtags`. Fastest to change and it changes how every deliverable looks.
+   Replace the `Logo` rows with their own files, or delete the rows and leave
+   the one-line note, because Ampfield's logo files are not theirs to ship.
+   Replace `Dark Surfaces`, `Chart Colors`, `Type Scale`, and
+   `Spacing and Shape` the same way the interview does: propose from their
+   palette and fonts, then correct.
    The two easiest to leave as Ampfield's are the last two, and both of them
    are read verbatim into image prompts and social posts.
 2. `capabilities.md`. Replace `What We Do Not Do` first. Ampfield's eleven
@@ -692,6 +732,10 @@ pages. The reading instructions below are the same either way.
 - Colors and fonts: only if you can read the stylesheet or a brand page. Present
   any hex value you extracted as a proposal to confirm, never as a fact. Brand
   colors picked out of an image or a screenshot are guesses.
+- The logo in the site header, if it is an SVG you can read. Save it to
+  `brand-kit/logo/` only after the user confirms it is the current logo and the
+  right file to use, and ask for the dark-ground version, which a website rarely
+  exposes.
 
 **About page.**
 - Founding story and the "why we exist" paragraph: raw material for `Why now`
@@ -804,8 +848,9 @@ list, not a wall of checkmarks.
 templates. A skill looking for a heading and not finding it will make claims
 nobody authorized.
 
-- `brand.md`: `Company`, `Hallway Pitch`, `Personification`, `Palette`,
-  `Typography`, `Illustration Style`, `Hashtags`, `Document Footer`,
+- `brand.md`: `Company`, `Hallway Pitch`, `Personification`, `Logo`,
+  `Palette`, `Dark Surfaces`, `Chart Colors`, `Typography`, `Type Scale`,
+  `Spacing and Shape`, `Illustration Style`, `Hashtags`, `Document Footer`,
   `Calls to Action`
 - `voice.md`: `Tone`, `Grammar Constraints`, `Pacing`, `Clarity`,
   `Formatting Preferences`, `Banned Words and Phrases`, `AI Tells to Avoid`,
@@ -850,6 +895,16 @@ point to where it came from, cut it.
 hallway pitch, and CTA text get quoted verbatim into published copy. Check them
 against `Grammar Constraints` in `voice.md`, particularly the em-dash rule.
 
+**Colors pass contrast.** If `brand-visuals` is installed, run
+`node skills/brand-visuals/scripts/check-brand.mjs` and treat any `FAIL` as an
+unfinished section. If it is not installed, check by hand that `Body text` and
+`Muted text` hold 4.5:1 on both `Background` and `Background soft`, and that each
+semantic color holds 4.5:1 on its own tint. `Muted text` is the one that fails
+most often, usually on `Background soft`.
+
+**Logo paths resolve.** Every file named under `Logo` exists at that path,
+relative to `brand-kit/`.
+
 **One fact, one home.** If the differentiator appears in both `positioning.md`
 and `capabilities.md` in different words, they will drift. Pick the file that
 owns it and point the other at it.
@@ -885,6 +940,14 @@ do. For example:
 - "`Illustration Style` is one line saying you do not have one, so
   `social-generator` will stop before writing an image prompt and ask you to
   write it with it."
+- "`Dark Surfaces` is empty, so `brand-visuals` derives every dark color from
+  your palette. The derived values pass contrast, and nobody at your company
+  chose them. The first dark slide will look almost like you."
+- "`Muted text` fails contrast on `Background soft`, so every caption on a
+  panel or a stat tile is harder to read than it should be. The passing value
+  is one shade darker."
+- "`Logo` lists no files, so every card and report sets your name in the
+  display font instead of the logo."
 
 Rank them by consequence, keep it to the five that matter, and offer to fix the
 top one right now.
@@ -925,6 +988,9 @@ Close by telling them what to run next and what each skill needs:
 - `competitive-white-space` once `Competitors` in `icp.md` is filled.
 - `google-ads-audit` and `linkedin-ads-audit` once `The Fit Matrix` and
   `Channel Economics` are complete.
+- `brand-visuals` for featured images, social cards, banners, carousels, and
+  branded PDFs, working from `Logo`, `Palette`, `Dark Surfaces`,
+  `Chart Colors`, `Typography`, `Type Scale`, and `Spacing and Shape`.
 
 ---
 
@@ -987,5 +1053,9 @@ All optional. This skill works alone.
 - `transcript-to-article` needs `voice.md` and the frame.
 - `google-ads-audit` needs `Search Terms` and `Channel Economics`.
 - `linkedin-ads-audit` needs `The Fit Matrix` and `Channel Economics`.
+- `brand-visuals` needs `Palette`, `Typography`, and `Document Footer`, and
+  reads `Logo`, `Dark Surfaces`, `Chart Colors`, `Type Scale`, and
+  `Spacing and Shape` when they exist. It runs the contrast check this skill
+  uses in validation.
 
 Anything not in `skills/` does not exist. Do not reference it.
