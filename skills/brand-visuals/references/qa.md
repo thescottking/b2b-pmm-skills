@@ -57,8 +57,8 @@ deliver it beside each file.
 - Under 250 characters. Most platforms truncate after that.
 - Never start with "Image of" or "Picture of". Screen readers already say it is
   an image.
-- For a carousel, write one sentence for the document as a whole, and let each
-  page carry its own text.
+- For a carousel, write one sentence for the document as a whole, and one for
+  each page with that page's words. The script requires both.
 
 ## The delivery note
 

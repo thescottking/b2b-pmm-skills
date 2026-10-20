@@ -35,7 +35,8 @@ fs.mkdirSync(outDir, { recursive: true });
 let spec;
 try { spec = JSON.parse(fs.readFileSync(opt._[0], 'utf8')); } catch (e) { fail(`Could not read ${opt._[0]}: ${e.message}`); }
 const defaults = Array.isArray(spec) ? {} : spec.defaults || {};
-let cards = (Array.isArray(spec) ? spec : spec.cards || []).map((c) => ({ ...defaults, ...c }));
+// A carousel defaults to portrait even when the spec defaults say otherwise.
+let cards = (Array.isArray(spec) ? spec : spec.cards || []).map((c) => ({ ...defaults, ...(Array.isArray(c.slides) ? { size: 'portrait' } : {}), ...c }));
 if (opt.only) cards = cards.filter((c) => c.name === opt.only);
 if (!cards.length) fail('No cards in the spec.');
 
@@ -122,6 +123,7 @@ function validate(c) {
   const accents = ['eyebrow', 'title', 'kicker', 'label', 'quote'].reduce((n, k) => n + countAccents(c[k]), 0);
   if (accents > 1) errs.push(`${accents} *accent* spans. One accent per view: mark the single phrase to read first`);
   if (c.variant === 'tool' && !c.command) warns.push('a tool card without a "command" loses its call to action');
+  if (c.variant === 'tool' && c.ground && !isDark(GROUNDS[groundKey(c.ground)] || D.ground)) errs.push('a tool card needs a dark ground. The terminal color never sits on a light surface');
   if (c.title && String(c.title).length > 90) warns.push('title is over 90 characters and will shrink hard to fit. Cut it');
   return { errs, warns };
 }
@@ -191,8 +193,14 @@ for (const c of cards) {
     const { slides, ...base } = c;
     const size = base.size || 'portrait';
     const files = [];
+    if (!base.alt || !String(base.alt).trim()) {
+      manifest.push({ file: base.name + '.pdf', name: base.name, variant: 'carousel', size, errors: ['needs "alt": one sentence for the carousel as a whole'], warnings: [] });
+      failed++;
+      continue;
+    }
     for (let i = 0; i < slides.length; i++) {
-      const s = { ...base, size, alt: slides[i].alt || `${base.alt || ''} (page ${i + 1} of ${slides.length})`, ...slides[i], name: `${base.name}-${String(i + 1).padStart(2, '0')}` };
+      // each page needs its own alt text, saying the words on that page
+      const s = { ...base, size, alt: undefined, ...slides[i], name: `${base.name}-${String(i + 1).padStart(2, '0')}` };
       const label = i < slides.length - 1 ? `${String(i + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}` : null;
       const file = path.join(outDir, s.name + '.png');
       const e = await renderOne(s, file, label);
@@ -234,6 +242,7 @@ for (const m of manifest) {
   (m.notes || []).forEach((s) => console.log(`        note: ${s}`));
 }
 if (brand.derived.length) console.log('\nDerived from Palette, not read from the kit: ' + brand.derived.join('; '));
+brand.warnings.forEach((w) => console.log('Brand kit: ' + w));
 if (fontsMissing.length && !opt['allow-fallback-fonts']) console.log('\n' + FONT_HELP);
 console.log(failed ? `\n${failed} card(s) failed. Nothing with ERROR should ship.` : '\nAll cards passed the automatic checks. Now look at every image before delivering it.');
 process.exit(failed ? 1 : 0);

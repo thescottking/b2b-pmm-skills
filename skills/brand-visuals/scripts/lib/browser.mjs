@@ -61,6 +61,6 @@ its metrics are wrong. Either the session has no network access to Google Fonts,
 or a family name in \`Typography\` is misspelled. Fixes, in order:
 
   1. Check the spelling against the font's own page.
-  2. Run \`node scripts/fetch-fonts.mjs\` somewhere with network access. It saves
+  2. Run \`node skills/brand-visuals/scripts/fetch-fonts.mjs\` somewhere with network access. It saves
      the fonts into brand-kit/fonts/ and every later render uses those files.
   3. Pass --allow-fallback-fonts to render anyway, and say so when you deliver.`;

@@ -19,7 +19,9 @@ import { lintColors } from './lint-colors.mjs';
 const opt = args(process.argv.slice(2), { bool: ['dated', 'allow-fallback-fonts'] });
 const src = opt._[0];
 if (!src || !fs.existsSync(src)) fail('Usage: node scripts/render-pdf.mjs doc.html [--out file.pdf] [--page Letter|A4] [--kit path] [--dated]');
-const page = (opt.page || 'Letter').toLowerCase() === 'a4' ? 'A4' : 'Letter';
+const pageArg = (opt.page || 'Letter').toLowerCase();
+if (!['letter', 'a4'].includes(pageArg)) fail(`--page must be Letter or A4, not ${opt.page}.`);
+const page = pageArg === 'a4' ? 'A4' : 'Letter';
 const brand = requireBrand(opt);
 const out = path.resolve(opt.out || path.join('output', 'brand-visuals', path.basename(src).replace(/\.html?$/i, '') + '.pdf'));
 fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -80,6 +82,7 @@ try {
 errors.forEach((e) => console.log('  ERROR: ' + e));
 warnings.forEach((w) => console.log('  warning: ' + w));
 if (brand.derived.length) console.log('\nDerived from Palette, not read from the kit: ' + brand.derived.join('; '));
+brand.warnings.forEach((w) => console.log('Brand kit: ' + w));
 if (errors.some((e) => e.startsWith('fonts'))) console.log('\n' + FONT_HELP);
 console.log(errors.length ? '\nThe PDF has problems that should not ship.' : '\nAutomatic checks done. Now open the PDF and look at every page.');
 process.exit(errors.length ? 1 : 0);

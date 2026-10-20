@@ -99,7 +99,7 @@
     "name": "carousel-traps-01",
     "variant": "article",
     "size": "portrait",
-    "alt": "Four-page carousel on why field service companies fall behind themselves. (page 1 of 4)",
+    "alt": "Why a field service company is always slightly behind itself. It is not the technicians. It is where the record of the job gets written.",
     "errors": [],
     "warnings": [],
     "notes": [
@@ -117,7 +117,7 @@
     "name": "carousel-traps-02",
     "variant": "stat",
     "size": "portrait",
-    "alt": "Four-page carousel on why field service companies fall behind themselves. (page 2 of 4)",
+    "alt": "Statistic: 6.5 hours between a job finishing and the office having a usable record of it. Marked as fictional example data.",
     "errors": [],
     "warnings": [],
     "notes": [],
@@ -133,7 +133,7 @@
     "name": "carousel-traps-03",
     "variant": "quote",
     "size": "portrait",
-    "alt": "Four-page carousel on why field service companies fall behind themselves. (page 3 of 4)",
+    "alt": "Quote from Ampfield's Chief Operating Officer: The second visit is priced as a job and remembered as a failure.",
     "errors": [],
     "warnings": [],
     "notes": [],
@@ -144,9 +144,24 @@
   {
     "file": "carousel-traps-04.png",
     "name": "carousel-traps-04",
+    "variant": "article",
+    "size": "portrait",
+    "alt": "Promise Drift: three people, three promises, one customer. The tech says Thursday, dispatch says Tuesday, and the call center cannot say. Nobody lied.",
+    "errors": [],
+    "warnings": [],
+    "notes": [
+      "the Accent color is too light to carry text on this ground, so accent words are underlined in it instead"
+    ],
+    "width": 1080,
+    "height": 1350,
+    "carousel": "carousel-traps"
+  },
+  {
+    "file": "carousel-traps-05.png",
+    "name": "carousel-traps-05",
     "variant": "announcement",
     "size": "portrait",
-    "alt": "Four-page carousel on why field service companies fall behind themselves. (page 4 of 4)",
+    "alt": "What changes: write the record at the point of work, and every system reads the same day. Call to action: See what a field record looks like.",
     "errors": [],
     "warnings": [],
     "notes": [],
@@ -159,8 +174,8 @@
     "name": "carousel-traps",
     "variant": "carousel",
     "size": "portrait",
-    "alt": "Four-page carousel on why field service companies fall behind themselves.",
-    "pages": 4,
+    "alt": "Five-page carousel arguing that field service companies fall behind because the job record is written hours after the job.",
+    "pages": 5,
     "errors": [],
     "warnings": []
   }

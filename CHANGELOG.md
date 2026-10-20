@@ -22,7 +22,9 @@
   working: `brand-visuals` derives the values from `Palette` and says so on
   every render.
 - **The visual system in the Ampfield example**, with logo files and a
-  `renders/` folder showing every variant, size, a carousel, and a PDF report.
+  `renders/` folder showing five variants at every size, a five-page carousel,
+  and a PDF report. Ampfield ships no developer tooling, so the `tool` variant is
+  shown by the repository's own social preview in `.github/`.
 - **`CHANGELOG.md`.**
 
 ### Changed

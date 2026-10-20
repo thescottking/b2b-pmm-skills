@@ -41,8 +41,12 @@ the mark alone.
 
 ## Carousel
 
-`carousel-traps.pdf` is a four-page LinkedIn document post, built from four
+`carousel-traps.pdf` is a five-page LinkedIn document post, built from four
 different variants. The page PNGs are kept beside it.
+
+Ampfield ships no developer tooling, so its kit marks `Terminal` as not used
+and there is no `tool` card here. `.github/social-preview.png` at the root of
+the repository is one.
 
 ## Document
 

@@ -54,13 +54,13 @@ const statusPairs = [['positive', 'problem'], ['positive', 'caution'], ['caution
 for (const t of CVD_TYPES) {
   for (const [a, b] of statusPairs) {
     const d = deltaE(simulate(S[a].hex, t), simulate(S[b].hex, t));
-    if (d < 10) cvd.push({ type: t, what: `${a} vs ${b}`, deltaE: +d.toFixed(1), level: 'label' });
+    if (d < 10) cvd.push({ type: t, what: `${a} vs ${b}`, deltaE: Math.min(+d.toFixed(1), 9.9), level: 'label' });
   }
   const first = C.series.slice(0, 4);
   for (let i = 0; i < first.length; i++)
     for (let j = i + 1; j < first.length; j++) {
       const d = deltaE(simulate(first[i], t), simulate(first[j], t));
-      if (d < 8) cvd.push({ type: t, what: `chart series ${i + 1} vs ${j + 1}`, deltaE: +d.toFixed(1), level: 'warn' });
+      if (d < 8) cvd.push({ type: t, what: `chart series ${i + 1} vs ${j + 1}`, deltaE: Math.min(+d.toFixed(1), 7.9), level: 'warn' });
     }
 }
 
@@ -106,7 +106,7 @@ else {
 out.push('', 'Status never relies on color alone in these templates: every pill carries a word and a symbol.', '');
 if (fontResult) {
   out.push('## Fonts', '');
-  out.push(fontResult.length ? `Did not load: ${fontResult.join(', ')}. Check the spelling in \`Typography\`, or run \`node scripts/fetch-fonts.mjs\`.` : 'Every family and weight loaded.');
+  out.push(fontResult.length ? `Did not load: ${fontResult.join(', ')}. Check the spelling in \`Typography\`, or run \`node skills/brand-visuals/scripts/fetch-fonts.mjs\`.` : 'Every family and weight loaded.');
   out.push('');
 }
 out.push(failures.length ? `**${failures.length} pairing(s) fail.** Update \`brand-kit/brand.md\` with the passing values above, or choose your own and run this again.` : '**Every required pairing passes.**');

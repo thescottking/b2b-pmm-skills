@@ -664,13 +664,13 @@ Ampfield version as the prompt rather than as a template to imitate:
 
 1. `brand.md`. Name, pitch, palette, fonts, CTAs, `Illustration Style`, and
    `Hashtags`. Fastest to change and it changes how every deliverable looks.
-   Replace the `Logo` rows with their own files, or delete the rows and leave
+   The two easiest to leave as Ampfield's are `Illustration Style` and
+   `Hashtags`, and both of them are read verbatim into image prompts and
+   social posts. Replace the `Logo` rows with their own files, or delete the rows and leave
    the one-line note, because Ampfield's logo files are not theirs to ship.
    Replace `Dark Surfaces`, `Chart Colors`, `Type Scale`, and
    `Spacing and Shape` the same way the interview does: propose from their
    palette and fonts, then correct.
-   The two easiest to leave as Ampfield's are the last two, and both of them
-   are read verbatim into image prompts and social posts.
 2. `capabilities.md`. Replace `What We Do Not Do` first. Ampfield's eleven
    exclusions are the best demonstration in the repository of how specific this
    list should be, so read two of them out loud before asking for theirs.
@@ -896,8 +896,8 @@ hallway pitch, and CTA text get quoted verbatim into published copy. Check them
 against `Grammar Constraints` in `voice.md`, particularly the em-dash rule.
 
 **Colors pass contrast.** If `brand-visuals` is installed, run
-`node skills/brand-visuals/scripts/check-brand.mjs` and treat any `FAIL` as an
-unfinished section. If it is not installed, check by hand that `Body text` and
+`node skills/brand-visuals/scripts/check-brand.mjs --fonts` and treat any
+`FAIL`, or any font that did not load, as an unfinished section. If it is not installed, check by hand that `Body text` and
 `Muted text` hold 4.5:1 on both `Background` and `Background soft`, and that each
 semantic color holds 4.5:1 on its own tint. `Muted text` is the one that fails
 most often, usually on `Background soft`.
@@ -1053,9 +1053,11 @@ All optional. This skill works alone.
 - `transcript-to-article` needs `voice.md` and the frame.
 - `google-ads-audit` needs `Search Terms` and `Channel Economics`.
 - `linkedin-ads-audit` needs `The Fit Matrix` and `Channel Economics`.
-- `brand-visuals` needs `Palette`, `Typography`, and `Document Footer`, and
-  reads `Logo`, `Dark Surfaces`, `Chart Colors`, `Type Scale`, and
-  `Spacing and Shape` when they exist. It runs the contrast check this skill
+- `brand-visuals` needs the `Name` under `Company`, every role in `Palette`,
+  and all three semantic rows. It reads `Typography`, `Document Footer`,
+  `Logo`, `Dark Surfaces`, `Chart Colors`, `Type Scale`, and
+  `Spacing and Shape` when they exist, and derives or falls back when they do
+  not. It runs the contrast check this skill
   uses in validation.
 
 Anything not in `skills/` does not exist. Do not reference it.

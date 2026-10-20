@@ -1,5 +1,7 @@
 {
-  "defaults": { "size": "og" },
+  "defaults": {
+    "size": "og"
+  },
   "cards": [
     {
       "name": "og-article",
@@ -66,13 +68,14 @@
     {
       "name": "carousel-traps",
       "size": "portrait",
-      "alt": "Four-page carousel on why field service companies fall behind themselves.",
+      "alt": "Five-page carousel arguing that field service companies fall behind because the job record is written hours after the job.",
       "slides": [
         {
           "variant": "article",
-          "eyebrow": "Four pages",
+          "eyebrow": "Five pages",
           "title": "Why a field service company is always *slightly behind itself*",
-          "kicker": "It is not the technicians. It is where the record of the job gets written."
+          "kicker": "It is not the technicians. It is where the record of the job gets written.",
+          "alt": "Why a field service company is always slightly behind itself. It is not the technicians. It is where the record of the job gets written."
         },
         {
           "variant": "stat",
@@ -80,19 +83,30 @@
           "eyebrow": "The Clipboard Gap",
           "stat": "6.5 hrs",
           "label": "between a job finishing and the office having a usable record of it",
-          "source": "EXAMPLE DATA. Fictional figure invented for this brand kit"
+          "source": "EXAMPLE DATA. Fictional figure invented for this brand kit",
+          "alt": "Statistic: 6.5 hours between a job finishing and the office having a usable record of it. Marked as fictional example data."
         },
         {
           "variant": "quote",
           "ground": "Primary",
           "quote": "The second visit is priced as a job and remembered as a *failure.*",
-          "source": "Chief Operating Officer, Ampfield"
+          "source": "Chief Operating Officer, Ampfield",
+          "alt": "Quote from Ampfield's Chief Operating Officer: The second visit is priced as a job and remembered as a failure."
+        },
+        {
+          "variant": "article",
+          "ground": "Background soft",
+          "eyebrow": "Promise Drift",
+          "title": "Three people, three promises, *one customer*",
+          "kicker": "The tech says Thursday, dispatch says Tuesday, and the call center cannot say. Nobody lied.",
+          "alt": "Promise Drift: three people, three promises, one customer. The tech says Thursday, dispatch says Tuesday, and the call center cannot say. Nobody lied."
         },
         {
           "variant": "announcement",
           "eyebrow": "What changes",
           "title": "Write the record at the point of work, and every system reads the same day",
-          "cta": "See what a field record looks like"
+          "cta": "See what a field record looks like",
+          "alt": "What changes: write the record at the point of work, and every system reads the same day. Call to action: See what a field record looks like."
         }
       ]
     }

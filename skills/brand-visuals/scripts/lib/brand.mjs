@@ -204,6 +204,7 @@ export function loadBrand(kitDir) {
       brand.derived.push(`Semantic ${k} tint (derived from its color)`);
     }
   }
+  if (brand.errors.length) return brand;
 
   // Dark Surfaces (derived from Palette when missing)
   const dk = roleTable(sec['Dark Surfaces'] || '', DARK);
@@ -298,7 +299,9 @@ export function loadBrand(kitDir) {
       const f = (r[1] || '').trim();
       if (!f || isPlaceholder(f)) continue;
       const k = key(r[0]);
-      const slot = (k.includes('wordmark') ? 'wordmark' : k.includes('mark') ? 'mark' : null) + (k.includes('dark') ? 'Dark' : 'Light');
+      const kind = k.includes('wordmark') ? 'wordmark' : k.includes('mark') ? 'mark' : null;
+      if (!kind) { brand.warnings.push(`\`Logo\` row "${r[0]}" is not a wordmark or a mark, so it was skipped.`); continue; }
+      const slot = kind + (k.includes('dark') ? 'Dark' : 'Light');
       const abs = path.resolve(kitDir, f);
       if (fs.existsSync(abs)) lg[slot] = abs;
       else brand.warnings.push(`\`Logo\` lists ${f} but no file exists at ${abs}.`);

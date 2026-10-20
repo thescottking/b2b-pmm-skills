@@ -68,7 +68,9 @@ npx playwright install chromium
 
 The scripts also find a Playwright that is installed globally, which is common
 in hosted sandboxes, so check before installing: if
-`node skills/brand-visuals/scripts/check-brand.mjs` runs, setup is done.
+`node skills/brand-visuals/scripts/check-brand.mjs --fonts` runs and reports
+on fonts, setup is done. Without `--fonts` it never starts the browser, so it
+proves nothing about setup.
 
 Every command below runs from the repository root, where `brand-kit/` lives.
 If you run from somewhere else, pass `--kit <path to brand-kit>`. Output goes to
@@ -132,7 +134,9 @@ reason to take it now? `announcement`. Everything else is `article`.
 
 Any card can take a different ground with `"ground"`, named by `Palette` role
 (`Primary`, `Primary dark`, `Accent`, `Accent soft`, `Background`,
-`Background soft`, `Success / positive`, `Muted text`) or `Dark ground`. The
+`Background soft`, `Success / positive`, `Muted text`, `Body text`), or
+`Dark ground` and `Dark raised` from `Dark Surfaces`. A `tool` card only takes a
+dark ground, because the terminal color never sits on a light one. The
 script picks text, muted, emphasis, and accent colors that pass contrast on
 whatever ground you choose. Vary the ground across a series so six posts do not
 read as one post seen six times.
@@ -235,7 +239,10 @@ and every check. The script reports per card:
 ### Carousels
 
 A LinkedIn carousel is a PDF uploaded as a document post. Give a card a
-`"slides"` array instead of a title, and every slide inherits the card's fields:
+`"slides"` array instead of a title, and every slide inherits the card's fields
+except `alt`. The card's `alt` is one sentence for the carousel as a whole, and
+each slide needs its own `alt` with the words on that page. Carousels render at
+`portrait` unless the card sets its own `size`, whatever `defaults` says:
 
 ```json
 {
@@ -243,9 +250,9 @@ A LinkedIn carousel is a PDF uploaded as a document post. Give a card a
   "size": "portrait",
   "alt": "Five-page carousel. One sentence saying what it argues.",
   "slides": [
-    { "variant": "article", "eyebrow": "Five pages", "title": "The hook, as a claim" },
-    { "variant": "stat", "stat": "3.2x", "label": "What the number means", "source": "Where it comes from" },
-    { "variant": "announcement", "title": "The point", "cta": "Exact CTA" }
+    { "variant": "article", "title": "The hook, as a claim", "alt": "The words on page one" },
+    { "variant": "stat", "stat": "3.2x", "label": "What the number means", "source": "Where it comes from", "alt": "Statistic: 3.2x, what it means" },
+    { "variant": "announcement", "title": "The point", "cta": "Exact CTA", "alt": "The point. Call to action: Exact CTA" }
   ]
 }
 ```
