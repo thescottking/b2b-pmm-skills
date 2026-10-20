@@ -401,5 +401,7 @@ All optional. This skill works alone.
   transcript rather than a topic.
 - `competitive-white-space`: if it is installed, use it to find the angle
   before writing a competitive piece.
+- `brand-visuals`: if it is installed, use it for the featured image that goes
+  with an article, and for a branded PDF of a whitepaper or executive brief.
 
 Anything not in `skills/` does not exist. Do not reference it.

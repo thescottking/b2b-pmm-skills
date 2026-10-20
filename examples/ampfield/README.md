@@ -49,12 +49,16 @@ instead:
 
 ```
 cp examples/ampfield/{brand,voice,positioning,icp,capabilities}.md brand-kit/
+cp -r examples/ampfield/logo brand-kit/
 ```
+
+The second line brings the fictional logo files along, so `brand-visuals` can
+render before you have replaced them. Replace them before anything ships.
 
 Then edit. In roughly this order, because later sections depend on earlier ones:
 
-1. `brand.md`. Name, pitch, palette, fonts, CTAs. Fastest to change and it
-   affects every deliverable's appearance.
+1. `brand.md`. Name, pitch, palette, fonts, CTAs, and the logo files. Fastest
+   to change and it affects every deliverable's appearance.
 2. `positioning.md`. The Frame first. Everything else in the file, and most of
    what the content skills produce, ladders off the canonical noun and its
    definition.
@@ -68,7 +72,7 @@ Then edit. In roughly this order, because later sections depend on earlier ones:
    superseded product names. See how the Ampfield version does it: the generic
    rules are untouched and the company-specific entries sit under them.
 
-## Two things worth copying from this example
+## Three things worth copying from this example
 
 **The stats discipline.** Every number in `positioning.md` carries
 `Example, replace with your own` in the `Verified` column, and the skills
@@ -82,6 +86,15 @@ each with a reason. That list is longer than most companies write and it is the
 single highest-leverage part of a brand kit. A model asked to write about a
 field operations platform will assume route optimization, because everything in
 that category does it. Writing the exclusion down is what stops the claim.
+
+**The visual system.** `brand.md` fills every visual heading: logo files for
+light and dark grounds, a `Dark Surfaces` table with an `Emphasis` blue lifted
+until it reads on the navy ground, chart colors with the accent darkened until it
+holds 3:1, and semantic colors that pass as text on their own tints. Every
+pairing passes `check-brand.mjs`, which is the bar. `renders/` shows the result:
+the same kit as featured images, feed cards, a banner, an avatar, a title slide,
+a carousel, and a PDF report, with the `cards.json` and `sample-report.html`
+that produced them. Every number in those renders is labeled as example data.
 
 ## Do not ship Ampfield
 

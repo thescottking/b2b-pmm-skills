@@ -46,6 +46,31 @@ transformation.
 
 ---
 
+## Logo
+
+| Asset | File | Use on |
+|---|---|---|
+| Wordmark, light grounds | `logo/wordmark-light.svg` | `Background` and `Background soft` grounds |
+| Wordmark, dark grounds | `logo/wordmark-dark.svg` | `Primary`, `Primary dark`, and `Dark Surfaces` grounds |
+| Mark, light grounds | `logo/mark-light.svg` | Avatars and favicons, and anywhere the wordmark would fall below its minimum size |
+| Mark, dark grounds | `logo/mark-dark.svg` | The same, on dark grounds |
+
+The mark is an A built from two strokes, with the crossbar in `Accent`. The
+crossbar is the field record: the one horizontal line everything else rests on.
+It is the only place the accent appears inside the logo, and it stays `Accent`
+on every ground.
+
+- **Clear space:** half the height of the mark on every side. Nothing enters it,
+  including the edge of the frame.
+- **Minimum size:** 20px tall for the wordmark on screen, 0.2in in print. Below
+  that, use the mark alone.
+- **Never:** recolor the strokes to anything but `Primary dark` or
+  `Background soft`, recolor the crossbar, set the wordmark in live type, put
+  the logo on a photo, add a shadow or an outline, or lock it up with a product
+  name. Product names are set in type next to the logo, never inside it.
+
+---
+
 ## Palette
 
 Hex values, with the role each color plays. Skills use these for document
@@ -70,16 +95,17 @@ stay recognizable as good / caution / bad regardless of brand:
 
 | Meaning | Hex | Tint |
 |---|---|---|
-| Positive | `#1f9e86` | `#e4f6f2` |
-| Caution | `#c47a12` | `#fff2dc` |
-| Problem | `#c4443f` | `#fbe8e7` |
+| Positive | `#0d7b67` | `#e4f6f2` |
+| Caution | `#a15d02` | `#fff2dc` |
+| Problem | `#b23a35` | `#fbe8e7` |
 
 Notes on the semantic set. The accent `#ffb52e` is a wayfinding color, not a
-status color, so caution uses the darker `#c47a12` to stay legible as text and
-to stop a reader from reading every highlight as a warning. Positive reads as
-`#1f9e86` in charts and small text because the brighter `#2ec4a6` loses contrast
-below 16px. Use `#2ec4a6` for fills and large surfaces, `#1f9e86` for text,
-strokes, and data marks.
+status color, so caution uses the much darker `#a15d02` to stay legible as text
+and to stop a reader from reading every highlight as a warning. All three status
+colors are dark enough to hold 4.5:1 as text on their own tint, because a status
+pill is small text on a tinted ground and that is where status colors usually
+fail. The brighter `#2ec4a6` stays the `Success / positive` fill for large
+surfaces and never carries text.
 
 Usage rules the skills should follow:
 
@@ -88,8 +114,48 @@ Usage rules the skills should follow:
   small sizes and looks like a highlighter.
 - Dark sections use `#0d1b2a` ground with `#f5f8fb` text and `#ffcf6b` for
   emphasis.
-- Charts default to `#0d1b2a` for the primary series and `#ffb52e` for the
-  compared series. Add `#5b6b7a` third, `#1f9e86` fourth.
+- Charts take their colors from `Chart Colors`, never from this table. The
+  accent fails 3:1 on white, so it cannot be a data series as it stands.
+
+---
+
+## Dark Surfaces
+
+Ampfield's primary is already a dark navy, so the dark ground is the primary
+itself and the work is in `Emphasis`, which is a field-blue lifted until it
+reads on that navy.
+
+| Role | Hex | Used for |
+|---|---|---|
+| Ground | `#0d1b2a` | The dark page or card |
+| Raised | `#132a3e` | Panels, table headers on dark, slide footers |
+| Rule | `#24405a` | Dividers on dark |
+| Text | `#f5f8fb` | Running text and headlines on dark |
+| Muted text | `#9fb0c0` | Captions and labels on dark |
+| Emphasis | `#6fa3d8` | Links, eyebrows, and the stat number on dark |
+| Accent | `#ffb52e` | The one thing per view, on dark |
+| Terminal | not used | Ampfield ships no developer tooling, so no card ever shows a command |
+
+---
+
+## Chart Colors
+
+| Series | Hex | Notes |
+|---|---|---|
+| 1 | `#0d1b2a` | Ampfield's own number, always |
+| 2 | `#b07400` | The compared series. The accent, darkened until it holds 3:1 on white |
+| 3 | `#0d7b67` | |
+| 4 | `#3d7ab8` | |
+| 5 | `#7a4fa3` | Optional. Close to series 4 for a red-green color-blind reader, so never put them side by side without labels |
+| 6 | `#a1453a` | Optional |
+| Context | `#8895a0` | Industry benchmarks, prior periods, and every "all others" bar |
+| Sequential low | `#e3edf6` | Heat maps by branch or by hour |
+| Sequential high | `#0d1b2a` | |
+
+Charts in Ampfield material usually compare Ampfield with the way things work
+now, so most charts need only series 1 and `Context`. Reach for series 2 and
+beyond only when there are genuinely several things being compared. Label bars
+and lines directly at their ends rather than in a legend.
 
 ---
 
@@ -106,6 +172,40 @@ Usage rules the skills should follow:
   `Sora, "Segoe UI", system-ui, sans-serif` for display,
   `Inter, system-ui, -apple-system, sans-serif` for body,
   `"JetBrains Mono", ui-monospace, "SFMono-Regular", monospace` for data.
+
+---
+
+## Type Scale
+
+| Role | Font | Size px | Weight | Line height | Tracking |
+|---|---|---|---|---|---|
+| Display | Display | 56 | 700 | 1.05 | -0.025em |
+| H1 | Display | 40 | 700 | 1.1 | -0.02em |
+| H2 | Display | 28 | 600 | 1.2 | -0.01em |
+| H3 | Display | 21 | 600 | 1.3 | 0 |
+| Body | Body | 16 | 400 | 1.6 | 0 |
+| Small | Body | 14 | 400 | 1.5 | 0 |
+| Caption | Body | 12.5 | 500 | 1.4 | 0.01em |
+| Eyebrow | Mono | 11.5 | 400 | 1.2 | 0.14em |
+| Data | Mono | 14 | 400 | 1.4 | 0 |
+
+- **Measure:** 68 characters for running text. Tables and stat rows may run the
+  full width.
+- **Numerals:** tabular everywhere numbers sit in a column or a row of stats.
+  Job IDs and part numbers are always set in `Data`.
+
+---
+
+## Spacing and Shape
+
+| Token | Value | Notes |
+|---|---|---|
+| Base unit | 4px | |
+| Spacing scale | 4, 8, 12, 16, 24, 32, 48, 64, 96 | |
+| Radius small | 4px | Status pills and tags |
+| Radius large | 10px | Cards, stat tiles, callouts |
+| Border width | 1px | |
+| Shadow | none | Ampfield separates surfaces with `Rule / border` and `Background soft`, never with depth |
 
 ---
 

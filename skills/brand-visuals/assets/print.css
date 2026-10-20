@@ -1,0 +1,30 @@
+/* Print rules for brand-visuals documents. scripts/render-pdf.mjs adds this
+   file after forcing the light theme. Each rule fixes a defect that shipped
+   at least once before it existed. */
+
+/* Everything is sized in rem, so this one line sets body copy for paper and
+   scales the whole type scale with it. */
+html { font-size: 10.5pt !important; }
+html, body { background: var(--c-bg) !important; }
+
+/* Without this, every background drops out and status pills print white. */
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+.wrap { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+
+/* Wide tables scroll on screen and silently lose columns on paper. */
+.scroll { overflow: visible !important; }
+table { width: 100% !important; min-width: 0 !important; font-size: 0.82rem !important; }
+th, td { padding: 0.45rem 0.55rem !important; }
+thead { display: table-header-group; }
+tbody tr:hover { background: none !important; }
+
+/* Keep rows, tiles, callouts, and figures whole across page breaks. */
+tr, .stat, .note, .verdict, .calc, li, figure, blockquote, .bar-row { break-inside: avoid; page-break-inside: avoid; }
+h1, h2, h3, .eyebrow, .doc-head { break-after: avoid; page-break-after: avoid; }
+p, li { orphans: 3; widows: 3; }
+
+/* The page footer carries the document footer, so drop the on-screen one. */
+.doc-foot { display: none !important; }
+h2 { margin-top: 1.8rem !important; }
+p, ul, ol, .note, blockquote.pull { max-width: none !important; }

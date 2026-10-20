@@ -706,6 +706,8 @@ it.
 **If no docx skill is available in the session,** output the full audit as clean markdown
 with every table preserved, and tell the user plainly that a Word document could not be
 generated and why.
+If `brand-visuals` is installed, offer to turn the markdown into a branded PDF
+instead. Nothing in the analysis changes; only the format does.
 
 ## Output notes
 

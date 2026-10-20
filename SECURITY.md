@@ -24,6 +24,16 @@ Three rules:
    a chat, staged into a cloud workspace, or copied into a backup file, rotate
    it. Assume exposure rather than auditing it.
 
+## Code that runs
+
+`brand-visuals` is the one skill that executes code. Its scripts read
+`brand-kit/`, launch a local headless Chromium through Playwright, and write
+images and PDFs under `output/` or the folder you pass. The only network
+requests are to Google Fonts, for the families named in `Typography`, and
+`fetch-fonts.mjs` saves those files into `brand-kit/fonts/` so later renders make
+none. Nothing is uploaded. Read the scripts before running them; they are short
+and have no dependency besides Playwright.
+
 ## Your brand kit
 
 `brand-kit/` is where your positioning, buyer definition, and competitive

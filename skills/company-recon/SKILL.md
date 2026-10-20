@@ -243,6 +243,8 @@ skill provides before presenting it.
 **If no docx skill is available:** output the same seven sections as clean
 markdown in the conversation, keep the tables, and tell the user plainly that no
 document skill was found so they got markdown instead. Do not silently downgrade.
+If `brand-visuals` is installed, offer to turn the markdown into a branded PDF
+instead. Nothing in the analysis changes; only the format does.
 
 **Styling comes from the brand kit, not from this file.** Read the `Palette`
 table in `brand-kit/brand.md` and map it:

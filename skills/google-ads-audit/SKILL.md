@@ -700,6 +700,8 @@ and let the host resolve it. Follow its rules in full, and specifically:
 **If no docx skill is available in the session,** output the full audit as clean markdown,
 preserving every table, and tell the user plainly that a Word document could not be generated
 and why. Do not silently downgrade the deliverable.
+If `brand-visuals` is installed, offer to turn the markdown into a branded PDF
+instead. Nothing in the analysis changes; only the format does.
 
 ## Output notes
 

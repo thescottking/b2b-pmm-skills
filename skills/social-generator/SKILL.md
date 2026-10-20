@@ -311,3 +311,8 @@ Group by platform, then the image section.
   qualifier that would have made them true.
 - Check `Superseded Names` in `brand-kit/voice.md` before writing any product
   name into a caption.
+- If `brand-visuals` is installed, mark the accent words in the graphic headline
+  with asterisks, `*like this*`, and offer to render the headline and overlay as
+  finished `square` or `portrait` cards. It reads the same `Palette` roles as
+  the table in Step 3, so the card and the image prompt stay on one palette row.
+  Image prompts still go to whatever image model the user runs.

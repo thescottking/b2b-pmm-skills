@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Document title</title>
+<!-- brand:start -->
+<!-- Run scripts/apply-brand.mjs on a copy of this file. It writes the fonts and
+     color tokens from brand-kit/brand.md between these two markers. -->
+<!-- brand:end -->
+<!--
+  brand-visuals document template.
+
+  Copy this file, keep the components you need, delete the rest, and replace
+  the sample text. Every color, font, and size is a custom property filled in
+  from brand-kit/brand.md, so there is no color value anywhere in this file.
+  If you find yourself typing one, the brand kit is missing something.
+
+  Themes: light by default, dark when the reader's system prefers it, and
+  either one can be pinned with data-theme="light" or data-theme="dark" on
+  <html>. scripts/render-pdf.mjs always pins light, because paper is white.
+-->
+<style>
+  /* ---------- theme ---------- */
+  :root{
+    color-scheme:light;
+    --surface:var(--c-bg); --surface-2:var(--c-bg-soft); --ink:var(--c-text); --ink-2:var(--c-muted);
+    --line:var(--c-rule); --brand:var(--c-primary-text); --hi:var(--c-accent); --hi-ink:var(--c-accent-text);
+    --on-hi:var(--c-on-accent);
+    --pos-tint:var(--c-positive-tint); --pos-ink:var(--c-positive-ink);
+    --cau-tint:var(--c-caution-tint); --cau-ink:var(--c-caution-ink);
+    --bad-tint:var(--c-problem-tint); --bad-ink:var(--c-problem-ink);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --surface:var(--d-ground); --surface-2:var(--d-raised); --ink:var(--d-text); --ink-2:var(--d-muted);
+      --line:var(--d-rule); --brand:var(--d-emphasis); --hi:var(--d-accent); --hi-ink:var(--d-accent);
+      --pos-tint:var(--d-positive-tint); --pos-ink:var(--d-positive-ink);
+      --cau-tint:var(--d-caution-tint); --cau-ink:var(--d-caution-ink);
+      --bad-tint:var(--d-problem-tint); --bad-ink:var(--d-problem-ink);
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --surface:var(--d-ground); --surface-2:var(--d-raised); --ink:var(--d-text); --ink-2:var(--d-muted);
+    --line:var(--d-rule); --brand:var(--d-emphasis); --hi:var(--d-accent); --hi-ink:var(--d-accent);
+    --pos-tint:var(--d-positive-tint); --pos-ink:var(--d-positive-ink);
+    --cau-tint:var(--d-caution-tint); --cau-ink:var(--d-caution-ink);
+    --bad-tint:var(--d-problem-tint); --bad-ink:var(--d-problem-ink);
+  }
+
+  /* ---------- base ---------- */
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--ff-body);font-size:var(--fs-body);
+    font-weight:var(--fw-body);line-height:var(--lh-body);letter-spacing:var(--tr-body);-webkit-font-smoothing:antialiased}
+  .wrap{max-width:56rem;margin:0 auto;padding:var(--space-8,3.5rem) 1rem var(--space-9,6rem)}
+  @media (min-width:40rem){.wrap{padding-left:1.5rem;padding-right:1.5rem}}
+
+  h1,h2,h3{color:var(--ink);margin:0;text-wrap:balance}
+  h1{font-family:var(--ff-h1);font-size:var(--fs-h1);font-weight:var(--fw-h1);line-height:var(--lh-h1);letter-spacing:var(--tr-h1)}
+  h2{font-family:var(--ff-h2);font-size:var(--fs-h2);font-weight:var(--fw-h2);line-height:var(--lh-h2);letter-spacing:var(--tr-h2);
+    margin-top:var(--space-8,3rem);padding-top:var(--space-5,1.5rem);border-top:var(--border) solid var(--line)}
+  h3{font-family:var(--ff-h3);font-size:var(--fs-h3);font-weight:var(--fw-h3);line-height:var(--lh-h3);letter-spacing:var(--tr-h3);
+    margin-top:var(--space-6,2rem)}
+  h2+p,h3+p,h2+ul,h3+ul{margin-top:var(--space-3,.75rem)}
+  .doc-head+section>h2:first-child{border-top:0;padding-top:0;margin-top:var(--space-7,2.5rem)}
+  p,ul,ol{max-width:var(--measure);margin:var(--space-4,1rem) 0 0;text-wrap:pretty}
+  li+li{margin-top:var(--space-2,.5rem)}
+  a{color:var(--brand);text-decoration-thickness:.08em;text-underline-offset:.15em}
+  a:hover{text-decoration-thickness:.14em}
+  :focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:var(--radius-s)}
+  strong{font-weight:600}
+  small,.small{font-size:var(--fs-small);line-height:var(--lh-small)}
+  code,kbd,.mono{font-family:var(--ff-data);font-size:.92em}
+  code{background:var(--surface-2);padding:.1em .35em;border-radius:var(--radius-s)}
+  hr{border:0;border-top:var(--border) solid var(--line);margin:var(--space-7,2.5rem) 0}
+  .num,.stat-value,td.num,th.num{font-family:var(--ff-data);font-variant-numeric:tabular-nums lining-nums}
+
+  /* eyebrow: the small capitals label above a heading */
+  .eyebrow{font-family:var(--ff-eyebrow);font-size:var(--fs-eyebrow);font-weight:var(--fw-eyebrow);line-height:var(--lh-eyebrow);
+    letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--brand);margin:0 0 var(--space-3,.75rem)}
+
+  /* ---------- document header ---------- */
+  .doc-head{padding-bottom:var(--space-6,2rem);border-bottom:var(--border) solid var(--line)}
+  .doc-logo{display:block;height:1.75rem;margin-bottom:var(--space-7,2.5rem)}
+  .doc-logo svg,.doc-logo img{height:100%;width:auto;display:block}
+  .doc-logo .logo-light,.doc-logo .logo-dark{display:block;height:100%}
+  .doc-logo .logo-dark{display:none}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .doc-logo .logo-light{display:none}:root:not([data-theme="light"]) .doc-logo .logo-dark{display:block}}
+  :root[data-theme="dark"] .doc-logo .logo-light{display:none}
+  :root[data-theme="dark"] .doc-logo .logo-dark{display:block}
+  .doc-logo .name{font-family:var(--ff-h1);font-weight:var(--fw-h1);font-size:1.25rem;line-height:1.75rem}
+  .deck{font-family:var(--ff-h3);font-weight:var(--fw-h3);font-size:var(--fs-h3);line-height:1.4;color:var(--ink-2);margin-top:var(--space-4,1rem)}
+  .doc-meta{display:flex;flex-wrap:wrap;gap:var(--space-2,.5rem) var(--space-6,2rem);margin-top:var(--space-5,1.5rem);
+    font-family:var(--ff-caption);font-size:var(--fs-caption);font-weight:var(--fw-caption);letter-spacing:var(--tr-caption);color:var(--ink-2)}
+
+  /* ---------- stat tiles ---------- */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:var(--space-4,1rem);margin-top:var(--space-5,1.5rem)}
+  .stat{background:var(--surface-2);border:var(--border) solid var(--line);border-radius:var(--radius-l);padding:var(--space-5,1.25rem);
+    box-shadow:var(--shadow)}
+  .stat-value{display:block;font-family:var(--ff-display);font-size:var(--fs-h1);font-weight:var(--fw-display);line-height:1;letter-spacing:var(--tr-display);color:var(--ink)}
+  .stat.is-lead .stat-value{color:var(--brand)}
+  .stat-label{display:block;margin-top:var(--space-2,.5rem);font-size:var(--fs-small);line-height:var(--lh-small);color:var(--ink)}
+  .stat-source{display:block;margin-top:var(--space-3,.75rem);font-size:var(--fs-caption);color:var(--ink-2)}
+
+  /* ---------- callouts ---------- */
+  .note{margin-top:var(--space-5,1.5rem);padding:var(--space-4,1rem) var(--space-5,1.25rem);background:var(--surface-2);
+    border:var(--border) solid var(--line);border-left:4px solid var(--brand);border-radius:var(--radius-l);max-width:var(--measure)}
+  .note>:first-child{margin-top:0}
+  .note p{margin-top:var(--space-2,.5rem)}
+  .note-label{display:flex;align-items:center;gap:.4em;font-family:var(--ff-eyebrow);font-size:var(--fs-eyebrow);letter-spacing:var(--tr-eyebrow);
+    text-transform:uppercase;color:var(--brand);font-weight:var(--fw-eyebrow)}
+  .note.positive{background:var(--pos-tint);border-left-color:var(--pos-ink)} .note.positive .note-label{color:var(--pos-ink)}
+  .note.caution{background:var(--cau-tint);border-left-color:var(--cau-ink)} .note.caution .note-label{color:var(--cau-ink)}
+  .note.problem{background:var(--bad-tint);border-left-color:var(--bad-ink)} .note.problem .note-label{color:var(--bad-ink)}
+  .note.highlight{border-left-color:var(--hi)}
+
+  /* ---------- verdict pills: always a symbol and a word, never color alone ---------- */
+  .verdict{display:inline-flex;align-items:center;gap:.35em;white-space:nowrap;font-family:var(--ff-data);font-size:var(--fs-caption);
+    font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.2em .6em;border-radius:var(--radius-s);line-height:1.4}
+  .verdict::before{font-size:.85em}
+  .verdict.good{background:var(--pos-tint);color:var(--pos-ink)} .verdict.good::before{content:"\25B2"}
+  .verdict.caution{background:var(--cau-tint);color:var(--cau-ink)} .verdict.caution::before{content:"\25CF"}
+  .verdict.bad{background:var(--bad-tint);color:var(--bad-ink)} .verdict.bad::before{content:"\25BC"}
+  .verdict.neutral{background:var(--surface-2);color:var(--ink-2);border:var(--border) solid var(--line)} .verdict.neutral::before{content:"\25C6"}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto;margin-top:var(--space-5,1.5rem);-webkit-overflow-scrolling:touch}
+  table{width:100%;border-collapse:collapse;font-size:var(--fs-small);line-height:var(--lh-small)}
+  caption{caption-side:top;text-align:left;font-family:var(--ff-caption);font-size:var(--fs-caption);color:var(--ink-2);padding-bottom:var(--space-2,.5rem)}
+  th,td{text-align:left;padding:.6rem .75rem;border-bottom:var(--border) solid var(--line);vertical-align:top}
+  th{font-family:var(--ff-eyebrow);font-size:var(--fs-eyebrow);letter-spacing:var(--tr-eyebrow);text-transform:uppercase;font-weight:var(--fw-eyebrow);
+    color:var(--ink-2);background:var(--surface-2);white-space:nowrap}
+  th.num,td.num{text-align:right}
+  tbody tr:hover{background:color-mix(in oklab,var(--surface-2) 60%,transparent)}
+  tr.is-total td{font-weight:600;border-top:2px solid var(--ink);border-bottom:none}
+
+  /* ---------- worked calculation ---------- */
+  .calc{margin-top:var(--space-5,1.5rem);padding:var(--space-4,1rem) var(--space-5,1.25rem);border:var(--border) dashed var(--line);
+    border-radius:var(--radius-l);font-family:var(--ff-data);font-size:var(--fs-data);line-height:1.7;font-variant-numeric:tabular-nums}
+  .calc .row{display:flex;justify-content:space-between;gap:1rem}
+  .calc .row.result{border-top:var(--border) solid var(--line);margin-top:.35rem;padding-top:.35rem;font-weight:600;color:var(--brand)}
+
+  /* ---------- bar chart ----------
+     Chart colors are defined against Background, so a chart sits on a
+     light panel in both themes rather than being recolored for dark. */
+  .bars{margin:var(--space-5,1.5rem) 0 0;padding:var(--space-5,1.25rem);background:var(--c-bg);color:var(--c-text);
+    border:var(--border) solid var(--line);border-radius:var(--radius-l)}
+  .bars .bar-row{display:grid;grid-template-columns:minmax(6rem,11rem) 1fr;gap:.25rem .75rem;align-items:center;margin-top:.6rem}
+  .bars .bar-row:first-of-type{margin-top:0}
+  .bars .bar-label{font-size:var(--fs-small);line-height:1.3}
+  .bars .bar-track{display:flex;align-items:center;gap:.5rem}
+  .bars .bar{height:1.1rem;border-radius:0 var(--radius-s) var(--radius-s) 0;background:var(--chart-1);min-width:2px}
+  .bars .bar-value{font-family:var(--ff-data);font-size:var(--fs-data);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .bars .s2 .bar{background:var(--chart-2)} .bars .s3 .bar{background:var(--chart-3)} .bars .s4 .bar{background:var(--chart-4)}
+  .bars .s5 .bar{background:var(--chart-5)} .bars .s6 .bar{background:var(--chart-6)} .bars .context .bar{background:var(--chart-context)}
+  .bars .context .bar-label,.bars .context .bar-value{color:var(--c-muted)}
+  .bars figcaption{margin-top:var(--space-4,1rem);font-size:var(--fs-caption);color:var(--c-muted)}
+  @media (max-width:30rem){.bars .bar-row{grid-template-columns:1fr}}
+
+  /* ---------- pull quote ---------- */
+  blockquote.pull{margin:var(--space-6,2rem) 0 0;padding-left:var(--space-5,1.25rem);border-left:4px solid var(--brand);max-width:var(--measure)}
+  blockquote.pull p{font-family:var(--ff-h3);font-weight:var(--fw-h3);font-size:var(--fs-h3);line-height:1.4;margin:0}
+  blockquote.pull cite{display:block;margin-top:var(--space-3,.75rem);font-style:normal;font-family:var(--ff-eyebrow);font-size:var(--fs-eyebrow);
+    letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--ink-2)}
+
+  /* ---------- one accent: the single thing to read first ---------- */
+  .mark-accent{background:linear-gradient(transparent 62%,color-mix(in oklab,var(--hi) 55%,transparent) 62%);padding:0 .1em}
+  .button{display:inline-block;margin-top:var(--space-5,1.5rem);background:var(--hi);color:var(--on-hi);text-decoration:none;font-weight:600;
+    padding:.7rem 1.1rem;border-radius:var(--radius-s)}
+
+  /* ---------- footer ---------- */
+  .doc-foot{margin-top:var(--space-9,6rem);padding-top:var(--space-4,1rem);border-top:var(--border) solid var(--line);
+    font-family:var(--ff-caption);font-size:var(--fs-caption);color:var(--ink-2)}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="doc-head">
+    <span class="doc-logo" data-brand="logo"></span>
+    <p class="eyebrow">Document type</p>
+    <h1>The title says what the reader will know when they finish</h1>
+    <p class="deck">One sentence of deck. It answers the question the title raises, so a reader who stops here still leaves with the point.</p>
+    <div class="doc-meta"><span>Prepared for the reader's team</span><span>Month Year</span></div>
+  </header>
+
+  <section>
+    <h2>Section heading</h2>
+    <p>Running text sits at the measure set in <code>Type Scale</code>, so lines stay readable at any window width. Headings balance their lines, and paragraphs avoid a single orphaned word on the last line.</p>
+
+    <div class="stats">
+      <div class="stat is-lead"><span class="stat-value">42%</span><span class="stat-label">The lead tile. Its number takes the primary color.</span><span class="stat-source">Source line. Every number has one.</span></div>
+      <div class="stat"><span class="stat-value">3.1x</span><span class="stat-label">A supporting number in the text color.</span><span class="stat-source">Source line.</span></div>
+      <div class="stat"><span class="stat-value">$18k</span><span class="stat-label">Tiles wrap to one column on a phone.</span><span class="stat-source">Source line.</span></div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">Note</span>
+      <p>A neutral callout for context the reader should not miss. Use the variants below for status, never this one in a new color.</p>
+    </div>
+    <div class="note caution">
+      <span class="note-label">Caution</span>
+      <p>Status callouts take the semantic colors from <code>Palette</code>, which are separate from the accent.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tables and verdicts</h2>
+    <div class="scroll">
+      <table>
+        <caption>Caption says what the table compares and over what period.</caption>
+        <thead><tr><th>Item</th><th class="num">Spend</th><th class="num">Share</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>First row</td><td class="num">12,400</td><td class="num">41.0%</td><td><span class="verdict good">Keep</span></td></tr>
+          <tr><td>Second row</td><td class="num">8,150</td><td class="num">27.0%</td><td><span class="verdict caution">Watch</span></td></tr>
+          <tr><td>Third row</td><td class="num">9,620</td><td class="num">32.0%</td><td><span class="verdict bad">Cut</span></td></tr>
+          <tr class="is-total"><td>Total</td><td class="num">30,170</td><td class="num">100.0%</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="calc">
+      <div class="row"><span>Spend on terms marked Cut</span><span>9,620</span></div>
+      <div class="row"><span>Months in the period</span><span>&divide; 3</span></div>
+      <div class="row result"><span>Monthly waste</span><span>3,207</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Charts</h2>
+    <figure class="bars" role="img" aria-label="Bar chart. Our number 64, benchmark 41, all others 22.">
+      <div class="bar-row"><span class="bar-label">Our number</span><span class="bar-track"><span class="bar" style="width:64%"></span><span class="bar-value">64</span></span></div>
+      <div class="bar-row s2"><span class="bar-label">Compared series</span><span class="bar-track"><span class="bar" style="width:41%"></span><span class="bar-value">41</span></span></div>
+      <div class="bar-row context"><span class="bar-label">All others</span><span class="bar-track"><span class="bar" style="width:22%"></span><span class="bar-value">22</span></span></div>
+      <figcaption>Labels sit on the bars, so the chart reads without color. Source line.</figcaption>
+    </figure>
+
+    <blockquote class="pull">
+      <p>A pull quote, copied verbatim from a cleared source and never trimmed to fit.</p>
+      <cite>Name, Title, Company</cite>
+    </blockquote>
+
+    <p>The accent appears once per view. Here it is the button. Elsewhere it could be one marked phrase, never both.</p>
+    <a class="button" href="#">Exact CTA text from Calls to Action</a>
+  </section>
+
+  <footer class="doc-foot" data-brand="footer">Document footer string from brand.md</footer>
+</main>
+</body>
+</html>

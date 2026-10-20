@@ -1,9 +1,10 @@
 # B2B PMM Skills
 
-Nine Claude skills for B2B marketing teams: voice and quality scoring, long-form
-content, transcript to article, social, company recon, competitive white space,
-and Google and LinkedIn ads audits. All nine read one shared brand kit, so you
-define your positioning once and everything writes as your company.
+Ten Claude skills for B2B marketing teams: voice and quality scoring, long-form
+content, transcript to article, social, branded visuals, company recon,
+competitive white space, and Google and LinkedIn ads audits. All ten read one
+shared brand kit, so you define your positioning once and everything writes,
+and looks, like your company.
 
 ---
 
@@ -22,7 +23,7 @@ who has tried this has hit. Either the skill is generic, in which case it
 produces competent copy about no company in particular and you rewrite all of
 it. Or the positioning is baked into the prompt, in which case it works
 beautifully for one company and is worthless to the next, and updating a tagline
-means editing nine files and missing three.
+means editing ten files and missing three.
 
 Put the positioning in one place and the skills stay portable, the copy stays
 consistent, and changing your frame is a single edit that propagates everywhere.
@@ -40,11 +41,18 @@ once it exists. `docs/positioning-framework.md` is that method.
 
 ## What you need before anything works
 
-Five of the nine skills read nothing but the brand kit and a text editor.
+Five of the ten skills read nothing but the brand kit and a text editor.
 `house-style`, `content-writer`, `transcript-to-article`, `social-generator`,
 and `brand-kit-setup` run in a plain Claude Code session on a laptop with no
-tools attached. The other four have real dependencies, and each one fails in a
+tools attached. The other five have real dependencies, and each one fails in a
 different way when the dependency is missing.
+
+**Node and a headless browser.** `brand-visuals` renders images and PDFs with
+Playwright. It needs Node 18 or newer, then `npm install` and
+`npx playwright install chromium` once, from `skills/brand-visuals/`. It also
+loads your fonts from Google Fonts at render time, so a session without network
+access needs the fonts saved locally first, which its `fetch-fonts` script does.
+When fonts cannot load, it stops rather than rendering in a system font.
 
 **Web fetch and web search.** `company-recon` and `competitive-white-space` are
 built entirely on public sources. Without both tools available in the session
@@ -75,7 +83,7 @@ one needs one of two things:
   label them, which is a weaker answer honestly described.
 
 Also worth stating: no skill here writes to an ad platform, a CMS, or a CRM.
-Everything is read and analyze.
+Everything is read and analyze, or writes files to your own disk.
 
 ---
 
@@ -150,6 +158,7 @@ worked example instead:
 
 ```
 cp examples/ampfield/{brand,voice,positioning,icp,capabilities}.md brand-kit/
+cp -r examples/ampfield/logo brand-kit/
 ```
 
 **3. Run something.**
@@ -173,6 +182,7 @@ into an article." Every skill checks the kit first and will tell you to run
 | `content-writer` | Long-form assets from the kit: articles, landing pages, feature pages, emails, case studies, whitepapers, executive briefs, pillar and cluster pages. | `positioning.md`, `voice.md`, `brand.md`, `capabilities.md`, plus `docs/writing-templates.md`, `docs/aeo-style-guide.md`, and `docs/messaging-patterns.md` |
 | `transcript-to-article` | Turns a podcast, webinar, interview, or messy meeting notes into a clean transcript, a finished article, a distribution package, social assets, and a scan report. | The four above, plus `docs/aeo-style-guide.md` and `docs/writing-templates.md` |
 | `social-generator` | Platform-native captions plus the text overlay, graphic headline, and paired image prompts that ship with them. | `brand.md` for palette and CTAs, `voice.md`, `positioning.md`, `capabilities.md`, plus `docs/writing-templates.md` for the LinkedIn spec and `docs/messaging-patterns.md` |
+| `brand-visuals` | Renders featured images, social cards, profile banners, avatars, title slides, and LinkedIn carousels at each platform's exact size, and turns reports into self-contained HTML and print-ready PDFs. Checks every color pairing for contrast and color blindness, confirms fonts loaded, and refuses a stat without a source or a card without alt text. | `brand.md`: `Logo`, `Palette`, `Dark Surfaces`, `Chart Colors`, `Typography`, `Type Scale`, `Spacing and Shape`, `Document Footer`. `positioning.md` for stats and quotes, `voice.md` for every word on a card |
 | `company-recon` | A seven-section read on any B2B company from a single URL, assembled in minutes from its public web presence: what it sells, who it says it sells to, how it is positioned, and what marketing it is visibly running. The prospect, partner, competitor, or noise call is a starting judgment for a human to confirm, drawn from a website. | All five, for the read on whether the company matters to you |
 | `competitive-white-space` | Maps what every competitor is already saying, isolates what none of them are saying, and turns the gap into a positioning direction and stage-by-stage campaign hooks. | `icp.md` for the competitor set, `positioning.md` for the frame, all five for sections 5 through 8 |
 | `google-ads-audit` | Classifies every search term by buyer intent as KEEP, WATCH, or CUT, quantifies wasted spend, and flags high-intent terms that are budget-constrained. | `icp.md`: `The Fit Matrix`, `Search Terms`, `Channel Economics` |
@@ -219,7 +229,9 @@ a full pass takes an afternoon rather than a quarter.
 
 ## The brand kit
 
-Five files in `brand-kit/`. `brand.md` for identity, palette, and CTAs.
+Five files in `brand-kit/`. `brand.md` for identity, logo, palette, type, and
+CTAs: the whole visual system, down to dark surfaces, chart colors, and corner
+radius.
 `voice.md` for house style and banned constructions. `positioning.md` for the
 frame, the pillars, the named traps, and every number you are willing to
 publish. `icp.md` for who you sell to, in three tiers precise enough to score a
@@ -255,6 +267,10 @@ a worked example. Ampfield is a fictional field operations platform for solar
 and HVAC contractors, filled in to the depth a real kit needs. The templates
 tell you what a section is. The example shows you how specific it has to be
 before a skill can do anything useful with it.
+
+`examples/ampfield/renders/` shows what `brand-visuals` makes from that kit:
+every card variant and size, a four-page carousel, and a two-page PDF report,
+next to the spec and the HTML source that produced them.
 
 ---
 
@@ -298,12 +314,14 @@ A short list, so you know what you are getting:
   engines, which is a different problem.
 - **No CMS page builder.** The skills produce copy and formatted documents. They
   do not publish to WordPress, HubSpot, or anything else.
-- **No workflow or diagram generation.** Nothing here animates, visualizes, or
-  renders a process.
+- **No workflow or diagram generation.** `brand-visuals` renders cards,
+  documents, and simple bar charts. Nothing here animates or diagrams a
+  process.
 - **No CRM or marketing automation integration.** No list building, no lead
   scoring, no sequence deployment.
-- **No image generation.** `social-generator` writes image prompts. You run them
-  wherever you run them.
+- **No image generation.** `brand-visuals` sets type, logos, and numbers on
+  branded cards, and `social-generator` writes image prompts. Neither makes an
+  illustration or a photograph. You run the prompts wherever you run them.
 - **No analytics or attribution reporting.** The two ads audits read campaign
   exports and judge them against your ICP. They are not a reporting layer.
 - **Two channels, not eight.** A B2B marketing team runs paid search, paid
